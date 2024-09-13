@@ -2621,9 +2621,9 @@ babel-plugin-polyfill-regenerator@^0.6.1:
     "@babel/helper-define-polyfill-provider" "^0.6.2"
 
 babel-plugin-react-compiler@^0.0.0-experimental-592953e-20240517:
-  version "0.0.0-experimental-fe484b5-20240911"
-  resolved "https://registry.npmmirror.com/babel-plugin-react-compiler/-/babel-plugin-react-compiler-0.0.0-experimental-fe484b5-20240911.tgz#539c0fcaa7841243a6bceee14ee741d620f5b7d1"
-  integrity sha512-68t0K1tr9/q7rs2o2RAMvU+ytI4DaqFEEnfhGD++8JCnGQhl2FZKMPi5u9BcWPYPhSCOSuWYabpj4q5owQWwNA==
+  version "0.0.0-experimental-fe484b5-20240912"
+  resolved "https://registry.npmmirror.com/babel-plugin-react-compiler/-/babel-plugin-react-compiler-0.0.0-experimental-fe484b5-20240912.tgz#213003ff60f50c3deb90a5b41b9370e40bff66d2"
+  integrity sha512-iGtEbwQeiLXba8o8ESTjogmQ8rTP6xHi+w3JIxR8HmKAb+SYZ3cljRhpOEsrxZIXuk3L9w9o98BJFIcxaVyFag==
   dependencies:
     "@babel/generator" "7.2.0"
     "@babel/types" "^7.19.0"

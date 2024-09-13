@@ -3,10 +3,10 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
-    "start": "export NODE_OPTIONS=--max-old-space-size=8192 && expo start",
+    "start": "export NODE_OPTIONS=--max-old-space-size=8192 && expo start --reset-cache",
     "reset-project": "node ./scripts/reset-project.js",
-    "android": "expo start --android",
-    "ios": "export NODE_OPTIONS=--max-old-space-size=8192 && expo start --ios",
+    "android": "export NODE_OPTIONS=--max-old-space-size=8192 && expo start --android --reset-cache",
+    "ios": "export NODE_OPTIONS=--max-old-space-size=8192 && expo start --ios --reset-cache",
     "web": "export NODE_OPTIONS=--max-old-space-size=8192 && expo start --web",
     "test": "jest --watchAll",
     "lint": "expo lint"

@@ -14,6 +14,6 @@ async function bootstrap() {
   app.useGlobalInterceptors(new TransformInterceptor());
   // 创建swagger
   createSwagger(app);
-  await app.listen(3000);
+  await app.listen(3034);
 }
 bootstrap();

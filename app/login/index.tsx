@@ -7,15 +7,17 @@ import { useMutation } from 'react-query';
 import { doLogin } from '@/common/apis';
 import { useLogin } from './hooks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { IndexProps } from '../index';
 
-export default function Login() {
-
+export default function Login({ navigation }: IndexProps) {
 	const { username, password, handleUsernameChange, handlePasswordChange } = useLogin();
 
   const { mutate, isLoading } = useMutation(doLogin, {
     onSuccess: (data) => {
 			// 将data存储到本地
 			AsyncStorage.setItem('token', data);
+			// 跳转到首页
+			navigation.navigate('list');
       console.log('data', data);
     },
     onError: (error) => {

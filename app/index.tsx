@@ -1,11 +1,10 @@
 import { RootState } from '@/store';
 import { useSelector } from 'react-redux';
 import Login from './login';
-import Home from './home';
+import List from './list';
 
 export default function Index() {
 	const login = useSelector((state: RootState) => state.login);
-	console.log('login', login);
 
 	// if (!login.isLoggedIn) {
 	// 	return (
@@ -14,6 +13,6 @@ export default function Index() {
 	// }
 	
 	return (
-		<Home />
+		<List />
 	)
 }

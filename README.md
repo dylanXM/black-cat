@@ -7,13 +7,13 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 1. Install dependencies
 
    ```bash
-   npm install
+   yarn
    ```
 
 2. Start the app
 
    ```bash
-    npx expo start
+    npx expo start 
    ```
 
 In the output, you'll find options to open the app in a
@@ -48,3 +48,28 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+## svg 处理
+
+1. 全局安装`@svgr/cli`
+
+```
+npm i @svgr/cli -g
+```
+
+2. 在`./assets/svgs`目录下新增 svg 文件
+
+3. 将 svg 文件批量转换为 React 组件，在命令行执行以下文件
+
+```bash
+// npx @svgr/cli --native -d 输出目录 输入目录
+npx @svgr/cli --native -d ./components/svgs ./assets/svgs
+```
+
+4. 修改 svg 组件的颜色, 可以按照下列方式
+
+```js
+import LogoCat from '@/components/svgs/LogoCat';
+
+<LogoCat style={[styles.logoCat, { fill: '#D5EF7F' }]} />
+```

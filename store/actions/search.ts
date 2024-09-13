@@ -6,13 +6,14 @@ export interface TimeRange {
   end: string;
 }
 
-const channelList = ['ALL', 'Channel 1', 'Channel 2', 'Channel 3', 'Channel 4', 'Channel 5', 'Channel6', 'Short', 'Channel Long Name'];
+const channelList = ['All', 'Channel 1', 'Channel 2', 'Channel 3', 'Channel 4', 'Channel 5', 'Channel6', 'Short', 'Channel Long Name'];
 
+// 获取 channel 的类型
 export type TypeChannel = typeof channelList[number];
 
 export const timeRangeOptions = [
   {
-    label: 'ALL',
+    label: 'ANY',
     value: {
       start: '',
       end: '',
@@ -21,6 +22,7 @@ export const timeRangeOptions = [
   {
     label: 'TODAY',
     value: {
+      // 点击 TODAY 时，设置 start 和 end 为当天的开始和结束时间
       start: '',
       end: '',
     },

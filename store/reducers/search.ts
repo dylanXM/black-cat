@@ -12,22 +12,24 @@ const initialState: SearchState = {
     start: '',
     end: '',
   },
-  channel: 'ALL',
+  channel: '',
 }
 
 interface Action {
   type: string;
-  timeRange?: TimeRange;
-  channel?: string;
+  payload: {
+    timeRange?: TimeRange;
+    channel?: string;
+  }
 }
 
 const searchReducer = (state = initialState, action: Action) => {
-  const { type, timeRange, channel } = action;
+  const { type, payload } = action;
   switch (type) {
     case SET_TIME_RANGE:
-      return setTimeRange(state, timeRange as TimeRange);
+      return setTimeRange(state, payload.timeRange as TimeRange);
     case SET_CHANNEL:
-      return setChannel(state, channel as string);
+      return setChannel(state, payload.channel as string);
     default:
       return state;
   }

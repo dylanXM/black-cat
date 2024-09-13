@@ -10,14 +10,16 @@ const initialState: LoginState = {
 
 interface Action {
   type: string;
-  isLoggedIn: boolean;
+  payload: {
+    isLoggedIn: boolean;
+  }
 }
 
 const loginReducer = (state = initialState, action: Action) => {
-  const { type, isLoggedIn } = action;
+  const { type, payload } = action;
   switch (type) {
     case SET_LOGIN:
-      return setLogin(state, isLoggedIn);
+      return setLogin(state, payload.isLoggedIn);
     default:
       return state;
   }

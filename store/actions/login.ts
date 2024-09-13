@@ -1,8 +1,12 @@
 export const SET_LOGIN = 'SET_LOGIN';
 
-export const setLogin = (isLoggedIn: boolean) => {
+export interface LoginState {
+  isLoggedIn: boolean;
+}
+
+export const setLogin = (state: LoginState, isLoggedIn: boolean) => {
   return {
-    type: SET_LOGIN,
-    isLoggedIn,
+    ...state,
+    isLoggedIn
   };
 };

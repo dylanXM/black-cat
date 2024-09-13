@@ -1,7 +1,21 @@
-import { Text } from 'react-native';
+import { IndexProps } from '../index/index';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import CustomDrawerContent from './drawer';
+import Home from './home';
 
-export default function List() {
+const Drawer = createDrawerNavigator();
+
+export default function List({ navigation }: IndexProps) {
   return (
-    <Text>这是List页面</Text>
-  )
+    <NavigationContainer independent={true}>
+      <Drawer.Navigator
+        initialRouteName="Home"
+        drawerContent={(props) => <CustomDrawerContent {...props} />}
+      >
+        <Drawer.Screen name="Home" component={Home} options={{ headerShown: false }} />
+        {/* 其他屏幕 */}
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
 }

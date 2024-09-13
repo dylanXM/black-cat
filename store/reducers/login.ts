@@ -1,8 +1,10 @@
 import {
+  LoginState,
   SET_LOGIN,
+  setLogin,
 } from '../actions/login';
 
-const initialState = {
+const initialState: LoginState = {
   isLoggedIn: false,
 };
 
@@ -12,12 +14,10 @@ interface Action {
 }
 
 const loginReducer = (state = initialState, action: Action) => {
-  switch (action.type) {
+  const { type, isLoggedIn } = action;
+  switch (type) {
     case SET_LOGIN:
-      return {
-        ...state,
-        isLoggedIn: action.isLoggedIn,
-      };
+      return setLogin(state, isLoggedIn);
     default:
       return state;
   }

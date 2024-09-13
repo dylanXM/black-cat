@@ -11,13 +11,14 @@ export interface IndexProps {
 export default function Index({ navigation }: IndexProps) {
 	const login = useSelector((state: RootState) => state.login);
 
-	if (!login.isLoggedIn) {
-		return (
-			<Login navigation={navigation} />
-		);
-	}
+	// if (!login.isLoggedIn) {
+	// 	return (
+	// 		<Login navigation={navigation} />
+	// 	);
+	// }
 	
 	return (
+		// <List navigation={navigation} />
 		<List navigation={navigation} />
 	)
 }

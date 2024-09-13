@@ -1,6 +1,6 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-// import { Stack } from 'expo-router';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
@@ -39,19 +39,21 @@ export default function RootLayout() {
   }
 
   return (
-    <NavigationContainer independent={true}>
-      <QueryClientProvider client={client}>
-        <Provider store={store}>
-          <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-            <Stack.Navigator>
-              <Stack.Screen name="index" component={Index} options={{ headerShown: false }} />
-              <Stack.Screen name="list" component={List} options={{ headerShown: false }} />
-              <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
-              <Stack.Screen name="+not-found" component={NotFound} />
-            </Stack.Navigator>
-          </ThemeProvider>
-        </Provider>
-      </QueryClientProvider>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer independent={true}>
+        <QueryClientProvider client={client}>
+          <Provider store={store}>
+            <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+              <Stack.Navigator>
+                <Stack.Screen name="index" component={Index} options={{ headerShown: false }} />
+                <Stack.Screen name="list" component={List} options={{ headerShown: false }} />
+                <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
+                <Stack.Screen name="+not-found" component={NotFound} />
+              </Stack.Navigator>
+            </ThemeProvider>
+          </Provider>
+        </QueryClientProvider>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }

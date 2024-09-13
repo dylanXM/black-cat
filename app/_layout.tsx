@@ -44,9 +44,9 @@ export default function RootLayout() {
         <Provider store={store}>
           <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
             <Stack.Navigator>
-              <Stack.Screen name="index" component={Index} />
-              <Stack.Screen name="list" component={List} />
-              <Stack.Screen name="login" component={Login} />
+              <Stack.Screen name="index" component={Index} options={{ headerShown: false }} />
+              <Stack.Screen name="list" component={List} options={{ headerShown: false }} />
+              <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
               <Stack.Screen name="+not-found" component={NotFound} />
             </Stack.Navigator>
           </ThemeProvider>

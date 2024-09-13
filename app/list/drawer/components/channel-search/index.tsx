@@ -27,11 +27,11 @@ export default function ChannelSearch() {
       {
         channelOptions?.map((option, index) => (
           <TouchableOpacity
+            key={option.label}
             onPress={() => handlePress(String(index))}
             style={[styles.container, activeKey === String(index) && styles.activeContainer]}
           >
             <Text
-              key={option.label}
               style={[styles.text, activeKey === String(index) && styles.activeText]}
             >
               {option.label}

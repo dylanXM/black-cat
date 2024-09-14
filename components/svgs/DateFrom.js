@@ -10,7 +10,7 @@ const SvgDateFrom = (props) => (
     <Path
       d="M0 2.91h4v26.18H0zM6.33 14v4h16.35l-4.14 4.09 2.81 2.85L30.4 16l-9.05-8.94-2.81 2.85L22.68 14z"
       style={{
-        fill: "#231f20",
+        fill: "#d5ef7f",
       }}
     />
   </Svg>

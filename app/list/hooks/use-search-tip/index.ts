@@ -11,16 +11,12 @@ export function useSearchTip() {
   const tip = useMemo(() => {
     let tips = '';
     if (channel) {
-      tips += `${channel} activities`;
+      tips += `${channel}`;
     }
     if (!timeRange.start && !timeRange.end) {
       return tips;
     }
-    if (timeRange.start !== timeRange.end) {
-      tips += ` from ${formatTimeToDay(timeRange.start)}`;
-      return tips;
-    }
-    tips += ` form ${formatTimeToDay(timeRange.start)} to ${formatTimeToDay(timeRange.end)}`;
+    tips += ` activities form ${formatTimeToDay(timeRange.start)} to ${formatTimeToDay(timeRange.end)}`;
     return tips;
   }, [channel, search]);
 

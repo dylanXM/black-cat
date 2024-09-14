@@ -2,6 +2,7 @@ import SafeContainer from '@/components/SafeContainer';
 import { Text, StyleSheet, View, TouchableOpacity, Image } from 'react-native';
 import SvgSearch from '@/components/svgs/Search';
 import SvgLogoCat from '@/components/svgs/LogoCat';
+import Tip from './components/tip';
 
 export default function List({ navigation }: any) {
 
@@ -22,6 +23,7 @@ export default function List({ navigation }: any) {
           </TouchableOpacity>
         </View>
       </View>
+      <Tip />
       <View>
         <Text>这是list3333</Text>
       </View>

@@ -1,31 +1,36 @@
-import { View, StyleSheet } from 'react-native';
+import { useWindowDimensions } from 'react-native';
+import { TabView, SceneMap } from 'react-native-tab-view';
+import CustomTabBar from './components/custom-tab-bar';
+import { useState } from 'react';
+import { routes } from './components/custom-tab-bar/data';
+import Likes from './components/likes';
+import Goings from './components/goings';
+import Pasts from './components/pasts';
 
-
-
-export default function UserTabs() {
-  <View style={styles.container}>
-    <View>
-      
-    </View>
-  </View>
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginTop: 24,
-    borderTopColor: '#E8E8E8',
-    borderBottomColor: '#E8E8E8',
-    borderWidth: 2,
-  },
-  tab: {
-    fontSize: 16,
-    color: '#67616D',
-  },
-  activeTab: {
-    fontSize: 16,
-    color: '#8560A9',
-  },
+const renderScene = SceneMap({
+  likes: Likes,
+  goings: Goings,
+  pasts: Pasts,
 });
 
+export interface UserTabRoute {
+  key: string;
+  title: string;
+  icon: JSX.Element;
+  activeIcon: JSX.Element;
+}
+
+export default function UserTabs() {
+  const layout = useWindowDimensions();
+  const [index, setIndex] = useState(0);
+
+  return (
+    <TabView
+      navigationState={{ index, routes }}
+      renderScene={renderScene}
+      onIndexChange={setIndex}
+      initialLayout={{ width: layout.width }}
+      renderTabBar={({ jumpTo }) => <CustomTabBar jumpTo={jumpTo} activeKey={index} />}
+    />
+  );
+}

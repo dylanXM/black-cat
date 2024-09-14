@@ -1,9 +1,9 @@
 import { ApiType, request } from '@/common/utils/request';
 import { User } from '../user/user';
 
-interface GetTwittersParams {
+export interface GetTwittersParams {
   page: number;
-  size: number;
+  pageSize: number;
   startDate?: number;
   endDate?: number;
   channel?: string;
@@ -18,6 +18,7 @@ interface Comment {
 }
 
 export interface Twitter {
+  id: number;
   userId: number;
   channle: string;
   title: string;
@@ -32,7 +33,7 @@ export interface Twitter {
   user?: User;
 }
 
-interface GetTwittersResponse {
+export interface GetTwittersResponse {
   data: Twitter[];
   count: number;
 }

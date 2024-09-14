@@ -48,7 +48,6 @@ export async function request<T>(params: RequestParams): Promise<T> {
       data: params.data,
       ...params.config,
     });
-    console.log('res', res);
     return res.data as T;
   } catch (error) {
     console.log(JSON.stringify(error));

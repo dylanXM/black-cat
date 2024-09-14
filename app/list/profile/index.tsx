@@ -4,9 +4,11 @@ import SvgLogoCat from '@/components/svgs/LogoCat';
 import SvgHome from '@/components/svgs/Home';
 import { RootState } from '@/store';
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useSelector } from 'react-redux';
 import UserInfo from './components/user-info';
+import UserTabs from './components/user-tabs';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 export default function Profile({ navigation }: IndexProps) {
@@ -19,7 +21,7 @@ export default function Profile({ navigation }: IndexProps) {
 
   return (
     <SafeContainer topColor='#8560A9' bottomColor='transparent' restStyles={styles.back}>
-      <View>
+      <ScrollView contentContainerStyle={styles.container} scrollEnabled={true}>
         <View style={styles.header}>
           <TouchableOpacity onPress={backToHome}>
             <SvgHome style={[styles.headerLeftBtn, { fill: '#453257' }]} />
@@ -27,11 +29,12 @@ export default function Profile({ navigation }: IndexProps) {
           <SvgLogoCat style={[styles.headerLogo, { fill: '#D5EF7F' }]} />
           <Image
             style={styles.headerRightAvatar}
-            source={require('@/assets/images/user.jpg')}
+            source={{ uri: user.avatar }}
           />
         </View>
-      </View>
-      <UserInfo />
+        <UserInfo />
+        <UserTabs />
+      </ScrollView>
     </SafeContainer>
   );
 }
@@ -41,7 +44,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#8560A9',
   },
   container: {
-
+    height: 'auto',
+    flex: 1,
+    overflow: 'scroll',
   },
   header: {
     flexDirection: 'row',

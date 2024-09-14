@@ -19,6 +19,7 @@ export default function SafeContainer({ children, topColor, bottomColor, ...rest
         flex: 1,
         // justifyContent: 'space-between',
         // alignItems: 'center',
+        backgroundColor: '#fff',
       }}
       {...rest}
     >

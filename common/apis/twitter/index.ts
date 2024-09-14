@@ -17,7 +17,7 @@ interface Comment {
   time: string;
 }
 
-interface Twitter {
+export interface Twitter {
   userId: number;
   channle: string;
   title: string;

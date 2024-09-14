@@ -36,7 +36,6 @@ export default function Login({ navigation }: IndexProps) {
 			username: username.value,
 			password: password.value
 		};
-		console.log('params', params);
 		mutate(params);
 	};
 

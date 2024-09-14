@@ -7,7 +7,7 @@ import 'react-native-reanimated';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { Provider } from 'react-redux';
 import store from '@/store';
-import { QueryClientProvider, QueryClient } from 'react-query';
+import { QueryClientProvider } from 'react-query';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Index from './index';
@@ -15,8 +15,7 @@ import List from './list';
 import Login from './login';
 import NotFound from './+not-found';
 import { ModalPortal } from 'react-native-modals';
-
-const client = new QueryClient();
+import { client } from '@/common/utils/query-client';
 
 const Stack = createNativeStackNavigator();
 

@@ -12,8 +12,22 @@ export const initialState: UserState = {
     password: '',
     avatar: '',
     email: '',
+    activityIds: [],
+    goingIds: [],
+    likeIds: [],
     activities: [],
     goings: [],
     likes: [],
   },
 };
+
+export function setUser(state: UserState, user: User) {
+  return {
+    ...state,
+    user: {
+      ...state.user,
+      ...user,
+    },
+  };
+
+}

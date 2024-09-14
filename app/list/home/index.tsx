@@ -10,6 +10,10 @@ export default function List({ navigation }: any) {
     navigation.openDrawer();
   };
 
+  const toProfile = () => {
+    navigation.navigate('Profile');
+  };
+
   return (
     <SafeContainer topColor='#8560A9' bottomColor='transparent' restStyles={styles.back}>
       <View>
@@ -18,8 +22,11 @@ export default function List({ navigation }: any) {
             <SvgSearch style={styles.headerLeftBtn} />
           </TouchableOpacity>
           <SvgLogoCat style={[styles.headerLogo, { fill: '#D5EF7F' }]} />
-          <TouchableOpacity>
-            <Image style={styles.headerRightAvatar} source={require('@/assets/images/user.jpg')} />
+          <TouchableOpacity onPress={toProfile}>
+            <Image
+              style={styles.headerRightAvatar}
+              source={require('@/assets/images/user.jpg')}
+            />
           </TouchableOpacity>
         </View>
       </View>

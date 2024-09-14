@@ -12,9 +12,7 @@ interface SearchButtonProps {
 
 export default function SearchButton({ navigation }: SearchButtonProps) {
   const search = useSelector((state: RootState) => state.search);
-  const { channel, timeRange } = search;
-  const canSubmit = channel || (timeRange.start && timeRange.end);
-  const { tip } = useSearchTip();
+  const { tip, isShowTip: canSubmit } = useSearchTip();
 
   const handleSearch = () => {
     navigation.closeDrawer();

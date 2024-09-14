@@ -1,16 +1,17 @@
 import { TypeTimeRange } from '@/store/actions/search';
 
 export function getStartEndTimestamps(dateType: TypeTimeRange) {
-  if (dateType === 'ANY') {
-    return {
-      label: dateType,
-      value: { start: '', end: '' },
-    };
-  }
 
   const now = new Date();
   const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
+
+  function getStartEndOfAll() {
+    const start = startOfDay.getTime();
+    // end 设置为 2099 年 12 月 31 日 23:59:59.999
+    const end = new Date(2099, 11, 31, 23, 59, 59, 999).getTime();
+    return { start, end };
+  }
 
   function getStartEndOfToday() {
     return { start: startOfDay.getTime(), end: endOfDay.getTime() };
@@ -35,6 +36,7 @@ export function getStartEndTimestamps(dateType: TypeTimeRange) {
   }
 
   const dateRanges = {
+    'ANY': getStartEndOfAll(),
     'TODAY': getStartEndOfToday(),
     'TOMORROW': getStartEndOfTomorrow(),
     'THIS WEEK': getStartEndOfWeek(),

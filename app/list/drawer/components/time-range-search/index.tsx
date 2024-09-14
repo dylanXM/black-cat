@@ -33,6 +33,18 @@ export default function TimeRangeSearch() {
     setActiveKey((prev) => prev === key ? '' : key);
 
     // 最后一个选项需要特殊处理，弹出时间选择器
+    if (key === String(timeRangeOptions.length)) {
+      dispatch({
+        type: 'SET_TIME_RANGE',
+        payload: {
+          timeRange: {
+            start: startDate.getTime(),
+            end: endDate.getTime(),
+          }
+        }
+      });
+    }
+
     if (key !== String(timeRangeOptions.length)) {
       clearCurrentIndex();
       const { value } = timeRangeOptions[Number(key)];

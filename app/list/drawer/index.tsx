@@ -5,7 +5,7 @@ import TimeRangeSearch from './components/time-range-search';
 import ChannelSearch from './components/channel-search';
 import SearchButton from './components/search-button';
 
-export default function CustomDrawerContent({}: DrawerContentComponentProps) {
+export default function CustomDrawerContent({ navigation }: DrawerContentComponentProps) {
 
   return (
     <SafeContainer topColor="#453257" bottomColor="#BABABA">
@@ -24,7 +24,7 @@ export default function CustomDrawerContent({}: DrawerContentComponentProps) {
         </View>
       </View>
       <View style={styles.searchContainer}>
-        <SearchButton />
+        <SearchButton navigation={navigation} />
       </View>
     </SafeContainer>
   );

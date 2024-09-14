@@ -1,41 +1,40 @@
+import { useSearchTip } from '@/app/list/hooks/use-search-tip';
 import SvgSearch from '@/components/svgs/Search';
 import { RootState } from '@/store';
-import { useMemo } from 'react';
+import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
 import { Text, StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
 
-export default function SearchButton() {
-  const search = useSelector((state: RootState) => state.search);
-  console.log('搜索条件', search);
-  const { channel, timeRange } = search;
-  const canSubmit = channel && timeRange.start && timeRange.end;
-  const showTips = channel || (timeRange.start && timeRange.end);
+interface SearchButtonProps {
+  navigation: DrawerNavigationHelpers;
+}
 
-  const tips = useMemo(() => {
-    let tips = '';
-    if (channel) {
-      tips += `${channel} activities`;
-    }
-    if (!timeRange.start && !timeRange.end) {
-      return tips;
-    }
-    // todo：转换时间格式
-    tips += ` form ${timeRange.start} to ${timeRange.end}`;
-    return tips;
-  }, [channel, search])
+export default function SearchButton({ navigation }: SearchButtonProps) {
+  const search = useSelector((state: RootState) => state.search);
+  const { channel, timeRange } = search;
+  const canSubmit = channel || (timeRange.start && timeRange.end);
+  const { tip } = useSearchTip();
+
+  const handleSearch = () => {
+    navigation.closeDrawer();
+    // todo: 触发搜索
+  };
+
+  console.log('搜索条件', search);
 
   return (
     <TouchableOpacity
       style={[styles.container, canSubmit ? styles.activeContainer : null]}
-      // disabled={!canSubmit}
+      disabled={!canSubmit}
+      onPress={handleSearch}
     >
       <View style={styles.searchContainer}>
         <SvgSearch style={styles.searchIcon} />
         <Text style={styles.searchText}>SEARCH</Text>
       </View>
       {
-        showTips && <Text style={styles.tips}>{tips}</Text>
+        canSubmit && <Text style={styles.tip}>{tip}</Text>
       }
     </TouchableOpacity>
   );
@@ -46,6 +45,8 @@ const styles = StyleSheet.create({
     height: 64,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingLeft: 16,
+    paddingRight: 16,
   },
   activeContainer: {
     backgroundColor: '#D5EF7F',
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
   searchText: {
     color: '#453257',
   },
-  tips: {
+  tip: {
     fontSize: 10,
     color: '#8560A9',
   }

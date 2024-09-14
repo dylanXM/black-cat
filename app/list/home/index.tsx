@@ -23,7 +23,7 @@ export default function List({ navigation }: any) {
         </View>
       </View>
       <View>
-        <Text>这是list</Text>
+        <Text>这是list3333</Text>
       </View>
     </SafeContainer>
   )

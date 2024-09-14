@@ -1,12 +1,8 @@
 import {
-  LoginState,
+  initialState,
   SET_LOGIN,
   setLogin,
 } from '../actions/login';
-
-const initialState: LoginState = {
-  isLoggedIn: false,
-};
 
 interface Action {
   type: string;

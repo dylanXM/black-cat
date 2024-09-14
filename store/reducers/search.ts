@@ -1,19 +1,14 @@
 import {
-  SearchState,
+  initialState,
   SET_CHANNEL,
   SET_TIME_RANGE,
   setChannel,
   setTimeRange,
   TimeRange,
+  TypeChannel,
+  CLEAR_SEARCH,
+  clearSearch,
 } from '../actions/search';
-
-const initialState: SearchState = {
-  timeRange: {
-    start: '',
-    end: '',
-  },
-  channel: '',
-}
 
 interface Action {
   type: string;
@@ -29,7 +24,9 @@ const searchReducer = (state = initialState, action: Action) => {
     case SET_TIME_RANGE:
       return setTimeRange(state, payload.timeRange as TimeRange);
     case SET_CHANNEL:
-      return setChannel(state, payload.channel as string);
+      return setChannel(state, payload.channel as TypeChannel);
+    case CLEAR_SEARCH:
+      return clearSearch();
     default:
       return state;
   }

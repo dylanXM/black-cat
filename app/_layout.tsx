@@ -14,6 +14,7 @@ import Index from './index';
 import List from './list';
 import Login from './login';
 import NotFound from './+not-found';
+import { ModalPortal } from 'react-native-modals';
 
 const client = new QueryClient();
 
@@ -50,6 +51,7 @@ export default function RootLayout() {
                 <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
                 <Stack.Screen name="+not-found" component={NotFound} />
               </Stack.Navigator>
+              <ModalPortal />
             </ThemeProvider>
           </Provider>
         </QueryClientProvider>

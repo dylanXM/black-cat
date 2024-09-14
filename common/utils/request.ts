@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { API_URL } from '@/constants/config';
 
 export interface ApiType<T> {
   code: number;
@@ -32,47 +33,47 @@ const instance = axios.create({
 });
 
 // 封装通用的 Axios 请求函数
-// export async function request<T>(params: RequestParams): Promise<T> {
-//   try {
-//     const token = await getToken();
-//     console.log('token', token);
-//     const res = await instance({
-//       ...params,
-//       headers: {
-//         'Content-Type': 'application/json', // 设置请求头
-//         'Authorization': `Bearer ${token}` // 设置请求头
-//       },
-//       method: params.method,
-//       url: params.url,
-//       data: params.data,
-//       ...params.config,
-//     });
-//     console.log('res', res);
-//     return res.data as T;
-//   } catch (error) {
-//     console.log(JSON.stringify(error));
-//     throw error;
-//   }
-// }
-
-// 封装通用的fetch请求函数
 export async function request<T>(params: RequestParams): Promise<T> {
   try {
     const token = await getToken();
     console.log('token', token);
-    const res = await fetch(params.url, {
-      method: params.method,
+    const res = await instance({
+      ...params,
       headers: {
         'Content-Type': 'application/json', // 设置请求头
         'Authorization': `Bearer ${token}` // 设置请求头
       },
-      body: JSON.stringify(params.data),
+      method: params.method,
+      url: `${API_URL}${params.url}`,
+      data: params.data,
+      ...params.config,
     });
-    const data = await res.json();
-    console.log('data', data);
-    return data as T;
+    console.log('res', res);
+    return res.data as T;
   } catch (error) {
     console.log(JSON.stringify(error));
     throw error;
   }
 }
+
+// 封装通用的fetch请求函数
+// export async function request<T>(params: RequestParams): Promise<T> {
+//   try {
+//     const token = await getToken();
+//     console.log('token', token);
+//     const res = await fetch(params.url, {
+//       method: params.method,
+//       headers: {
+//         'Content-Type': 'application/json', // 设置请求头
+//         'Authorization': `Bearer ${token}` // 设置请求头
+//       },
+//       body: JSON.stringify(params.data),
+//     });
+//     const data = await res.json();
+//     console.log('data', data);
+//     return data as T;
+//   } catch (error) {
+//     console.log(JSON.stringify(error));
+//     throw error;
+//   }
+// }

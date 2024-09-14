@@ -49,6 +49,10 @@ export function findTwitterById(id: number) {
   return twitterList.find((item) => item.userId === id);
 }
 
+export function findTwitterByIds(ids: number[]) {
+  return twitterList.filter((item) => ids.includes(item.id));
+}
+
 export function findTwitterByChannel(channel: string) {
   return twitterList.find((item) => item.channle === channel);
 }

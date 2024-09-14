@@ -9,7 +9,7 @@ export class TwitterController {
   constructor(private readonly twitterService: TwitterService) {}
 
   @Get('getTwitters')
-  @ApiOperation({ summary: '获取用户个人信息' })
+  @ApiOperation({ summary: '获取activities信息' })
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   async getTwitters(@Query() params: GetTwittersDto) {

@@ -1,5 +1,6 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
 import * as bcrypt from 'bcryptjs';
+import { Twitter } from './twitter';
 
 // 123456
 const bcryptPassword =
@@ -11,12 +12,15 @@ export interface User {
   password: string;
   avatar?: string;
   email?: string;
-  activities?: number[];
-  goings?: number[];
-  likes?: number[];
+  activityIds?: number[];
+  goingIds?: number[];
+  likeIds?: number[];
+  activities?: Twitter[];
+  goings?: Twitter[];
+  likes?: Twitter[];
 }
 
-const users = [
+const users: User[] = [
   {
     id: 1,
     username: 'admin',
@@ -24,9 +28,9 @@ const users = [
     email: '123456@123.com',
     avatar:
       'https://yangxm-1317654405.cos.ap-guangzhou.myqcloud.com/ai/tmp_885f4e6f1806cf82aa38d4989f3b0ed5.jpg',
-    activities: [1, 2, 3],
-    goings: [1, 2, 3],
-    likes: [1, 2, 3],
+    activityIds: [4, 5, 6],
+    goingIds: [1, 2, 3],
+    likeIds: [7, 8, 9],
   },
   {
     id: 2,

@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 import { LoginDto } from './dto/login.dto';
 import { JwtAuthGuard } from 'src/common/auth/jwtAuth.guard';
+import { Request } from 'express';
 
 @Controller('auth')
 export class AuthController {

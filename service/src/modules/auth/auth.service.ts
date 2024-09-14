@@ -3,6 +3,9 @@ import { LoginDto } from './dto/login.dto';
 import { JwtService } from '@nestjs/jwt';
 import { RedisCacheService } from '../redis-cache/redis-cache.service';
 import { findUserById, verifyUserCredentials } from 'src/data/user';
+import { Request } from 'express';
+import deepClone from 'src/common/utils/cloneDeep';
+import patchTwittersToUsers from 'src/common/utils/user';
 
 @Injectable()
 export class AuthService {
@@ -18,7 +21,6 @@ export class AuthService {
    */
   async login(loginDto: LoginDto) {
     try {
-      console.log('loginDto', loginDto);
       const user = await verifyUserCredentials(loginDto);
       const { username, id } = user;
       const token = await this.jwtService.sign({ name: username, id });
@@ -36,6 +38,13 @@ export class AuthService {
    */
   async getInfo(req: Request) {
     const { id } = (req as any).user;
-    return await findUserById(id);
+    const user = deepClone(await findUserById(id));
+
+    // user 和 twitter 两个数据源的数据合并
+    user.activities = patchTwittersToUsers(user.activityIds || []);
+    user.goings = patchTwittersToUsers(user.goingIds || []);
+    user.likes = patchTwittersToUsers(user.likeIds || []);
+
+    return user;
   }
 }

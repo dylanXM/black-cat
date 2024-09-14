@@ -9,6 +9,11 @@ export interface User {
   id?: number;
   username: string;
   password: string;
+  avatar?: string;
+  email?: string;
+  activities?: number[];
+  goings?: number[];
+  likes?: number[];
 }
 
 const users = [
@@ -16,17 +21,54 @@ const users = [
     id: 1,
     username: 'admin',
     password: bcryptPassword,
+    email: '123456@123.com',
+    avatar:
+      'https://yangxm-1317654405.cos.ap-guangzhou.myqcloud.com/ai/tmp_885f4e6f1806cf82aa38d4989f3b0ed5.jpg',
+    activities: [1, 2, 3],
+    goings: [1, 2, 3],
+    likes: [1, 2, 3],
   },
   {
     id: 2,
     username: 'user',
     password: bcryptPassword,
+    email: '123456@123.com',
+    avatar:
+      'https://yangxm-1317654405.cos.ap-guangzhou.myqcloud.com/ai/tmp_885f4e6f1806cf82aa38d4989f3b0ed5.jpg',
+  },
+  {
+    id: 3,
+    username: 'guest',
+    password: bcryptPassword,
+    email: '123456@123.com',
+    avatar:
+      'https://yangxm-1317654405.cos.ap-guangzhou.myqcloud.com/ai/tmp_885f4e6f1806cf82aa38d4989f3b0ed5.jpg',
+  },
+  {
+    id: 4,
+    username: 'test',
+    password: bcryptPassword,
+    email: '123456@123.com',
+    avatar:
+      'https://yangxm-1317654405.cos.ap-guangzhou.myqcloud.com/ai/tmp_885f4e6f1806cf82aa38d4989f3b0ed5.jpg',
+  },
+  {
+    id: 5,
+    username: 'demo',
+    password: bcryptPassword,
+    email: '123456@123.com',
+    avatar:
+      'https://yangxm-1317654405.cos.ap-guangzhou.myqcloud.com/ai/tmp_885f4e6f1806cf82aa38d4989f3b0ed5.jpg',
   },
 ];
 
-export const findUser = (username: string) => {
+export function findUser(username: string) {
   return users.find((user) => user.username === username);
-};
+}
+
+export function findUserById(id: number) {
+  return users.find((user) => user.id === id);
+}
 
 export async function verifyUserCredentials(user: User) {
   const { username, password: userPassword } = user;

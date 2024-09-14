@@ -1,7 +1,8 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get, UseGuards, Req } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 import { LoginDto } from './dto/login.dto';
+import { JwtAuthGuard } from 'src/common/auth/jwtAuth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -10,7 +11,14 @@ export class AuthController {
   @Post('login')
   @ApiOperation({ summary: '登录' })
   login(@Body() loginDto: LoginDto) {
-    console.log('loginDto', loginDto);
     return this.authService.login(loginDto);
+  }
+
+  @Get('getInfo')
+  @ApiOperation({ summary: '获取用户个人信息' })
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  async getInfo(@Req() req: Request) {
+    return this.authService.getInfo(req);
   }
 }

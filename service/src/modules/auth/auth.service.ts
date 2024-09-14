@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { LoginDto } from './dto/login.dto';
 import { JwtService } from '@nestjs/jwt';
 import { RedisCacheService } from '../redis-cache/redis-cache.service';
-import { verifyUserCredentials } from 'src/data/user';
+import { findUserById, verifyUserCredentials } from 'src/data/user';
 
 @Injectable()
 export class AuthService {
@@ -27,5 +27,15 @@ export class AuthService {
     } catch (err) {
       console.log(err);
     }
+  }
+
+  /**
+   * 获取用户信息
+   * @param req
+   * @returns
+   */
+  async getInfo(req: Request) {
+    const { id } = (req as any).user;
+    return await findUserById(id);
   }
 }

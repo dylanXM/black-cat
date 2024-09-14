@@ -42,7 +42,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
 
   private validateToken(token) {
     try {
-      return jwt.verify(token, process.env.JWT_SECRET);
+      return jwt.verify(token, process.env.JWT_SECRET || 'blackcat');
     } catch (error) {
       throw new HttpException(
         '亲爱的用户,请登录后继续操作,我们正在等您的到来！',

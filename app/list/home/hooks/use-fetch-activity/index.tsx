@@ -29,10 +29,6 @@ export function useFetchActivity() {
     setCount(count);
   });
 
-  useEffect(() => {
-    console.log('render', renderCount++, activities);
-  }, [activities]);
-
   // 当 page 页码变化时需要重新出发请求
   // useEffect(() => {
   //   refetch();

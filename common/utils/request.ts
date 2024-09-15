@@ -36,7 +36,6 @@ const instance = axios.create({
 export async function request<T>(params: RequestParams): Promise<T> {
   try {
     const token = await getToken();
-    console.log('token', token);
     const res = await instance({
       ...params,
       headers: {
@@ -50,7 +49,6 @@ export async function request<T>(params: RequestParams): Promise<T> {
     });
     return res.data as T;
   } catch (error) {
-    console.log(JSON.stringify(error));
     throw error;
   }
 }

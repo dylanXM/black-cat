@@ -19,8 +19,6 @@ export default function SearchButton({ navigation }: SearchButtonProps) {
     // todo: 触发搜索
   };
 
-  console.log('搜索条件', search);
-
   return (
     <TouchableOpacity
       style={[styles.container, canSubmit ? styles.activeContainer : null]}

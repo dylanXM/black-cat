@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 
 export function useSearchTip() {
   const search = useSelector((state: RootState) => state.search);
-  console.log('搜索条件', search);
   const { channel, timeRange } = search;
 
   const tip = useMemo(() => {

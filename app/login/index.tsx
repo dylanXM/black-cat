@@ -20,11 +20,8 @@ export default function Login({ navigation }: IndexProps) {
 			AsyncStorage.setItem('token', data);
 			// 跳转到首页
 			navigation.navigate('list');
-      console.log('data', data);
     },
     onError: (error) => {
-			// TODO 提示报错信息
-      console.log('error', error);
 			Toast.show({
 				type: 'error',
 				text1: 'A error has occurred, please try again later'

@@ -13,7 +13,6 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 export default function Profile({ navigation }: IndexProps) {
   const { user } = useSelector((state: RootState) => state.user);
-  console.log('user - Profile', user);
 
   const backToHome = () => {
     navigation.goBack();

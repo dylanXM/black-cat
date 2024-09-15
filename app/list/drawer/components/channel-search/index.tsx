@@ -1,11 +1,10 @@
 import { channelOptions, TypeChannel } from '@/store/actions/search';
 import { useEffect, useState } from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useDispatch } from 'react-redux';
 import { Subject } from 'rxjs';
 import { TypeHandleChannelChange } from '../..';
 
-export const channleSearchSubject$ = new Subject();
+export const channelSearchSubject$ = new Subject();
 
 interface ChannelSearchProps {
   handleChannelChange: TypeHandleChannelChange;
@@ -25,7 +24,7 @@ export default function ChannelSearch({ handleChannelChange }: ChannelSearchProp
   };
 
   useEffect(() => {
-    const subscription = channleSearchSubject$.subscribe(() => {
+    const subscription = channelSearchSubject$.subscribe(() => {
       setActiveKey('');
     });
     return () => {

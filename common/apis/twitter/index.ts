@@ -20,7 +20,7 @@ interface Comment {
 export interface Twitter {
   id: number;
   userId: number;
-  channle: string;
+  channel: string;
   title: string;
   startTime: string;
   endTime: string;

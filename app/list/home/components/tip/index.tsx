@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchActivitiesSubject$, showTipSubject$ } from '../../hooks';
 import { timer, from, switchMap } from 'rxjs';
-import { channleSearchSubject$ } from '@/app/list/drawer/components/channel-search';
+import { channelSearchSubject$ } from '@/app/list/drawer/components/channel-search';
 import { timeRangeSearchSubject$ } from '@/app/list/drawer/components/time-range-search';
 import { RootState } from '@/store';
 import { drawerSearchSubject$ } from '@/app/list/drawer';
@@ -27,7 +27,7 @@ export default function Tip({ activitiesLength }: TipProps) {
     ).subscribe();
     showTipSubject$.next(false);
     // 清除搜索条件
-    channleSearchSubject$.next({});
+    channelSearchSubject$.next({});
     timeRangeSearchSubject$.next({});
     drawerSearchSubject$.next({});
   };

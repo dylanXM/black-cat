@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import SvgTime from '@/components/svgs/Time';
 import ActionButton from './components/action-button';
 import { formatDateToMinute } from '@/common/utils/format-time';
+import { useNavigation } from '@react-navigation/native';
 
 export type TypeAction = 'like' | 'going';
 
@@ -13,11 +14,13 @@ interface ActivityCardProps {
 }
 
 export default function ActivityCard({ activity, canEdit, initState }: ActivityCardProps) {
-  const { title, user, channle, startTime, endTime, likes, goings, content } = activity;
+  const { title, user, channel, startTime, endTime, likes, goings, content } = activity;
+  const navigation = useNavigation();
 
   const toDetail = () => {
     console.log('press card');
     // todo 跳转到activities详情页
+    navigation.navigate('Detail', { activity });
   };
 
   return (
@@ -29,7 +32,7 @@ export default function ActivityCard({ activity, canEdit, initState }: ActivityC
             <Image source={{ uri: user?.avatar }} style={styles.avatar} />
             <Text style={styles.username}>{user?.username}</Text>
           </View>
-          <Text style={styles.channel}>{channle}</Text>
+          <Text style={styles.channel}>{channel}</Text>
         </View>
         {/** 这是标题 */}
         <View style={styles.titleContainer}>

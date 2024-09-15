@@ -5,6 +5,7 @@ import CustomDrawerContent from './drawer';
 import Home from './home';
 import Profile from './profile';
 import { useFetchUser } from './hooks';
+import Detail from './detail';
 
 const Drawer = createDrawerNavigator();
 
@@ -20,6 +21,7 @@ export default function List({ navigation }: IndexProps) {
       >
         <Drawer.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Drawer.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
+        <Drawer.Screen name="Detail" component={Detail} options={{ headerShown: false }} />
         {/* 其他屏幕 */}
       </Drawer.Navigator>
     </NavigationContainer>

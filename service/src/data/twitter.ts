@@ -1,4 +1,5 @@
-import { User } from './user';
+import cloneDeep from 'src/common/utils/cloneDeep';
+import { findUserById, User } from './user';
 
 const comment = {
   id: 1,
@@ -6,13 +7,14 @@ const comment = {
   content: 'This is a comment',
   likes: [1, 2, 3, 4, 5],
   time: '9 hours ago',
+  user: {} as User,
 };
 
 export type Comment = typeof comment;
 
 const twitter = {
   userId: 1,
-  channle: 'Channel 1',
+  channel: 'Channel 1',
   title: 'Activity Title Name Make it Longer May Longer than One Line',
   startTime: '2021-07-01 00:00:00',
   endTime: '2021-07-01 23:59:59',
@@ -25,6 +27,7 @@ const twitter = {
     .map((c, index) => ({
       ...c,
       id: index,
+      user: cloneDeep(findUserById(c.userId)),
     })),
   address: 'Address',
   pictures: [
@@ -54,7 +57,7 @@ export function findTwitterByIds(ids: number[]) {
 }
 
 export function findTwitterByChannel(channel: string) {
-  return twitterList.find((item) => item.channle === channel);
+  return twitterList.find((item) => item.channel === channel);
 }
 
 export function findTwitterByUserId(userId: number) {

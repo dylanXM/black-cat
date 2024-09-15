@@ -53,6 +53,7 @@ export default function List({ navigation }: any) {
             // refreshControl={
             //   <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
             // }
+            nestedScrollEnabled={false}
             ItemSeparatorComponent={() => <View style={styles.divider} />}
             onEndReachedThreshold={0.1}
             onEndReached={fetchNextPageActivities}

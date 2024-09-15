@@ -17,7 +17,7 @@ export default function Details() {
   }
   
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={activity.pictures}
         renderItem={({ item, index }) => (
@@ -68,7 +68,7 @@ export default function Details() {
           <SvgLikeOutline style={styles.icon} fill="#AC8EC9" />
           <Text style={styles.titleText}>{activity?.likesUsers?.length} likes</Text>
         </View>
-        <View style={styles.images}>
+        <View>
           <DynamicImageRow images={activity?.likesUsers?.map((user) => user.avatar) as string[] || []} />
         </View>
       </View>

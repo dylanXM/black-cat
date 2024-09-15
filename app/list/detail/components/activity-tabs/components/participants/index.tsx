@@ -44,6 +44,7 @@ export default function Participants() {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     paddingBottom: 12,
     paddingTop: 12,
   },

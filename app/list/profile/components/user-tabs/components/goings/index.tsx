@@ -24,6 +24,7 @@ export default function Goings() {
             <ActivityCard activity={item} initState={{ like: true, going: true }} canEdit={true} />
           </View>
         )}
+        nestedScrollEnabled={false}
         ItemSeparatorComponent={() => <View style={styles.divider} />}
       />
     </View>

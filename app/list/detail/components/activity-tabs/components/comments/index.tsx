@@ -19,5 +19,6 @@ export default function Comments() {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
   },
 });

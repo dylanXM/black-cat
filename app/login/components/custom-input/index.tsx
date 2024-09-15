@@ -12,9 +12,10 @@ interface CustomInputProps {
   placeholder: string;
   value: LoginInfo;
   onChangeText: (text: string) => void;
+  secureTextEntry: boolean;
 }
 
-const CustomInput = ({ icon, placeholder, value, onChangeText }: CustomInputProps) => {
+const CustomInput = ({ icon, placeholder, value, onChangeText, secureTextEntry }: CustomInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
@@ -33,6 +34,7 @@ const CustomInput = ({ icon, placeholder, value, onChangeText }: CustomInputProp
           onChangeText={onChangeText}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
+          secureTextEntry={secureTextEntry}
         />
       </View>
       <Text style={styles.errorText}>{value.error && value.errorMessage}</Text>

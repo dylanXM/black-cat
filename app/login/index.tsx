@@ -75,12 +75,14 @@ export default function Login({ navigation }: IndexProps) {
 							icon={<SvgUser styles={{ fill: '#D3C1E5' }} />}
 							value={username}
 							onChangeText={handleUsernameChange}
+							secureTextEntry={false}
 						/>
 						<CustomInput
 							placeholder="password"
 							icon={<SvgUser styles={{ fill: '#D3C1E5' }} />}
 							value={password}
 							onChangeText={handlePasswordChange}
+							secureTextEntry={true}
 						/>
 					</View>
 				</View>

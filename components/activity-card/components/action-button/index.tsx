@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
   actionContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    minWidth: 120,
   },
   actionText: {
     marginTop: -3,

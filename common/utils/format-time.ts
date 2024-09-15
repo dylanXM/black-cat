@@ -17,3 +17,14 @@ export function formatDate(date: Date, format: string = 'YYYY-MM-DD HH:mm:ss') {
 export function formatDateToDay(date: Date) {
   return formatDate(date, 'DD/MM/YYYY');
 }
+
+// 将 Date 转换为 '14 May 2016 12:22' 格式
+export function formatDateToMinute(date: Date) {
+  let monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'];
+  let day = ("0" + date.getDate()).slice(-2);
+  let year = date.getFullYear();
+  let hours = ("0" + date.getHours()).slice(-2);
+  let minute = ("0" + date.getMinutes()).slice(-2);
+  return `${day}${monthNames[date.getMonth()]} ${year} ${hours}:${minute}`;
+}

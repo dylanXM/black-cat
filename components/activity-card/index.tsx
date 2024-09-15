@@ -2,6 +2,7 @@ import { Twitter } from '@/common/apis/twitter';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import SvgTime from '@/components/svgs/Time';
 import ActionButton from './components/action-button';
+import { formatDateToMinute } from '@/common/utils/format-time';
 
 export type TypeAction = 'like' | 'going';
 
@@ -37,7 +38,9 @@ export default function ActivityCard({ activity, canEdit, initState }: ActivityC
         {/** 这是时间 */}
         <View style={styles.timeContainer}>
           <SvgTime style={styles.timeIcon} fill="#8560A9" />
-          <Text style={styles.timeText}>{startTime} - {endTime}</Text>
+          <Text style={styles.timeText}>
+            {formatDateToMinute(new Date(startTime))} - {formatDateToMinute(new Date(endTime))}
+          </Text>
         </View>
         {/** 这是内容 */}
         <View style={styles.contentContainer}>

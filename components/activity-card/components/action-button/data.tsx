@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   icon: {
     width: 12,
     height: 12,
-    marginRight: 6,
+    marginRight: 4,
   }
 });
 

@@ -80,8 +80,5 @@ const styles = StyleSheet.create({
   searchTip: {
     color: '#67616D',
     fontSize: 12,
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
   }
 });

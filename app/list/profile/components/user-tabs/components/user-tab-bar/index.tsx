@@ -4,7 +4,7 @@ import { RootState } from '@/store';
 import { useSelector } from 'react-redux';
 import { routes } from './data';
 
-interface CustomTabBarProps {
+interface UserTabBarProps {
   jumpTo: (key: string) => void;
   activeKey: number;
 }
@@ -18,7 +18,7 @@ const countMap: Record<string, TypeCount> = {
   'pasts': 'activityIds',
 }
 
-export default function CustomTabBar({ jumpTo, activeKey }: CustomTabBarProps) {
+export default function UserTabBar({ jumpTo, activeKey }: UserTabBarProps) {
   const { user } = useSelector((state: RootState) => state.user);
 
   return (
@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   text: {
+    marginTop: -2,
     color: '#8C8C8C',
     fontSize: 12,
   },

@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Twitter } from '@/common/apis/twitter';
 import ActivityHeader from './components/header';
 import { User } from '@/common/apis/user/user';
+import ActivityTabs from './components/activity-tabs';
 
 
 export default function Detail({ route }: { route: any }) {
@@ -32,7 +33,10 @@ export default function Detail({ route }: { route: any }) {
             source={{ uri: user.avatar }}
           />
         </View>
+        {/* 这是header */}
         <ActivityHeader title={activity.title} channel={activity.channel} user={activity.user as User} />
+        {/* 这是Tabs */}
+        <ActivityTabs />
       </ScrollView>
     </SafeContainer>
   );

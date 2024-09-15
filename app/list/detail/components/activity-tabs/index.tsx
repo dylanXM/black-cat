@@ -1,26 +1,26 @@
 import { useWindowDimensions } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
-import UserTabBar from './components/user-tab-bar';
+import Details from './components/details';
 import { useState } from 'react';
-import { routes } from './components/user-tab-bar/data';
-import Likes from './components/likes';
-import Goings from './components/goings';
-import Pasts from './components/pasts';
+import Participants from './components/participants';
+import Comments from './components/comments';
+import ActivityTabBar from './components/activity-tab-bar';
+import { routes } from './components/activity-tab-bar/data';
 
 const renderScene = SceneMap({
-  likes: Likes,
-  goings: Goings,
-  pasts: Pasts,
+  details: Details,
+  participants: Participants,
+  comments: Comments,
 });
 
-export interface UserTabRoute {
+export interface ActivityTabRoute {
   key: string;
   title: string;
   icon: JSX.Element;
   activeIcon: JSX.Element;
 }
 
-export default function UserTabs() {
+export default function ActivityTabs() {
   const layout = useWindowDimensions();
   const [index, setIndex] = useState(0);
 
@@ -30,7 +30,7 @@ export default function UserTabs() {
       renderScene={renderScene}
       onIndexChange={setIndex}
       initialLayout={{ width: layout.width }}
-      renderTabBar={({ jumpTo }) => <UserTabBar jumpTo={jumpTo} activeKey={index} />}
+      renderTabBar={({ jumpTo }) => <ActivityTabBar jumpTo={jumpTo} activeKey={index} />}
     />
   );
 }

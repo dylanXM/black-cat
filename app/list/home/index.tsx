@@ -30,7 +30,7 @@ export default function List({ navigation }: any) {
         <TouchableOpacity onPress={toProfile}>
           <Image
             style={styles.headerRightAvatar}
-            source={{ uri: user.avatar || require('@/assets/images/user.jpg') }}
+            source={{ uri: user.avatar || '@/assets/images/user.jpg' }}
           />
         </TouchableOpacity>
       </View>

@@ -8,6 +8,8 @@ import { doLogin } from '@/common/apis';
 import { useLogin } from './hooks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IndexProps } from '../index';
+import Toast from 'react-native-toast-message'
+import { useEffect } from 'react';
 
 export default function Login({ navigation }: IndexProps) {
 	const { username, password, handleUsernameChange, handlePasswordChange } = useLogin();
@@ -23,10 +25,15 @@ export default function Login({ navigation }: IndexProps) {
     onError: (error) => {
 			// TODO 提示报错信息
       console.log('error', error);
+			Toast.show({
+				type: 'error',
+				text1: 'A error has occurred, please try again later'
+			})
     }
   });
 
 	const canLogin = username.value.trim() && password.value.trim() && !isLoading;
+	const loginDisabled = !canLogin || isLoading;
 
 	const handleLogin = () => {
 		if (!canLogin) {
@@ -38,6 +45,17 @@ export default function Login({ navigation }: IndexProps) {
 		};
 		mutate(params);
 	};
+
+	useEffect(() => {
+		if (!isLoading) {
+			Toast.hide();
+			return;
+		}
+		Toast.show({
+			type: 'info',
+			text1: 'This is an info message'
+		});
+	}, [isLoading]);
 
 	return (
 		<View style={styles.container}>
@@ -67,7 +85,7 @@ export default function Login({ navigation }: IndexProps) {
 					</View>
 				</View>
 			</View>
-			<TouchableOpacity style={styles.operate} onPress={handleLogin} disabled={!canLogin}>
+			<TouchableOpacity style={styles.operate} onPress={handleLogin} disabled={loginDisabled}>
 				<Text>SIGN IN</Text>
 			</TouchableOpacity>
 		</View>

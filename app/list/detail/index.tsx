@@ -22,7 +22,7 @@ export default function Detail({ route }: { route: any }) {
 
   return (
     <SafeContainer topColor="#8560A9" bottomColor="transparent" restStyles={styles.back}>
-      <ScrollView contentContainerStyle={styles.container} scrollEnabled={true}>
+      <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity onPress={back}>
             <SvgHome style={[styles.headerLeftBtn, { fill: '#453257' }]} />
@@ -47,9 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#8560A9',
   },
   container: {
-    height: 'auto',
     flex: 1,
-    overflow: 'scroll',
   },
   header: {
     flexDirection: 'row',

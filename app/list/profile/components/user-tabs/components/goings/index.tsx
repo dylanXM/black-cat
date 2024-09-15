@@ -1,4 +1,5 @@
 import ActivityCard from '@/components/activity-card';
+import Empty from '@/components/empty';
 import { RootState } from '@/store';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { useSelector } from 'react-redux';
@@ -6,6 +7,12 @@ import { useSelector } from 'react-redux';
 export default function Goings() {
   const { user } = useSelector((state: RootState) => state.user);
   const { activities } = user;
+
+  if ((activities || []).length === 0) {
+    return (
+      <Empty text="No activity found" />
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -27,7 +34,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FAFAFA',
-    paddingTop: 14,
   },
   divider: {
     height: 1,

@@ -1,55 +1,62 @@
-# Welcome to your Expo app 👋
+# Welcome to black-cat app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+这是一个使用 [Expo](https://expo.dev) 创建的项目 [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
 ## Get started
 
-1. Install dependencies
-
-   ```bash
-   yarn
-   ```
-
-2. Start the app
-
-   ```bash
-    npx expo start 
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+1. 安装依赖
 
 ```bash
-npm run reset-project
+yarn install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. 启动项目
 
-## Learn more
+```bash
+// 开启安卓
+yarn android
 
-To learn more about developing your project with Expo, look at the following resources:
+// 开启 ios
+yarn ios
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+3. 服务端项目在 service 目录下
 
-## Join the community
+3.1 暗转依赖
 
-Join our community of developers creating universal apps.
+```bash
+yarn install
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+3.2 开启项目
 
-## svg 处理
+```bash
+yarn dev
+```
+
+## 踩的一些坑
+
+### 无法启动项目
+
+解决方案：调大 `--max-old-space-size` 环境变量的值，直接写在了 `package.json` 启动脚本中
+
+```json
+{
+   "ios": "export NODE_OPTIONS=--max-old-space-size=8192 && expo start --android --reset-cache"
+}
+```
+
+### 启动 Expo 项目无法自动连接到ios虚拟机
+
+原因是ios默认虚拟机的id与本机虚拟机的id不一致，虽然是同一个版本，该问题***暂未解决***
+
+解决方案：
+
+ - 使用 android 进行开发调试
+ - 在 ios 虚拟机上安装 Expo 手动输入链接进行 connect
+
+
+### svg 处理
 
 1. 全局安装`@svgr/cli`
 
@@ -77,3 +84,19 @@ import LogoCat from '@/components/svgs/LogoCat';
 <LogoCat style={styles.logoCat} fill="#D5EF7F" />
 
 ```
+
+### ios 虚拟机在打开含有react-native-tab-view组件的页面时程序会崩溃
+
+解决方案：下载 `7.0.0-rc.0` 版本的 `react-native-pager-view`
+
+```bash
+yarn add react-native-pager-view@7.0.0-rc.0
+```
+
+### 日历组件在ios和android上的默认表现形式不一样
+
+解决方案：
+
+1. 判断当前环境
+2. 根据环境的不同做不同的实现
+

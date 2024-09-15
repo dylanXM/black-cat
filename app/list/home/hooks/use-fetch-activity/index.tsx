@@ -34,14 +34,6 @@ export function useFetchActivity() {
 
   const { count, data: activities } = data as GetTwittersResponse || {};
 
-  useEffect(() => {
-    console.log('search changed', search);
-  }, [search]);
-
-  useEffect(() => {
-    console.log('render times', renderTimes++, activities?.length);
-  }, [activities]);
-
   // 点击清除按钮 或者 search 条件改变后需要点击搜索按钮触发
   useEffect(() => {
     const subscription = fetchActivitiesSubject$.subscribe(() => {

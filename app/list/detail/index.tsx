@@ -4,7 +4,7 @@ import SvgLogoCat from '@/components/svgs/LogoCat';
 import { View, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Twitter } from '@/common/apis/twitter';
 import ActivityHeader from './components/header';
 import { User } from '@/common/apis/user/user';
@@ -13,26 +13,32 @@ import ActivityTabs from './components/activity-tabs';
 
 export default function Detail({ route }: { route: any }) {
   const { user } = useSelector((state: RootState) => state.user);
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<any>>();
   const { activity } = route.params as { activity: Twitter };
 
   const back = () => {
     navigation.goBack();
   };
 
+  const toProfile = () => {
+    navigation.navigate('Profile');
+  };
+
   return (
     <SafeContainer topColor="#8560A9" bottomColor="transparent" restStyles={styles.back}>
-      <ScrollView contentContainerStyle={styles.container}>
-        <View style={styles.header}>
-          <TouchableOpacity onPress={back}>
-            <SvgHome style={[styles.headerLeftBtn, { fill: '#453257' }]} />
-          </TouchableOpacity>
-          <SvgLogoCat style={[styles.headerLogo, { fill: '#D5EF7F' }]} />
+      <View style={styles.header}>
+        <TouchableOpacity onPress={back}>
+          <SvgHome style={[styles.headerLeftBtn, { fill: '#453257' }]} />
+        </TouchableOpacity>
+        <SvgLogoCat style={[styles.headerLogo, { fill: '#D5EF7F' }]} />
+        <TouchableOpacity onPress={toProfile}>
           <Image
             style={styles.headerRightAvatar}
             source={{ uri: user.avatar }}
           />
-        </View>
+        </TouchableOpacity>
+      </View>
+      <ScrollView contentContainerStyle={styles.container}>
         {/* 这是header */}
         <ActivityHeader title={activity.title} channel={activity.channel} user={activity.user as User} />
         {/* 这是Tabs */}

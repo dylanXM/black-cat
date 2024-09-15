@@ -1,13 +1,16 @@
 import { User } from '@/common/apis/user/user';
 import { View, Image, Text, StyleSheet } from 'react-native';
+import { useActivityDetail } from '../../hooks';
+import { Twitter } from '@/common/apis/twitter';
 
-interface ActivityHeaderProps {
-  title: string;
-  channel: string;
-  user: User;
-}
+export default function ActivityHeader() {
+  const { activity } = useActivityDetail();
+  const { channel, title, user } = (activity || {}) as Twitter;
 
-export default function ActivityHeader({ title, channel, user }: ActivityHeaderProps) {
+  if (!activity) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.channelContainer}>

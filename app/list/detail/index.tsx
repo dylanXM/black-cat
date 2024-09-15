@@ -9,11 +9,17 @@ import { Twitter } from '@/common/apis/twitter';
 import ActivityHeader from './components/header';
 import { User } from '@/common/apis/user/user';
 import ActivityTabs from './components/activity-tabs';
+import { activityDetail$ } from './hooks';
+import { useEffect } from 'react';
+import FooterOperation from './components/footer-operation';
 
 export default function Detail({ route }: { route: any }) {
   const { user } = useSelector((state: RootState) => state.user);
   const navigation = useNavigation<NavigationProp<any>>();
   const { activity } = route.params as { activity: Twitter };
+
+  // 将activity传递给activityDetail$中，可以在其他地方订阅activityDetail$获取activity
+  useEffect(() => activityDetail$.next(activity), [activity]);
 
   const back = () => {
     navigation.goBack();
@@ -39,10 +45,14 @@ export default function Detail({ route }: { route: any }) {
       </View>
       <ScrollView contentContainerStyle={styles.scrollContainer} scrollEnabled={true}>
         {/* 这是header */}
-        <ActivityHeader title={activity.title} channel={activity.channel} user={activity.user as User} />
+        <ActivityHeader />
         {/* 这是Tabs */}
         <ActivityTabs />
       </ScrollView>
+      {/* 这是底部操作栏 */}
+      <View style={styles.footer}>
+        <FooterOperation />
+      </View>
     </SafeContainer>
   );
 }
@@ -52,6 +62,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#8560A9',
   },
   scrollContainer: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: 'red',
+    marginBottom: 56,
   },
   header: {
     flexDirection: 'row',
@@ -75,4 +89,9 @@ const styles = StyleSheet.create({
     height: 24,
     borderRadius: 12,
   },
+  footer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+  }
 });

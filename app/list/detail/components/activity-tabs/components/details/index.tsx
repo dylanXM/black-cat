@@ -1,14 +1,13 @@
+import { useActivityDetail } from '@/app/list/detail/hooks';
 import { View, Text, StyleSheet } from 'react-native';
 
 export default function Details() {
-  // const array = Array(500).fill(0);
-  // return (
-  //   <View style={styles.container}>
-  //     {array.map((_, index) => (
-  //       <Text key={index}>Details</Text>
-  //     ))}
-  //   </View>
-  // );
+  const { activity } = useActivityDetail();
+  console.log('Details activity', activity);
+
+  if (!activity) {
+    return null;
+  }
   
   return (
     <View style={styles.container}>
@@ -18,13 +17,13 @@ export default function Details() {
       <View><Text>这是Where</Text></View>
       <View><Text>这是goings</Text></View>
       <View><Text>这是comments</Text></View>
-      <View><Text>这是操作</Text></View>
     </View>
   );
 } 
 
 const styles = StyleSheet.create({
   container: {
-    height: '100%',
+    flex: 1,
+    borderWidth: 1,
   },
 });

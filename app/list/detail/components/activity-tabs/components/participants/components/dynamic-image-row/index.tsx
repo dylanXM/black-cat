@@ -26,7 +26,7 @@ export default function DynamicImageRow({ images }: DynamicImageRowProps) {
   const [expanded, setExpanded] = useState(false);
 
   // 计算一行的最大图片数量
-  const maxImagesPerRow = Math.floor((actualWidth - actualImageWidth + 1) / (actualImageWidth)); // 100为图片宽度的示例值，16为左右padding的总和
+  const maxImagesPerRow = Math.floor((actualWidth - actualImageWidth + 1) / actualImageWidth); // 100为图片宽度的示例值，16为左右padding的总和
 
   // 根据是否展开决定显示哪些图片
   const visibleImages = expanded ? images : images.slice(0, maxImagesPerRow);

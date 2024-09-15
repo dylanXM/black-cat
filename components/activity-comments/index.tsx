@@ -29,6 +29,7 @@ export default function ActivityComments({ comments }: { comments: Comment[] }) 
             </View>
           </View>
         )}
+        nestedScrollEnabled={false}
         keyExtractor={(_, index) => String(index)}
         showsHorizontalScrollIndicator={false} // 隐藏滚动条
       />

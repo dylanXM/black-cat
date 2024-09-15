@@ -47,12 +47,12 @@ export default function Detail({ route }: { route: any }) {
           />
         </TouchableOpacity>
       </View>
-      <View style={styles.scrollContainer}>
+      <ScrollView style={styles.scrollContainer}>
         {/* 这是header */}
         <ActivityHeader />
         {/* 这是Tabs */}
         <ActivityTabs />
-      </View>
+      </ScrollView>
       {/* 这是底部操作栏 */}
       <View style={styles.footer}>
         <FooterOperation />

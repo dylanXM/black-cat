@@ -3,6 +3,9 @@ import ExpandableText from './components/expandable-text';
 import ActivityTime from './components/activity-time';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
+import SvgLikeOutline from '@/components/svgs/LikeOutline';
+import DynamicImageRow from '../participants/components/dynamic-image-row';
+import ActivityComments from '@/components/activity-comments';
 
 const { width } = Dimensions.get('window');
 
@@ -27,6 +30,7 @@ export default function Details() {
         keyExtractor={(_, index) => String(index)}
         horizontal={true} // 设置为横向滚动
         showsHorizontalScrollIndicator={false} // 隐藏滚动条
+        nestedScrollEnabled={false}
         style={styles.imageContainer}
       />
       <View style={styles.content}>
@@ -58,6 +62,18 @@ export default function Details() {
           <Image style={styles.addressMap} source={require('@/assets/images/gmap.png')} />
         </View>
       </View>
+      <View style={styles.divider} />
+      <View style={styles.imageContainer}>
+        <View style={styles.titleContainer}>
+          <SvgLikeOutline style={styles.icon} fill="#AC8EC9" />
+          <Text style={styles.titleText}>{activity?.likesUsers?.length} likes</Text>
+        </View>
+        <View style={styles.images}>
+          <DynamicImageRow images={activity?.likesUsers?.map((user) => user.avatar) as string[] || []} />
+        </View>
+      </View>
+      <View style={styles.completeDivider} />
+      <ActivityComments comments={activity?.comments || []} />
     </View>
   );
 } 
@@ -136,5 +152,24 @@ const styles = StyleSheet.create({
     height: 88,
     width: width - 32,
     borderRadius: 10,
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    width: 67,
+    marginTop: 17,
+  },
+  titleText: {
+    color: '#67616D',
+    fontSize: 12,
+    marginTop: -3,
+  },
+  icon: {
+    width: 12,
+    height: 12,
+    marginRight: 4,
+  },
+  completeDivider: {
+    borderTopWidth: 1,
+    borderColor: '#E8E8E8',
   },
 });

@@ -22,7 +22,7 @@ export default function Participants() {
           <SvgCheckOutline style={styles.icon} fill="#AC8EC9" />
           <Text style={styles.titleText}>{activity?.likesUsers?.length} going</Text>
         </View>
-        <View style={styles.images}>
+        <View>
           <DynamicImageRow images={activity?.goingsUsers?.map((user) => user.avatar) as string[] || []} />
         </View>
       </View>
@@ -32,7 +32,7 @@ export default function Participants() {
           <SvgLikeOutline style={styles.icon} fill="#AC8EC9" />
           <Text style={styles.titleText}>{activity?.likesUsers?.length} likes</Text>
         </View>
-        <View style={styles.images}>
+        <View>
           <DynamicImageRow images={activity?.likesUsers?.map((user) => user.avatar) as string[] || []} />
         </View>
       </View>
@@ -70,9 +70,6 @@ const styles = StyleSheet.create({
     color: '#67616D',
     fontSize: 12,
     marginTop: -3,
-  },
-  images: {
-    
   },
   completeDivider: {
     borderTopWidth: 1,

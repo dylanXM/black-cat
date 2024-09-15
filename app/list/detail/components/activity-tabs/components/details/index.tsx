@@ -58,7 +58,6 @@ export default function Details() {
           <Image style={styles.addressMap} source={require('@/assets/images/gmap.png')} />
         </View>
       </View>
-      <View><Text>这是comments</Text></View>
     </View>
   );
 } 

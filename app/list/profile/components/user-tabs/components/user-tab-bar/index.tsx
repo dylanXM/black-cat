@@ -9,11 +9,11 @@ interface UserTabBarProps {
   activeKey: number;
 }
 
-const userCountKeys = ['activityIds', 'goingIds', 'likes'] as const;
+const userCountKeys = ['activityIds', 'goingIds', 'likeIds'] as const;
 type TypeCount = typeof userCountKeys[number];
 
 const countMap: Record<string, TypeCount> = {
-  'likes': 'activityIds',
+  'likes': 'likeIds',
   'goings': 'goingIds',
   'pasts': 'activityIds',
 }

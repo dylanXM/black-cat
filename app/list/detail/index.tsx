@@ -47,12 +47,12 @@ export default function Detail({ route }: { route: any }) {
           />
         </TouchableOpacity>
       </View>
-      <ScrollView contentContainerStyle={styles.scrollContainer} scrollEnabled={true}>
+      <View style={styles.scrollContainer}>
         {/* 这是header */}
         <ActivityHeader />
         {/* 这是Tabs */}
         <ActivityTabs />
-      </ScrollView>
+      </View>
       {/* 这是底部操作栏 */}
       <View style={styles.footer}>
         <FooterOperation />
@@ -67,9 +67,8 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: 'red',
-    marginBottom: 56,
+    // borderWidth: 1,
+    // marginBottom: 10,
   },
   header: {
     flexDirection: 'row',
@@ -94,8 +93,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   footer: {
-    position: 'absolute',
-    bottom: 0,
+    // position: 'absolute',
+    // bottom: 0,
     width: '100%',
   }
 });

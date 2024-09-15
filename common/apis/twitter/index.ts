@@ -9,12 +9,13 @@ export interface GetTwittersParams {
   channel?: string;
 }
 
-interface Comment {
+export interface Comment {
   id: number;
   userId: number;
   content: string;
   likes: number[];
   time: string;
+  user?: User;
 }
 
 export interface Twitter {

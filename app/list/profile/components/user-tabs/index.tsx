@@ -1,7 +1,7 @@
 import { useWindowDimensions } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import UserTabBar from './components/user-tab-bar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { routes } from './components/user-tab-bar/data';
 import Likes from './components/likes';
 import Goings from './components/goings';
@@ -23,6 +23,8 @@ export interface UserTabRoute {
 export default function UserTabs() {
   const layout = useWindowDimensions();
   const [index, setIndex] = useState(0);
+
+  useEffect(() => setIndex(0), []);
 
   return (
     <TabView

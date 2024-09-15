@@ -20,51 +20,25 @@ export interface User {
   likes?: Twitter[];
 }
 
-const users: User[] = [
-  {
-    id: 1,
-    username: 'admin',
-    password: bcryptPassword,
-    email: '123456@123.com',
-    avatar:
-      'https://yangxm-1317654405.cos.ap-guangzhou.myqcloud.com/ai/tmp_885f4e6f1806cf82aa38d4989f3b0ed5.jpg',
-    activityIds: [4, 5, 6],
-    goingIds: [1, 2, 3],
-    likeIds: [7, 8, 9],
-  },
-  {
-    id: 2,
-    username: 'user',
-    password: bcryptPassword,
-    email: '123456@123.com',
-    avatar:
-      'https://yangxm-1317654405.cos.ap-guangzhou.myqcloud.com/ai/tmp_885f4e6f1806cf82aa38d4989f3b0ed5.jpg',
-  },
-  {
-    id: 3,
-    username: 'guest',
-    password: bcryptPassword,
-    email: '123456@123.com',
-    avatar:
-      'https://yangxm-1317654405.cos.ap-guangzhou.myqcloud.com/ai/tmp_885f4e6f1806cf82aa38d4989f3b0ed5.jpg',
-  },
-  {
-    id: 4,
-    username: 'test',
-    password: bcryptPassword,
-    email: '123456@123.com',
-    avatar:
-      'https://yangxm-1317654405.cos.ap-guangzhou.myqcloud.com/ai/tmp_885f4e6f1806cf82aa38d4989f3b0ed5.jpg',
-  },
-  {
-    id: 5,
-    username: 'demo',
-    password: bcryptPassword,
-    email: '123456@123.com',
-    avatar:
-      'https://yangxm-1317654405.cos.ap-guangzhou.myqcloud.com/ai/tmp_885f4e6f1806cf82aa38d4989f3b0ed5.jpg',
-  },
-];
+const user = {
+  id: 1,
+  username: 'admin',
+  password: bcryptPassword,
+  email: '123456@123.com',
+  avatar:
+    'https://yangxm-1317654405.cos.ap-guangzhou.myqcloud.com/ai/tmp_885f4e6f1806cf82aa38d4989f3b0ed5.jpg',
+  activityIds: [],
+  goingIds: [1, 2, 3],
+  likeIds: [7, 8, 9],
+};
+
+const users = Array(100)
+  .fill(user)
+  .map((u, index) => ({
+    ...u,
+    username: index === 0 ? u.username : `${u.username}-${index + 1}`,
+    id: index + 1,
+  }));
 
 export function findUser(username: string) {
   return users.find((user) => user.username === username);

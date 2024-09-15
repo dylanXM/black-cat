@@ -31,6 +31,8 @@ export interface Twitter {
   address: string;
   pictures: string[];
   user?: User;
+  likesUser?: User[];
+  goingsUser?: User[];
 }
 
 export interface GetTwittersResponse {

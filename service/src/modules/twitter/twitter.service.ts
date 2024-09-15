@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { GetTwittersDto } from './dto/get-twitter.dto';
 import { twitterList } from 'src/data/twitter';
 import { findUserById } from 'src/data/user';
+import deepClone from 'src/common/utils/cloneDeep';
+import patchUsersToTwitter from 'src/common/utils/twitter';
 
 @Injectable()
 export class TwitterService {
@@ -27,7 +29,13 @@ export class TwitterService {
 
     // 根据userId匹配用户信息
     data.forEach((item) => {
-      item.user = findUserById(item.userId);
+      item.user = deepClone(findUserById(item.userId));
+    });
+
+    // 匹配 user 的信息
+    data.forEach((item) => {
+      item.likesUsers = patchUsersToTwitter('likes', item.likes);
+      item.goingsUsers = patchUsersToTwitter('goings', item.goings);
     });
 
     const lendth = data.length;

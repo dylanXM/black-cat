@@ -1,28 +1,33 @@
+import { fetchActivitiesSubject$, showTipSubject$ } from '@/app/list/home/hooks';
 import { useSearchTip } from '@/app/list/hooks/use-search-tip';
 import SvgSearch from '@/components/svgs/Search';
-import { RootState } from '@/store';
 import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
 import { Text, StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { useSelector } from 'react-redux';
+import { concat, from } from 'rxjs';
 
 interface SearchButtonProps {
   navigation: DrawerNavigationHelpers;
 }
 
 export default function SearchButton({ navigation }: SearchButtonProps) {
-  const search = useSelector((state: RootState) => state.search);
-  const { tip, isShowTip: canSubmit } = useSearchTip();
+  const { tip } = useSearchTip();
 
   const handleSearch = () => {
-    navigation.closeDrawer();
-    // todo: 触发搜索
+    // 关闭抽屉
+    const closeDrawer$ = from(Promise.resolve(navigation.closeDrawer()));
+    // 获取活动列表
+    const fetchActivities$ = from(Promise.resolve(fetchActivitiesSubject$.next({})));
+    // 显示提示
+    const showTip$ = from(Promise.resolve(showTipSubject$.next(true)));
+    // 按照顺序执行
+    concat(closeDrawer$, fetchActivities$, showTip$).subscribe();
   };
 
   return (
     <TouchableOpacity
-      style={[styles.container, canSubmit ? styles.activeContainer : null]}
-      disabled={!canSubmit}
+      style={[styles.container, tip ? styles.activeContainer : null]}
+      disabled={!tip}
       onPress={handleSearch}
     >
       <View style={styles.searchContainer}>
@@ -30,7 +35,7 @@ export default function SearchButton({ navigation }: SearchButtonProps) {
         <Text style={styles.searchText}>SEARCH</Text>
       </View>
       {
-        canSubmit && <Text style={styles.tip}>{tip}</Text>
+        tip && <Text style={styles.tip}>{tip}</Text>
       }
     </TouchableOpacity>
   );

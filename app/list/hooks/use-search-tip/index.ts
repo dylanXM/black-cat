@@ -10,16 +10,14 @@ export function useSearchTip() {
   const tip = useMemo(() => {
     let tips = '';
     if (channel) {
-      tips += `${channel}`;
+      tips += `${channel} activities`;
     }
     if (!timeRange.start && !timeRange.end) {
       return tips;
     }
-    tips += ` activities form ${formatTimeToDay(timeRange.start)} to ${formatTimeToDay(timeRange.end)}`;
+    tips += ` form ${formatTimeToDay(timeRange.start)} to ${formatTimeToDay(timeRange.end)}`;
     return tips;
   }, [channel, search]);
 
-  const isShowTip = !!tip;
-
-  return { tip, isShowTip };
+  return { tip };
 }

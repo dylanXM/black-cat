@@ -8,7 +8,7 @@ import { doLogin } from '@/common/apis';
 import { useLogin } from './hooks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IndexProps } from '../index';
-import Toast from 'react-native-toast-message'
+import Toast from 'react-native-toast-message';
 import { useEffect } from 'react';
 
 export default function Login({ navigation }: IndexProps) {

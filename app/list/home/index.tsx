@@ -3,14 +3,18 @@ import { StyleSheet, View, TouchableOpacity, Image } from 'react-native';
 import SvgSearch from '@/components/svgs/Search';
 import SvgLogoCat from '@/components/svgs/LogoCat';
 import Tip from './components/tip';
-import { useFetchActivity } from './hooks';
+import { useFetchActivity, useShowTip } from './hooks';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import ActivityCard from '@/components/activity-card';
+import { useEffect } from 'react';
+import Toast from 'react-native-toast-message'
+import Empty from '@/components/empty';
 
 export default function List({ navigation }: any) {
   const { user } = useSelector((state: RootState) => state.user);
-  const { activities, isDone, loading, fetchNextPageActivities } = useFetchActivity();
+  const { activities, isDone, loading, fetchNextPageActivities, count } = useFetchActivity();
+  const { tipVisible } = useShowTip();
 
   const openDrawer = () => {
     navigation.openDrawer();
@@ -19,6 +23,17 @@ export default function List({ navigation }: any) {
   const toProfile = () => {
     navigation.navigate('Profile');
   };
+
+  useEffect(() => {
+    if (!loading) {
+      Toast.hide();
+      return;
+    }
+    Toast.show({
+      type: 'info',
+      text1: 'data is loading...',
+    });
+  }, [loading]);
 
   return (
     <SafeContainer topColor='#8560A9' bottomColor='transparent' restStyles={styles.back}>
@@ -34,23 +49,21 @@ export default function List({ navigation }: any) {
           />
         </TouchableOpacity>
       </View>
-      <Tip />
+      {tipVisible && <Tip activitiesLength={count} />}
       <View style={styles.activityContainer}>
-      {
-        activities?.map((activity, index) => {
-          const { id } = activity;
-          return (
-            <View key={index}>
-              {
-                index !== 0 && (
-                  <View style={styles.divider} />
-                )
-              }
-              <ActivityCard activity={activity} initState={{ like: true, going: true }} canEdit={true} />
-            </View>
-          )
-        })
-      }
+        {
+          count === 0 && isDone && <Empty text="No activity found" />
+        }
+        <View style={{ marginTop: 16 }}>
+          {
+            activities?.map((activity, index) => (
+              <View key={index}>
+                {index !== 0 && <View style={styles.divider} />}
+                <ActivityCard activity={activity} initState={{ like: true, going: true }} canEdit={true} />
+              </View>
+            ))
+          }
+        </View>
       </View>
     </SafeContainer>
   )
@@ -93,6 +106,6 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   activityContainer: {
-    marginTop: 16,
+    flex: 1,
   }
 });

@@ -21,8 +21,8 @@ export default function ActivityCard({ activity, canEdit, initState }: ActivityC
   };
 
   return (
-    <TouchableOpacity onPress={toDetail} activeOpacity={1}>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <TouchableOpacity onPress={toDetail} activeOpacity={1}>
         {/** 这是header */}
         <View style={styles.header}>
           <View style={styles.userinfo}>
@@ -48,14 +48,14 @@ export default function ActivityCard({ activity, canEdit, initState }: ActivityC
             {content}
           </Text>
         </View>
-        {/** 这是操作 */}
-        <ActionButton
-          initCount={{ like: likes.length, going: goings.length }}
-          initState={initState}
-          canEdit={canEdit}
-        />
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+      {/** 这是操作 */}
+      <ActionButton
+        initCount={{ like: likes.length, going: goings.length }}
+        initState={initState}
+        canEdit={canEdit}
+      />
+    </View>
   );
 }
 

@@ -2,23 +2,34 @@ import { useSearchTip } from '@/app/list/hooks/use-search-tip';
 import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch } from 'react-redux';
+import { fetchActivitiesSubject$, showTipSubject$ } from '../../hooks';
+import { concat, timer, from, of, mergeMap, delay, switchMap } from 'rxjs';
 
-export default function Tip() {
-  const { tip, isShowTip } = useSearchTip();
+interface TipProps {
+  activitiesLength: number;
+}
+
+export default function Tip({ activitiesLength }: TipProps) {
+  const { tip } = useSearchTip();
   const disPatch = useDispatch();
 
   const handleClearSearch = () => {
-    disPatch({ type: 'CLEAR_SEARCH' });
+    const clearSearch$ = from(Promise.resolve(disPatch({ type: 'CLEAR_SEARCH' })));
+    clearSearch$.pipe(
+      switchMap(() => timer(300).pipe(
+        switchMap(() => concat(from(Promise.resolve(fetchActivitiesSubject$.next({}))), from(Promise.resolve(showTipSubject$.next(false)))))
+      ))
+    ).subscribe();
   };
 
-  if (!isShowTip) {
+  if (!tip) {
     return null;
   }
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>14 Results</Text>
+        <Text style={styles.headerTitle}>{activitiesLength} Results</Text>
         <TouchableOpacity onPress={handleClearSearch}>
           <Text style={styles.headerButton}>Clear Search</Text>
         </TouchableOpacity>

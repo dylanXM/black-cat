@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import ActivityCard from '@/components/activity-card';
 import { useEffect } from 'react';
-import Toast from 'react-native-toast-message'
+import Toast from 'react-native-toast-message';
 import Empty from '@/components/empty';
 
 export default function List({ navigation }: any) {
@@ -32,6 +32,7 @@ export default function List({ navigation }: any) {
     Toast.show({
       type: 'info',
       text1: 'data is loading...',
+      autoHide: false,
     });
   }, [loading]);
 

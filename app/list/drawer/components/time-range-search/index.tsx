@@ -1,5 +1,5 @@
 import { timeRangeOptions } from '@/store/actions/search';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Text, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import DatePicker from './components/date-picker';
@@ -7,6 +7,9 @@ import SvgDateFrom from '@/components/svgs/DateFrom';
 import SvgDateTo from '@/components/svgs/DateTo';
 import { useDatePicker } from './hooks';
 import { formatDateToDay } from '@/common/utils/format-time';
+import { Subject } from 'rxjs';
+
+export const timeRangeSearchSubject$ = new Subject();
 
 const timeRangeOptionsLength = timeRangeOptions.length;
 
@@ -60,6 +63,15 @@ export default function TimeRangeSearch() {
       });
     }
   };
+
+  useEffect(() => {
+    const subscription = timeRangeSearchSubject$.subscribe(() => {
+      setActiveKey('');
+    });
+    return () => {
+      subscription.unsubscribe();
+    }
+  }, []);
 
   return (
     <>

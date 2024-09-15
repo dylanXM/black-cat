@@ -4,6 +4,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch } from 'react-redux';
 import { fetchActivitiesSubject$, showTipSubject$ } from '../../hooks';
 import { concat, timer, from, of, mergeMap, delay, switchMap } from 'rxjs';
+import { channleSearchSubject$ } from '@/app/list/drawer/components/channel-search';
+import { timeRangeSearchSubject$ } from '@/app/list/drawer/components/time-range-search';
 
 interface TipProps {
   activitiesLength: number;
@@ -17,9 +19,13 @@ export default function Tip({ activitiesLength }: TipProps) {
     const clearSearch$ = from(Promise.resolve(disPatch({ type: 'CLEAR_SEARCH' })));
     clearSearch$.pipe(
       switchMap(() => timer(300).pipe(
-        switchMap(() => concat(from(Promise.resolve(fetchActivitiesSubject$.next({}))), from(Promise.resolve(showTipSubject$.next(false)))))
+        switchMap(() => from(Promise.resolve(fetchActivitiesSubject$.next({}))))
       ))
     ).subscribe();
+    showTipSubject$.next(false);
+    // 清除搜索条件
+    channleSearchSubject$.next({});
+    timeRangeSearchSubject$.next({});
   };
 
   if (!tip) {

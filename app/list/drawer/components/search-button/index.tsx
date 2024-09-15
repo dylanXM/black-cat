@@ -4,7 +4,6 @@ import SvgSearch from '@/components/svgs/Search';
 import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
 import { Text, StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { concat, from } from 'rxjs';
 
 interface SearchButtonProps {
   navigation: DrawerNavigationHelpers;
@@ -15,13 +14,11 @@ export default function SearchButton({ navigation }: SearchButtonProps) {
 
   const handleSearch = () => {
     // 关闭抽屉
-    const closeDrawer$ = from(Promise.resolve(navigation.closeDrawer()));
+    navigation.closeDrawer();
     // 获取活动列表
-    const fetchActivities$ = from(Promise.resolve(fetchActivitiesSubject$.next({})));
+    fetchActivitiesSubject$.next({});
     // 显示提示
-    const showTip$ = from(Promise.resolve(showTipSubject$.next(true)));
-    // 按照顺序执行
-    concat(closeDrawer$, fetchActivities$, showTip$).subscribe();
+    showTipSubject$.next(true);
   };
 
   return (

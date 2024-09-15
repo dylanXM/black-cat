@@ -25,7 +25,7 @@ export default function Login({ navigation }: IndexProps) {
 			Toast.show({
 				type: 'error',
 				text1: 'A error has occurred, please try again later'
-			})
+			});
     }
   });
 
@@ -38,7 +38,7 @@ export default function Login({ navigation }: IndexProps) {
 		}
 		const params = {
 			username: username.value,
-			password: password.value
+			password: password.value,
 		};
 		mutate(params);
 	};
@@ -50,7 +50,8 @@ export default function Login({ navigation }: IndexProps) {
 		}
 		Toast.show({
 			type: 'info',
-			text1: 'This is an info message'
+			text1: 'Logging in, please wait...',
+			autoHide: false,
 		});
 	}, [isLoading]);
 

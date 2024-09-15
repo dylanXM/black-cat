@@ -16,6 +16,7 @@ import Login from './login';
 import NotFound from './+not-found';
 import { ModalPortal } from 'react-native-modals';
 import { client } from '@/common/utils/query-client';
+import Toast from 'react-native-toast-message';
 
 const Stack = createNativeStackNavigator();
 
@@ -51,6 +52,7 @@ export default function RootLayout() {
                 <Stack.Screen name="+not-found" component={NotFound} />
               </Stack.Navigator>
               <ModalPortal />
+              <Toast />
             </ThemeProvider>
           </Provider>
         </QueryClientProvider>

@@ -1,7 +1,10 @@
 import { channelOptions } from '@/store/actions/search';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useDispatch } from 'react-redux';
+import { Subject } from 'rxjs';
+
+export const channleSearchSubject$ = new Subject();
 
 export default function ChannelSearch() {
   const [activeKey, setActiveKey] = useState<string>('');
@@ -19,8 +22,17 @@ export default function ChannelSearch() {
       payload: { 
         channel: isSameKey ? '' : value
       }
-  });
-  }
+    });
+  };
+
+  useEffect(() => {
+    const subscription = channleSearchSubject$.subscribe(() => {
+      setActiveKey('');
+    });
+    return () => {
+      subscription.unsubscribe();
+    }
+  }, []);
 
   return (
     <>

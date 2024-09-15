@@ -1,14 +1,18 @@
-import { channelOptions } from '@/store/actions/search';
+import { channelOptions, TypeChannel } from '@/store/actions/search';
 import { useEffect, useState } from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { Subject } from 'rxjs';
+import { TypeHandleChannelChange } from '../..';
 
 export const channleSearchSubject$ = new Subject();
 
-export default function ChannelSearch() {
+interface ChannelSearchProps {
+  handleChannelChange: TypeHandleChannelChange;
+}
+
+export default function ChannelSearch({ handleChannelChange }: ChannelSearchProps) {
   const [activeKey, setActiveKey] = useState<string>('');
-  const dispatch = useDispatch();
 
   const handlePress = (key: string) => {
     const isSameKey = activeKey === key;
@@ -17,12 +21,7 @@ export default function ChannelSearch() {
 
     // 设置搜索条件
     const { value } = channelOptions[Number(key)];
-    dispatch({
-      type: 'SET_CHANNEL',
-      payload: { 
-        channel: isSameKey ? '' : value
-      }
-    });
+    handleChannelChange(isSameKey ? '' as TypeChannel : value);
   };
 
   useEffect(() => {

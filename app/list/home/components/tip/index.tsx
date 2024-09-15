@@ -1,18 +1,21 @@
 import { useSearchTip } from '@/app/list/hooks/use-search-tip';
 import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchActivitiesSubject$, showTipSubject$ } from '../../hooks';
-import { concat, timer, from, of, mergeMap, delay, switchMap } from 'rxjs';
+import { timer, from, switchMap } from 'rxjs';
 import { channleSearchSubject$ } from '@/app/list/drawer/components/channel-search';
 import { timeRangeSearchSubject$ } from '@/app/list/drawer/components/time-range-search';
+import { RootState } from '@/store';
+import { drawerSearchSubject$ } from '@/app/list/drawer';
 
 interface TipProps {
   activitiesLength: number;
 }
 
 export default function Tip({ activitiesLength }: TipProps) {
-  const { tip } = useSearchTip();
+  const search = useSelector((state: RootState) => state.search);
+  const { tip } = useSearchTip({ searchParams: search });
   const disPatch = useDispatch();
 
   const handleClearSearch = () => {
@@ -26,6 +29,7 @@ export default function Tip({ activitiesLength }: TipProps) {
     // 清除搜索条件
     channleSearchSubject$.next({});
     timeRangeSearchSubject$.next({});
+    drawerSearchSubject$.next({});
   };
 
   if (!tip) {

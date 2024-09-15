@@ -36,6 +36,8 @@ export default function List({ navigation }: any) {
     });
   }, [loading]);
 
+  console.log('loading', loading);
+
   return (
     <SafeContainer topColor='#8560A9' bottomColor='transparent' restStyles={styles.back}>
       <View style={styles.header}>
@@ -53,7 +55,7 @@ export default function List({ navigation }: any) {
       {tipVisible && <Tip activitiesLength={count} />}
       <View style={styles.activityContainer}>
         {
-          count === 0 && isDone && <Empty text="No activity found" />
+          count === 0 && isDone && <Empty text={loading ? 'Fetching data...' : 'No activity found'} />
         }
         <View style={{ marginTop: 16 }}>
           {

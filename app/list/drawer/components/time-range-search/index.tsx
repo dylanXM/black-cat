@@ -1,21 +1,24 @@
 import { timeRangeOptions } from '@/store/actions/search';
 import { useEffect, useState } from 'react';
 import { Text, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { useDispatch } from 'react-redux';
 import DatePicker from './components/date-picker';
 import SvgDateFrom from '@/components/svgs/DateFrom';
 import SvgDateTo from '@/components/svgs/DateTo';
 import { useDatePicker } from './hooks';
 import { formatDateToDay } from '@/common/utils/format-time';
 import { Subject } from 'rxjs';
+import { TypeHandleTimeRangeChange } from '../..';
 
 export const timeRangeSearchSubject$ = new Subject();
 
 const timeRangeOptionsLength = timeRangeOptions.length;
 
-export default function TimeRangeSearch() {
+interface TimeRangeSearchProps {
+  handleTimeRangeChange: TypeHandleTimeRangeChange;
+}
+
+export default function TimeRangeSearch({ handleTimeRangeChange }: TimeRangeSearchProps) {
   const [activeKey, setActiveKey] = useState<string>('');
-  const dispatch = useDispatch();
 
   const {
     currentIndex,
@@ -37,14 +40,9 @@ export default function TimeRangeSearch() {
 
     // 最后一个选项需要特殊处理，弹出时间选择器
     if (key === String(timeRangeOptions.length)) {
-      dispatch({
-        type: 'SET_TIME_RANGE',
-        payload: {
-          timeRange: {
-            start: startDate.getTime(),
-            end: endDate.getTime(),
-          }
-        }
+      handleTimeRangeChange({
+        start: String(startDate.getTime()),
+        end: String(endDate.getTime()),
       });
     }
 
@@ -52,14 +50,9 @@ export default function TimeRangeSearch() {
       clearCurrentIndex();
       const { value } = timeRangeOptions[Number(key)];
       // 设置搜索条件
-      dispatch({
-        type: 'SET_TIME_RANGE',
-        payload: {
-          timeRange: {
-            start: isSameKey ? '' : value.start,
-            end: isSameKey ? '' : value.end,
-          }
-        }
+      handleTimeRangeChange({
+        start: String(isSameKey ? '' : value.start),
+        end: String(isSameKey ? '' : value.end),
       });
     }
   };

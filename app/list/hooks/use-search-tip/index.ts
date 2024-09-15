@@ -1,11 +1,14 @@
 import { formatTimeToDay } from '@/common/utils/format-time';
 import { RootState } from '@/store';
+import { SearchState } from '@/store/actions/search';
 import { useMemo } from 'react';
-import { useSelector } from 'react-redux';
 
-export function useSearchTip() {
-  const search = useSelector((state: RootState) => state.search);
-  const { channel, timeRange } = search;
+interface UseSearchTip {
+  searchParams: SearchState;
+}
+
+export function useSearchTip({ searchParams }: UseSearchTip) {
+  const { channel, timeRange } = searchParams;
 
   const tip = useMemo(() => {
     let tips = '';
@@ -17,7 +20,7 @@ export function useSearchTip() {
     }
     tips += ` form ${formatTimeToDay(timeRange.start)} to ${formatTimeToDay(timeRange.end)}`;
     return tips;
-  }, [channel, search]);
+  }, [channel, searchParams]);
 
   return { tip };
 }

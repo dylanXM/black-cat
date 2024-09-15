@@ -8,6 +8,9 @@ import {
   TypeChannel,
   CLEAR_SEARCH,
   clearSearch,
+  SET_SEARCH,
+  setSearch,
+  SearchState,
 } from '../actions/search';
 
 interface Action {
@@ -27,6 +30,8 @@ const searchReducer = (state = initialState, action: Action) => {
       return setChannel(state, payload.channel as TypeChannel);
     case CLEAR_SEARCH:
       return clearSearch();
+    case SET_SEARCH:
+      return setSearch(state, payload as SearchState);
     default:
       return state;
   }

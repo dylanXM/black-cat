@@ -4,8 +4,38 @@ import { View, Text, StyleSheet } from 'react-native';
 import TimeRangeSearch from './components/time-range-search';
 import ChannelSearch from './components/channel-search';
 import SearchButton from './components/search-button';
+import { useCallback, useEffect, useState } from 'react';
+import { initialState, SearchState, TimeRange, TypeChannel } from '@/store/actions/search';
+import { Subject } from 'rxjs';
+
+export const drawerSearchSubject$ = new Subject();
+
+export type TypeHandleChannelChange = (channel: TypeChannel) => void;
+export type TypeHandleTimeRangeChange = (timeRange: { start: string, end: string }) => void;
 
 export default function CustomDrawerContent({ navigation }: DrawerContentComponentProps) {
+  const [searchParams, setSearchParams] = useState<SearchState>({ ...initialState });
+
+  const handleChannelChange: TypeHandleChannelChange = useCallback((channel: TypeChannel) => {
+    setSearchParams((prev) => ({ ...prev, channel }));
+  }, []);
+
+  const handleTimeRangeChange: TypeHandleTimeRangeChange = useCallback((timeRange: TimeRange) => {
+    setSearchParams((prev) => ({
+      ...prev,
+      timeRange: {
+        start: timeRange.start,
+        end: timeRange.end,
+      },
+    }));
+  }, []);
+
+  useEffect(() => {
+    const subscription = drawerSearchSubject$.subscribe(() => {
+      setSearchParams({ ...initialState });
+    });
+    return () => subscription.unsubscribe();
+  }, []);
 
   return (
     <SafeContainer topColor="#453257" bottomColor="#BABABA">
@@ -13,18 +43,18 @@ export default function CustomDrawerContent({ navigation }: DrawerContentCompone
         <View style={styles.selectContainer}>
           <Text style={styles.selectTitle}>DATE</Text>
           <View style={styles.selectOptions}>
-            <TimeRangeSearch />
+            <TimeRangeSearch handleTimeRangeChange={handleTimeRangeChange} />
           </View>
         </View>
         <View style={styles.selectContainer}>
           <Text style={styles.selectTitle}>CHANNEL</Text>
           <View style={styles.selectOptions}>
-            <ChannelSearch />
+            <ChannelSearch handleChannelChange={handleChannelChange} />
           </View>
         </View>
       </View>
       <View style={styles.searchContainer}>
-        <SearchButton navigation={navigation} />
+        <SearchButton navigation={navigation} searchParams={searchParams} />
       </View>
     </SafeContainer>
   );

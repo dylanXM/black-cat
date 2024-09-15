@@ -33,6 +33,10 @@ export function useFetchActivity() {
   });
 
   const { count, data: activities } = data as GetTwittersResponse || {};
+  
+  useEffect(() => {
+    console.log('activities返回数量', activities?.length, 'count', count);
+  }, [data]);
 
   // 点击清除按钮 或者 search 条件改变后需要点击搜索按钮触发
   useEffect(() => {

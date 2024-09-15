@@ -1,5 +1,6 @@
-import { View } from 'react-native';
+import { View, Dimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+const { height } = Dimensions.get('window');
 
 import { ReactNode } from 'react';
 
@@ -16,7 +17,9 @@ export default function SafeContainer({ children, topColor, bottomColor, ...rest
   return (
     <View 
       style={{
-        flex: 1,
+        maxHeight: height,
+        height,
+        // flex: 1,
         // justifyContent: 'space-between',
         // alignItems: 'center',
         backgroundColor: '#fff',

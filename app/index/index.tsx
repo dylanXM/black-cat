@@ -19,5 +19,5 @@ export default function Index({ navigation }: IndexProps) {
 	
 	return (
 		<List navigation={navigation} />
-	)
+	);
 }

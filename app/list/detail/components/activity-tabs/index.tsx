@@ -1,9 +1,9 @@
-import { useWindowDimensions } from 'react-native';
+import { useWindowDimensions, View, StyleSheet } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import Details from './components/details';
 import { useState } from 'react';
 import Participants from './components/participants';
-import Comments from './components/comments';
+import Comments from './components/commants';
 import ActivityTabBar from './components/activity-tab-bar';
 import { routes } from './components/activity-tab-bar/data';
 
@@ -25,12 +25,20 @@ export default function ActivityTabs() {
   const [index, setIndex] = useState(0);
 
   return (
-    <TabView
-      navigationState={{ index, routes }}
-      renderScene={renderScene}
-      onIndexChange={setIndex}
-      initialLayout={{ width: layout.width }}
-      renderTabBar={({ jumpTo }) => <ActivityTabBar jumpTo={jumpTo} activeKey={index} />}
-    />
+    <View style={[styles.container, { height: layout.height - 50 }]}>
+      <TabView
+        style={{ height: layout.height - 50 }}
+        navigationState={{ index, routes }}
+        renderScene={renderScene}
+        onIndexChange={setIndex}
+        initialLayout={{ width: layout.width }}
+        renderTabBar={({ jumpTo }) => <ActivityTabBar jumpTo={jumpTo} activeKey={index} />}
+      />
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+  },
+});

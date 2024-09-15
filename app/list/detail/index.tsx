@@ -10,7 +10,6 @@ import ActivityHeader from './components/header';
 import { User } from '@/common/apis/user/user';
 import ActivityTabs from './components/activity-tabs';
 
-
 export default function Detail({ route }: { route: any }) {
   const { user } = useSelector((state: RootState) => state.user);
   const navigation = useNavigation<NavigationProp<any>>();
@@ -38,7 +37,7 @@ export default function Detail({ route }: { route: any }) {
           />
         </TouchableOpacity>
       </View>
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollContainer} scrollEnabled={true}>
         {/* 这是header */}
         <ActivityHeader title={activity.title} channel={activity.channel} user={activity.user as User} />
         {/* 这是Tabs */}
@@ -52,8 +51,7 @@ const styles = StyleSheet.create({
   back: {
     backgroundColor: '#8560A9',
   },
-  container: {
-    flex: 1,
+  scrollContainer: {
   },
   header: {
     flexDirection: 'row',

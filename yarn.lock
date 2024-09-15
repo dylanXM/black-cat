@@ -7830,10 +7830,10 @@ react-native-modals@^0.22.3:
     babel-plugin-flow-react-proptypes "^9.1.1"
     prop-types "^15.6.0"
 
-react-native-pager-view@^6.4.1:
-  version "6.4.1"
-  resolved "https://registry.npmmirror.com/react-native-pager-view/-/react-native-pager-view-6.4.1.tgz#82d04107229c19967a503de53a231dd95fcccd10"
-  integrity sha512-HnDxXTRHnR6WJ/vnOitv0C32KG9MJjxLnxswuQlBJmQ7RxF2GWOHSPIRAdZ9fLxdLstV38z9Oz1C95+t+yXkcg==
+react-native-pager-view@7.0.0-rc.0:
+  version "7.0.0-rc.0"
+  resolved "https://registry.npmmirror.com/react-native-pager-view/-/react-native-pager-view-7.0.0-rc.0.tgz#e90d3ad8089c5233954c01523c39e49042ea172c"
+  integrity sha512-6DDvsLle8T1V1BN9VexIwNhXr+bzmGuL0zPwtn3bXpnmsLDcTFY4SMJqze4P1ZRhCJNb0Usuwh+lwsaRfwmvWg==
 
 react-native-reanimated@~3.10.1:
   version "3.10.1"

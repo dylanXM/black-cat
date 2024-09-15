@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function Comments() {
+export default function Commants() {
   return (
     <View style={styles.container}>
       <Text>Comments</Text>

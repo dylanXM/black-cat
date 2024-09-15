@@ -6,9 +6,9 @@ import { useSelector } from 'react-redux';
 
 export default function Likes() {
   const { user } = useSelector((state: RootState) => state.user);
-  const { activities } = user;
+  const { likes } = user;
 
-  if ((activities || []).length === 0) {
+  if ((likes || []).length === 0) {
     return (
       <Empty text="No activity found" />
     );
@@ -17,7 +17,7 @@ export default function Likes() {
   return (
     <View style={styles.container}>
       <FlatList
-        data={activities}
+        data={likes}
         keyExtractor={(_, index) => String(index)}
         renderItem={({ item }) => (
           <View key={item.id} style={styles.cardContainer}>

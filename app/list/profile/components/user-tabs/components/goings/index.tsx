@@ -6,9 +6,9 @@ import { useSelector } from 'react-redux';
 
 export default function Goings() {
   const { user } = useSelector((state: RootState) => state.user);
-  const { activities } = user;
+  const { goings } = user;
 
-  if ((activities || []).length === 0) {
+  if ((goings || []).length === 0) {
     return (
       <Empty text="No activity found" />
     );
@@ -17,7 +17,7 @@ export default function Goings() {
   return (
     <View style={styles.container}>
       <FlatList
-        data={activities}
+        data={goings}
         keyExtractor={(_, index) => String(index)}
         renderItem={({ item }) => (
           <View key={item.id} style={styles.cardContainer}>

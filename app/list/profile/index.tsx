@@ -15,6 +15,10 @@ export default function Profile({ navigation }: IndexProps) {
   const backToHome = () => {
     navigation.goBack();
   };
+  
+  if (!user) {
+    return null;
+  }
 
   return (
     <SafeContainer topColor="#8560A9" bottomColor="transparent" restStyles={styles.back}>

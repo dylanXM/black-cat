@@ -24,8 +24,6 @@ export default function UserTabs() {
   const layout = useWindowDimensions();
   const [index, setIndex] = useState(0);
 
-  useEffect(() => setIndex(0), []);
-
   return (
     <TabView
       navigationState={{ index, routes }}

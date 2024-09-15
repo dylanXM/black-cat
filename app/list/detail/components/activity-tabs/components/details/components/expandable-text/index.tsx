@@ -11,8 +11,6 @@ const ExpandableText: React.FC<ExpandableTextProps> = ({ children, numberOfLines
   const [expanded, setExpanded] = useState(false);
   const textRef = useRef<Text>(null);
 
-  console.log('是否被省略', isTruncated, '是否展开',  expanded);
-
   const handleLayout = () => {
     if (textRef.current) {
       textRef.current.measure((x, y, width, height) => {
@@ -22,8 +20,6 @@ const ExpandableText: React.FC<ExpandableTextProps> = ({ children, numberOfLines
         // 使用文本的内容和字体信息来计算预期高度
         const lineHeight = 16; // 假设字体大小为20
         const calculatedHeight = lineHeight * numberOfLines;
-
-        console.log('实际高度', totalHeight, '预期高度', calculatedHeight);
 
         // 判断是否被省略
         setIsTruncated(totalHeight > calculatedHeight);

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import SvgTime from '@/components/svgs/Time';
 import ActionButton from './components/action-button';
 import { formatDateToMinute } from '@/common/utils/format-time';
-import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 
 export type TypeAction = 'like' | 'going';
 
@@ -15,10 +15,9 @@ interface ActivityCardProps {
 
 export default function ActivityCard({ activity, canEdit, initState }: ActivityCardProps) {
   const { title, user, channel, startTime, endTime, likes, goings, content } = activity;
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<any>>();
 
   const toDetail = () => {
-    console.log('press card');
     // todo 跳转到activities详情页
     navigation.navigate('Detail', { activity });
   };

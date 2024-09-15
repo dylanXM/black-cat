@@ -1,13 +1,13 @@
-import { useActivityDetail } from '@/app/list/detail/hooks';
 import { View, Text, StyleSheet, Image, FlatList, Dimensions } from 'react-native';
 import ExpandableText from './components/expandable-text';
 import ActivityTime from './components/activity-time';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 
 const { width } = Dimensions.get('window');
 
 export default function Details() {
-  const { activity } = useActivityDetail();
-  console.log('Details activity', JSON.stringify(activity?.likes));
+  const { activity } = useSelector((state: RootState) => state.activity);
 
   if (!activity) {
     return null;

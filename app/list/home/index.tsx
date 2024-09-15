@@ -22,8 +22,6 @@ export default function List({ navigation }: any) {
     navigation.navigate('Profile');
   };
 
-  console.log('loading....', loading);
-
   return (
     <SafeContainer topColor="#8560A9" bottomColor="transparent" restStyles={styles.back}>
       <View style={styles.header}>

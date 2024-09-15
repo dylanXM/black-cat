@@ -1,7 +1,7 @@
 import { useWindowDimensions, StyleSheet } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import Details from './components/details';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Participants from './components/participants';
 import Comments from './components/comments';
 import ActivityTabBar from './components/activity-tab-bar';
@@ -23,8 +23,6 @@ export interface ActivityTabRoute {
 export default function ActivityTabs() {
   const layout = useWindowDimensions();
   const [index, setIndex] = useState(0);
-
-  useEffect(() => setIndex(0), []);
 
   return (
     <TabView

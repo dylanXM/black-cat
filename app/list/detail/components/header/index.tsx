@@ -1,10 +1,10 @@
-import { User } from '@/common/apis/user/user';
 import { View, Image, Text, StyleSheet } from 'react-native';
-import { useActivityDetail } from '../../hooks';
 import { Twitter } from '@/common/apis/twitter';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 
 export default function ActivityHeader() {
-  const { activity } = useActivityDetail();
+  const { activity } = useSelector((state: RootState) => state.activity);
   const { channel, title, user } = (activity || {}) as Twitter;
 
   if (!activity) {

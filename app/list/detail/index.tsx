@@ -2,24 +2,28 @@ import SafeContainer from '@/components/SafeContainer';
 import SvgHome from '@/components/svgs/Home';
 import SvgLogoCat from '@/components/svgs/LogoCat';
 import { View, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Twitter } from '@/common/apis/twitter';
 import ActivityHeader from './components/header';
-import { User } from '@/common/apis/user/user';
 import ActivityTabs from './components/activity-tabs';
-import { activityDetail$ } from './hooks';
 import { useEffect } from 'react';
 import FooterOperation from './components/footer-operation';
+import { SET_ACTIVITY } from '@/store/actions/activity';
 
 export default function Detail({ route }: { route: any }) {
   const { user } = useSelector((state: RootState) => state.user);
   const navigation = useNavigation<NavigationProp<any>>();
   const { activity } = route.params as { activity: Twitter };
+  const dispatch = useDispatch();
 
-  // 将activity传递给activityDetail$中，可以在其他地方订阅activityDetail$获取activity
-  useEffect(() => activityDetail$.next(activity), [activity]);
+  useEffect(() => {
+    dispatch({ type: SET_ACTIVITY, payload: { activity } });
+    return () => {
+      dispatch({ type: SET_ACTIVITY, payload: { activity: null } });
+    };
+  }, [activity]);
 
   const back = () => {
     navigation.goBack();

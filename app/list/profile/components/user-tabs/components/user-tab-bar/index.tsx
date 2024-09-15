@@ -49,8 +49,8 @@ const styles = StyleSheet.create({
   container: {
     height: 45,
     borderColor: '#E8E8E8',
-    borderTopWidth: 2,
-    borderBottomWidth: 2,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',

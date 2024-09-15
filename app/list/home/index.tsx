@@ -1,5 +1,5 @@
 import SafeContainer from '@/components/SafeContainer';
-import { StyleSheet, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Image, FlatList, ActivityIndicator } from 'react-native';
 import SvgSearch from '@/components/svgs/Search';
 import SvgLogoCat from '@/components/svgs/LogoCat';
 import Tip from './components/tip';
@@ -22,8 +22,10 @@ export default function List({ navigation }: any) {
     navigation.navigate('Profile');
   };
 
+  console.log('loading....', loading);
+
   return (
-    <SafeContainer topColor='#8560A9' bottomColor='transparent' restStyles={styles.back}>
+    <SafeContainer topColor="#8560A9" bottomColor="transparent" restStyles={styles.back}>
       <View style={styles.header}>
         <TouchableOpacity onPress={openDrawer}>
           <SvgSearch style={styles.headerLeftBtn} />
@@ -39,17 +41,25 @@ export default function List({ navigation }: any) {
       {tipVisible && <Tip activitiesLength={count} />}
       <View style={styles.activityContainer}>
         {
-          count === 0 && isDone && <Empty text={loading ? 'Fetching data...' : 'No activity found'} />
+          count === 0 || isDone && <Empty text={loading ? 'Fetching data...' : 'No activity found'} />
         }
-        <View style={{ marginTop: 16 }}>
-          {
-            activities?.map((activity, index) => (
-              <View key={index}>
-                {index !== 0 && <View style={styles.divider} />}
-                <ActivityCard activity={activity} initState={{ like: true, going: true }} canEdit={true} />
+        <View style={styles.flatListContainer}>
+          <FlatList
+            data={activities}
+            keyExtractor={(_, index) => String(index)}
+            renderItem={({ item }) => (
+              <View key={item.id} style={styles.cardContainer}>
+                <ActivityCard activity={item} initState={{ like: true, going: true }} canEdit={true} />
               </View>
-            ))
-          }
+            )}
+            // refreshControl={
+            //   <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
+            // }
+            ItemSeparatorComponent={() => <View style={styles.divider} />}
+            onEndReachedThreshold={0.1}
+            onEndReached={fetchNextPageActivities}
+            ListFooterComponent={loading ? <ActivityIndicator /> : null}
+          />
         </View>
       </View>
     </SafeContainer>
@@ -89,10 +99,14 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: '#E8E8E8',
     marginLeft: 16,
-    marginTop: 16,
-    marginBottom: 16,
   },
   activityContainer: {
     flex: 1,
+  },
+  flatListContainer: {
+  },
+  cardContainer: {
+    paddingTop: 16,
+    marginBottom: 16,
   }
 });

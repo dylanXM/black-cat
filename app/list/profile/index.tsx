@@ -8,8 +8,6 @@ import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useSelector } from 'react-redux';
 import UserInfo from './components/user-info';
 import UserTabs from './components/user-tabs';
-import { ScrollView } from 'react-native-gesture-handler';
-
 
 export default function Profile({ navigation }: IndexProps) {
   const { user } = useSelector((state: RootState) => state.user);
@@ -19,8 +17,8 @@ export default function Profile({ navigation }: IndexProps) {
   };
 
   return (
-    <SafeContainer topColor='#8560A9' bottomColor='transparent' restStyles={styles.back}>
-      <ScrollView contentContainerStyle={styles.container} scrollEnabled={true}>
+    <SafeContainer topColor="#8560A9" bottomColor="transparent" restStyles={styles.back}>
+      <View style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity onPress={backToHome}>
             <SvgHome style={[styles.headerLeftBtn, { fill: '#453257' }]} />
@@ -33,7 +31,7 @@ export default function Profile({ navigation }: IndexProps) {
         </View>
         <UserInfo />
         <UserTabs />
-      </ScrollView>
+      </View>
     </SafeContainer>
   );
 }

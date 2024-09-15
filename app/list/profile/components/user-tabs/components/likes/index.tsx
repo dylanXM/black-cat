@@ -1,6 +1,6 @@
 import ActivityCard from '@/components/activity-card';
 import { RootState } from '@/store';
-import { StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { useSelector } from 'react-redux';
 
 export default function Likes() {
@@ -9,7 +9,7 @@ export default function Likes() {
 
   return (
     <View style={styles.container}>
-      {
+      {/* {
         activities?.map((activity, index) => {
           const { id } = activity;
           return (
@@ -23,7 +23,17 @@ export default function Likes() {
             </View>
           )
         })
-      }
+      } */}
+      <FlatList
+        data={activities}
+        keyExtractor={(_, index) => String(index)}
+        renderItem={({ item }) => (
+          <View key={item.id} style={styles.cardContainer}>
+            <ActivityCard activity={item} initState={{ like: true, going: true }} canEdit={true} />
+          </View>
+        )}
+        ItemSeparatorComponent={() => <View style={styles.divider} />}
+      />
     </View>
   );
 }
@@ -40,5 +50,9 @@ const styles = StyleSheet.create({
     marginLeft: 16,
     marginTop: 16,
     marginBottom: 16,
-  }
+  },
+  cardContainer: {
+    paddingTop: 16,
+    paddingBottom: 16,
+  },
 });

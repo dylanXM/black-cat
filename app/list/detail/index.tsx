@@ -21,7 +21,7 @@ export default function Detail({ route }: { route: any }) {
   };
 
   return (
-    <SafeContainer topColor='#8560A9' bottomColor='transparent' restStyles={styles.back}>
+    <SafeContainer topColor="#8560A9" bottomColor="transparent" restStyles={styles.back}>
       <ScrollView contentContainerStyle={styles.container} scrollEnabled={true}>
         <View style={styles.header}>
           <TouchableOpacity onPress={back}>

@@ -35,7 +35,6 @@ const instance = axios.create({
 // 封装通用的 Axios 请求函数
 export async function request<T>(params: RequestParams): Promise<T> {
   const token = await getToken();
-  console.log('request token', token);
   const res = await instance({
     ...params,
     headers: {

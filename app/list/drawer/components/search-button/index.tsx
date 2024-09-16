@@ -1,4 +1,4 @@
-import { fetchActivitiesSubject$, showTipSubject$ } from '@/app/list/home/hooks';
+import { fetchActivitiesSubject$ } from '@/app/list/home/hooks';
 import { useSearchTip } from '@/app/list/hooks/use-search-tip';
 import SvgSearch from '@/components/svgs/Search';
 import { SearchState } from '@/store/actions/search';
@@ -21,13 +21,11 @@ export default function SearchButton({ navigation, searchParams }: SearchButtonP
     const setSearch$ = from(Promise.resolve(disPatch({ type: 'SET_SEARCH', payload: searchParams })));
     setSearch$.pipe(
       switchMap(() => timer(300).pipe(
-        switchMap(() => from(Promise.resolve(fetchActivitiesSubject$.next({}))))
-      ))
+        switchMap(() => from(Promise.resolve(fetchActivitiesSubject$.next({})))),
+      )),
     ).subscribe();
     // 关闭抽屉
     navigation.closeDrawer();
-    // 显示提示
-    showTipSubject$.next(true);
   };
 
   return (

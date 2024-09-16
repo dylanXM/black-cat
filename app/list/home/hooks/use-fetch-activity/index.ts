@@ -5,6 +5,7 @@ import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { Subject } from 'rxjs';
 import { useLatest } from '@/hooks/useLatest';
+import { showTipSubject$ } from '../use-show-tip';
 
 export const fetchActivitiesSubject$ = new Subject();
 const pageSize = 5;
@@ -30,6 +31,10 @@ export function useFetchActivity() {
     queryKey: [{ queryIdentifier: 'fetchTwitters', ...searchParams }],
     queryFn: async () => {
       const res = await getTwitters({ ...searchParams });
+      // 如果有搜索条件，需要展示搜索结果的Tip
+      if (searchParams.channel || (searchParams.startDate && searchParams.endDate)) {
+        showTipSubject$.next(true);
+      }
       return res;
     },
   });

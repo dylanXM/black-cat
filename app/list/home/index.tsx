@@ -9,7 +9,7 @@ import { RootState } from '@/store';
 import ActivityCard from '@/components/activity-card';
 import Empty from '@/components/empty';
 import Footer from './components/footer';
-import { useMemo, useRef } from 'react';
+import { useRef } from 'react';
 
 export default function List({ navigation }: any) {
   const { user } = useSelector((state: RootState) => state.user);
@@ -69,7 +69,7 @@ export default function List({ navigation }: any) {
             ItemSeparatorComponent={() => <View style={styles.divider} />}
             onEndReachedThreshold={0.3}
             onEndReached={loadMore}
-            ListFooterComponent={<Footer isDone={isDone} />}
+            ListFooterComponent={<Footer isDone={isDone} count={count} />}
             scrollEnabled={!loading}
           />
         </View>

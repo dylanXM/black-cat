@@ -1,7 +1,6 @@
 import React from 'react';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { TypeCurrentIndex } from '../../hooks';
-import { useDispatch } from 'react-redux';
 import { TimeRange } from '@/store/actions/search';
 
 interface DatePickerProps {
@@ -26,7 +25,6 @@ export default function DatePicker({
   const today = new Date();
   const value = currentIndex === 'from' ? startDate : endDate;
   const minimumDate = currentIndex === 'from' ? today : startDate;
-  const dispatch = useDispatch();
 
   const handleConfirm = (date: Date) => {
     const timeRange: Partial<TimeRange> = {};
@@ -39,11 +37,6 @@ export default function DatePicker({
     }
     // 关闭时间选择器
     closeDatePicker();
-    // 设置搜索条件
-    dispatch({
-      type: 'SET_TIME_RANGE',
-      payload: { timeRange }
-    });
   };
 
   return (

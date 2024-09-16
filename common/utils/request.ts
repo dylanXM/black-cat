@@ -12,12 +12,11 @@ export interface ApiType<T> {
 async function getToken() {
   let token = '';
   try {
-    token = await AsyncStorage.getItem('token') || '';
-    token = JSON.parse(token);
+    token = (await AsyncStorage.getItem('token')) || '';
+    return token;
   } catch {
     return '';
   }
-  return token;
 }
 
 // 定义请求参数的类型
@@ -30,12 +29,13 @@ interface RequestParams {
 }
 
 const instance = axios.create({
-  timeout: 5000, // 设置超时时间
+  timeout: 10000, // 设置超时时间
 });
 
 // 封装通用的 Axios 请求函数
 export async function request<T>(params: RequestParams): Promise<T> {
   const token = await getToken();
+  console.log('request token', token);
   const res = await instance({
     ...params,
     headers: {

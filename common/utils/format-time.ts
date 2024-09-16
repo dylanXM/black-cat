@@ -20,11 +20,11 @@ export function formatDateToDay(date: Date) {
 
 // 将 Date 转换为 '14 May 2016 12:22' 格式
 export function formatDateToMinute(date: Date) {
-  let monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
       'July', 'August', 'September', 'October', 'November', 'December'];
-  let day = ("0" + date.getDate()).slice(-2);
-  let year = date.getFullYear();
-  let hours = ("0" + date.getHours()).slice(-2);
-  let minute = ("0" + date.getMinutes()).slice(-2);
+  const day = ('0' + date.getDate()).slice(-2);
+  const year = date.getFullYear();
+  const hours = ('0' + date.getHours()).slice(-2);
+  const minute = ('0' + date.getMinutes()).slice(-2);
   return `${day}${monthNames[date.getMonth()]} ${year} ${hours}:${minute}`;
 }

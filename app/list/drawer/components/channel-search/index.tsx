@@ -35,7 +35,7 @@ export default function ChannelSearch({ handleChannelChange }: ChannelSearchProp
     });
     return () => {
       subscription.unsubscribe();
-    }
+    };
   }, []);
 
   return (

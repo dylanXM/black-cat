@@ -8,6 +8,7 @@ import { useDatePicker } from './hooks';
 import { formatDateToDay } from '@/common/utils/format-time';
 import { Subject } from 'rxjs';
 import { TypeHandleTimeRangeChange } from '../..';
+import React from 'react';
 import { color_complement, color_complement_light, color_primary, color_primary_dark } from '@/constants/Colors';
 
 export const timeRangeSearchSubject$ = new Subject();
@@ -64,7 +65,7 @@ export default function TimeRangeSearch({ handleTimeRangeChange }: TimeRangeSear
     });
     return () => {
       subscription.unsubscribe();
-    }
+    };
   }, []);
 
   return (

@@ -11,14 +11,13 @@ interface UserTabBarProps {
   activeKey: number;
 }
 
-const userCountKeys = ['activityIds', 'goingIds', 'likeIds'] as const;
-type TypeCount = typeof userCountKeys[number];
+type TypeCount = 'activityIds' | 'goingIds' | 'likeIds';
 
 const countMap: Record<string, TypeCount> = {
   'likes': 'likeIds',
   'goings': 'goingIds',
   'pasts': 'activityIds',
-}
+};
 
 export default function UserTabBar({ jumpTo, activeKey }: UserTabBarProps) {
   const { user } = useSelector((state: RootState) => state.user);

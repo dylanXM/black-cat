@@ -5,6 +5,7 @@ import SvgCheckOutLine from '@/components/svgs/CheckOutline';
 import SvgCheck from '@/components/svgs/Check';
 import SvgPastOutline from '@/components/svgs/PastOutline';
 import SvgPast from '@/components/svgs/Past';
+import React from 'react';
 import { color_complement_dark_1 } from '@/constants/Colors';
 
 export const styles = StyleSheet.create({

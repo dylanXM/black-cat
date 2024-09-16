@@ -53,7 +53,7 @@ export default function Tip({ activitiesLength }: TipProps) {
       </View>
       <Text style={styles.searchTip}>Searched for {tip}</Text>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({

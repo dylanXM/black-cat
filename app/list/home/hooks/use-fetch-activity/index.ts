@@ -33,7 +33,6 @@ export function useFetchActivity() {
     queryFn: async () => {
       const res = await getTwitters({ ...searchParams });
       // 如果有搜索条件，需要展示搜索结果的Tip
-      console.log('searchParams', JSON.stringify(searchParams));
       if (searchParams.channel || (searchParams.startDate && searchParams.endDate)) {
         showTipSubject$.next(true);
       }
@@ -56,6 +55,7 @@ export function useFetchActivity() {
   }, [(data as GetTwittersResponse)?.data]);
   
   useEffect(() => {
+    // eslint-disable-next-line no-console
     console.log('activities返回数量', activities?.length, 'count', count);
   }, [activities, count]);
 

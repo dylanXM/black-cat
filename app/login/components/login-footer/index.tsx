@@ -18,7 +18,7 @@ export default function LoginFooter({ loading }: LoginFooterProps) {
 
   return (
     <Text style={styles.signinText}>SIGN IN</Text>
-  )
+  );
 }
 
 const styles = StyleSheet.create({

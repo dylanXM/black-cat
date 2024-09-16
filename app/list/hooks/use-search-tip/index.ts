@@ -1,5 +1,4 @@
 import { formatTimeToDay } from '@/common/utils/format-time';
-import { RootState } from '@/store';
 import { SearchState } from '@/store/actions/search';
 import { useMemo } from 'react';
 

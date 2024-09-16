@@ -14,7 +14,8 @@ async function getToken() {
   try {
     token = await AsyncStorage.getItem('token') || '';
     token = JSON.parse(token);
-  } catch(error) {
+  } catch {
+    return '';
   }
   return token;
 }
@@ -34,23 +35,19 @@ const instance = axios.create({
 
 // 封装通用的 Axios 请求函数
 export async function request<T>(params: RequestParams): Promise<T> {
-  try {
-    const token = await getToken();
-    const res = await instance({
-      ...params,
-      headers: {
-        'Content-Type': 'application/json', // 设置请求头
-        'Authorization': `Bearer ${token}` // 设置请求头
-      },
-      method: params.method,
-      url: `${API_URL}${params.url}`,
-      data: params.data,
-      ...params.config,
-    });
-    return res.data as T;
-  } catch (error) {
-    throw error;
-  }
+  const token = await getToken();
+  const res = await instance({
+    ...params,
+    headers: {
+      'Content-Type': 'application/json', // 设置请求头
+      'Authorization': `Bearer ${token}` // 设置请求头
+    },
+    method: params.method,
+    url: `${API_URL}${params.url}`,
+    data: params.data,
+    ...params.config,
+  });
+  return res.data as T;
 }
 
 // 封装通用的fetch请求函数

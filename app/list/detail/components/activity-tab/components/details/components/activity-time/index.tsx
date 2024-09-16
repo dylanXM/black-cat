@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
 const timeIconMap = {
   start: <SvgDateFrom fill={color_complement} style={styles.icon} />,
   end: <SvgDateTo fill={color_complement} style={styles.icon} />,
-}
+};
 
 export default function ActivityTime({ time, type }: ActivityTimeProps) {
   const date = formatDateString(time);

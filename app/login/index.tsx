@@ -51,7 +51,7 @@ export default function Login({ navigation }: IndexProps) {
 	return (
 		<View style={styles.container}>
 			<View style={styles.content}>
-				<Image style={styles.backgroundImage} source={require('@/assets/images/Street-Dance-01.jpg')} />
+				<Image style={styles.backgroundImage} source={{ uri: '@/assets/images/Street-Dance-01.jpg' }} />
 				<View style={styles.info}>
 					<Text style={styles.slogan}>FIND THE MOST LOVED ACTIVITIES</Text>
 					<Text style={styles.title}>BLACK CAT</Text>
@@ -82,7 +82,7 @@ export default function Login({ navigation }: IndexProps) {
 				<LoginFooter loading={isLoading} />
 			</TouchableOpacity>
 		</View>
-	)
+	);
 }
 
 const styles = StyleSheet.create({

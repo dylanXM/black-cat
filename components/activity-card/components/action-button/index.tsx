@@ -35,11 +35,11 @@ export default function ActionButton({ initCount, initState, canEdit }: ActionBu
                 <Text style={styles.actionText}>{ isActive ? activeText : `${count}${text}` }</Text>
               </View>
             </TouchableOpacity>
-          )
+          );
         })
       }
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({

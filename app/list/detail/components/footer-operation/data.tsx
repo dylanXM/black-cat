@@ -1,4 +1,3 @@
-import SvgCommentSingle from '@/components/svgs/CommentSingle';
 import SvgLikeOutline from '@/components/svgs/LikeOutline';
 import SvgLike from '@/components/svgs/Like';
 import SvgCheckOutLine from '@/components/svgs/CheckOutline';
@@ -25,4 +24,4 @@ export const operationMap = {
     text: 'Join',
     ActiveIcon: <SvgCheck style={styles.icon} fill={color_primary} />,
   }
-}
+};

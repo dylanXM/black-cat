@@ -1,4 +1,4 @@
-import { Twitter } from "@/common/apis/twitter";
+import { Twitter } from '@/common/apis/twitter';
 
 export const SET_ACTIVITY = 'SET_ACTIVITY';
 

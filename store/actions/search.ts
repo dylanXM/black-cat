@@ -1,4 +1,4 @@
-import { getStartEndTimestamps } from "@/common/utils/search-time";
+import { getStartEndTimestamps } from '@/common/utils/search-time';
 
 export const SET_TIME_RANGE = 'SET_TIME_RANGE';
 export const SET_CHANNEL = 'SET_CHANNEL';
@@ -38,7 +38,7 @@ export const initialState: SearchState = {
     end: '',
   },
   channel: '' as TypeChannel,
-}
+};
 
 export const setTimeRange = (state: SearchState, timeRange: TimeRange) => {
   return {
@@ -68,4 +68,4 @@ export const setSearch = (state: SearchState, search: SearchState) => {
     ...state,
     ...search,
   };
-}
+};

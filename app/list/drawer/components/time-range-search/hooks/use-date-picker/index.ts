@@ -32,7 +32,6 @@ export function useDatePicker() {
   }, []);
 
   const closeDatePicker = useCallback((callback?: () => void) => {
-    console.log('closeDatepicker', callback);
     setDatePickerVisible(false);
     callback?.();
   }, []);
@@ -52,5 +51,5 @@ export function useDatePicker() {
     showEndDatePicker,
     closeDatePicker,
     clearCurrentIndex,
-  }
+  };
 }

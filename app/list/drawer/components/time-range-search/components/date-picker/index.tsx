@@ -1,5 +1,5 @@
 import React from 'react';
-import DateTimePickerModal from "react-native-modal-datetime-picker";
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { TypeCurrentIndex } from '../../hooks';
 import { TimeRange } from '@/store/actions/search';
 import { TimeRangeSearchProps } from '../..';
@@ -33,7 +33,6 @@ export default function DatePicker({
     if (currentIndex === 'from') {
       closeDatePicker(() => onChangeStartDate(date));
       timeRange['start'] = String(date.getTime());
-      if (endDate.getTime() < date.getTime()) {}
       timeRange = {
         start: String(date.getTime()),
         end: endDate.getTime() < date.getTime() ?  String(date.getTime()) : String(endDate.getTime()),
@@ -61,5 +60,5 @@ export default function DatePicker({
         onCancel={closeDatePicker}
       />
     </>
-  )
+  );
 }

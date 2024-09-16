@@ -17,5 +17,17 @@ export default [
       quotes: ['error', 'single'],
       'react/prop-types': 'off'
     }
+  },
+  // 排除文件
+  {
+    ignores: [
+      'node_modules/',
+      'dist/',
+      'build/',
+      'service/',
+      'components/svgs/',
+      'scripts/',
+      'babel.config.js',
+    ]
   }
 ];

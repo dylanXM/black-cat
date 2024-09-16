@@ -20,7 +20,7 @@ export default function Index({ navigation }: IndexProps) {
 	}
 	
 	return (
-		// eslint-disable-next-line react/react-in-jsx-scope
+		 
 		<List />
 	);
 }

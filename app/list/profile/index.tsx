@@ -3,7 +3,7 @@ import SafeContainer from '@/components/SafeContainer';
 import SvgLogoCat from '@/components/svgs/LogoCat';
 import SvgHome from '@/components/svgs/Home';
 import { RootState } from '@/store';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useSelector } from 'react-redux';
 import UserInfo from './components/user-info';

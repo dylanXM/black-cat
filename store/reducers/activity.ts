@@ -17,6 +17,6 @@ const activityReducer = (state = initialState, action: Action) => {
     default:
       return state;
   }
-}
+};
 
 export default activityReducer;

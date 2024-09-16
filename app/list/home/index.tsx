@@ -78,7 +78,7 @@ export default function List({ navigation }: any) {
         </View>
       </View>
     </SafeContainer>
-  )
+  );
 }
 
 const styles = StyleSheet.create({

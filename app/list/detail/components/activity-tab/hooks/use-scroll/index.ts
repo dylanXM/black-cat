@@ -1,6 +1,6 @@
-import { useLatest } from "@/hooks/useLatest";
-import { useCallback, useEffect, useState } from "react";
-import { Subject } from "rxjs";
+import { useLatest } from '@/hooks/useLatest';
+import { useCallback, useEffect, useState } from 'react';
+import { Subject } from 'rxjs';
 
 export type TypeTabKeys = 'details' | 'comments' | 'participants';
 

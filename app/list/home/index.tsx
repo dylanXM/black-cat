@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import ActivityCard from '@/components/activity-card';
 import Empty from '@/components/empty';
+import Footer from './components/footer';
 
 export default function List({ navigation }: any) {
   const { user } = useSelector((state: RootState) => state.user);
@@ -57,7 +58,7 @@ export default function List({ navigation }: any) {
             ItemSeparatorComponent={() => <View style={styles.divider} />}
             onEndReachedThreshold={0.2}
             onEndReached={fetchNextPageActivities}
-            ListFooterComponent={loading ? <ActivityIndicator style={styles.spinner} /> : null}
+            ListFooterComponent={<Footer loading={loading} isDone={isDone} />}
           />
         </View>
       </View>

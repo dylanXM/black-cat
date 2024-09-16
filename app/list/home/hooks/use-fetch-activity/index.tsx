@@ -66,9 +66,11 @@ export function useFetchActivity() {
 
   // 页码加 1
   const fetchNextPageActivities = useCallback(() => {
-    console.log('fetchNextPageActivities', page);
+    if (isDone || isLoading) {
+      return;
+    }
     setPage(prev => prev + 1);
-  }, []);
+  }, [isLoading]);
 
   return { isDone, activities, loading: isLoading, fetchNextPageActivities, count };
 }

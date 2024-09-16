@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     width: 67,
-    marginTop: 17,
+    marginTop: 20,
   },
   titleText: {
     color: '#67616D',

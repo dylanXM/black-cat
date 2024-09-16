@@ -6,6 +6,7 @@ import { RootState } from '@/store';
 import SvgLikeOutline from '@/components/svgs/LikeOutline';
 import DynamicImageRow from '../participants/components/dynamic-image-row';
 import ActivityComments from '@/components/activity-comments';
+import SvgCheckOutline from '@/components/svgs/CheckOutline';
 
 const { width } = Dimensions.get('window');
 
@@ -63,7 +64,17 @@ export default function Details() {
         </View>
       </View>
       <View style={styles.divider} />
-      <View style={styles.imageContainer}>
+      <View style={styles.participantsContainer}>
+        <View style={styles.titleContainer}>
+          <SvgCheckOutline style={styles.icon} fill="#AC8EC9" />
+          <Text style={styles.titleText}>{activity?.goingsUsers?.length} going</Text>
+        </View>
+        <View>
+          <DynamicImageRow images={activity?.goingsUsers?.map((user) => user.avatar) as string[] || []} />
+        </View>
+      </View>
+      <View style={styles.divider} />
+      <View style={styles.participantsContainer}>
         <View style={styles.titleContainer}>
           <SvgLikeOutline style={styles.icon} fill="#AC8EC9" />
           <Text style={styles.titleText}>{activity?.likesUsers?.length} likes</Text>
@@ -100,14 +111,14 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   divider: {
-    marginBottom: 12,
     borderColor: '#E8E8E8',
     borderTopWidth: 1,
     marginLeft: 16,
   },
   noteContainer: {
     marginLeft: 16,
-    marginBottom: 12,
+    marginBottom: 16,
+    marginTop: 12,
   },
   note: {
     flexDirection: 'row',
@@ -155,12 +166,12 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     width: 67,
-    marginTop: 17,
+    marginTop: 20,
   },
   titleText: {
     color: '#67616D',
     fontSize: 12,
-    marginTop: -3,
+    marginTop: -2,
   },
   icon: {
     width: 12,
@@ -171,4 +182,8 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: '#E8E8E8',
   },
+  participantsContainer: {
+    flexDirection: 'row',
+    marginLeft: 16,
+  }
 });

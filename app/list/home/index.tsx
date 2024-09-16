@@ -56,7 +56,7 @@ export default function List({ navigation }: any) {
             // }
             nestedScrollEnabled={false}
             ItemSeparatorComponent={() => <View style={styles.divider} />}
-            onEndReachedThreshold={0.2}
+            onEndReachedThreshold={0.3}
             onEndReached={fetchNextPageActivities}
             ListFooterComponent={<Footer isDone={isDone} />}
             scrollEnabled={!loading}

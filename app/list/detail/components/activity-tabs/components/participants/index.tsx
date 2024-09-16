@@ -9,8 +9,6 @@ import ActivityComments from '@/components/activity-comments';
 export default function Participants() {
   const { activity } = useSelector((state: RootState) => state.activity);
 
-  console.log('Participants activity', JSON.stringify(activity?.comments));
-
   if (!activity) {
     return null;
   }

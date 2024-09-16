@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
   container: {
     height: 'auto',
     flex: 1,
-    overflow: 'scroll',
   },
   header: {
     flexDirection: 'row',

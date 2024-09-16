@@ -14,15 +14,17 @@ let renderTimes = 1;
 export function useFetchActivity() {
   const [page, setPage] = useState(1);
   const search = useSelector((state: RootState) => state.search);
+  const [refreshCount, setRefreshCount] = useState(0);
 
-  const searchParams = useMemo((): GetTwittersParams => {
+  const searchParams = useMemo((): GetTwittersParams & { refreshCount: number } => {
     return {
       ...search,
       page,
       pageSize,
       channel: search.channel === 'All' ? '' : search.channel || '',
+      refreshCount,
     };
-  }, [page, search]);
+  }, [page, search, refreshCount]);
 
   const { data, isLoading } = useQuery({
     queryKey: [{ queryIdentifier: 'fetchTwitters', ...searchParams }],
@@ -39,6 +41,7 @@ export function useFetchActivity() {
 
   const pageRef = useLatest(page);
   useEffect(() => {
+    setRefreshing(false);
     const list = (data as GetTwittersResponse)?.data || [];
     setActivities(prev => {
       if (pageRef.current === 1) {
@@ -65,18 +68,37 @@ export function useFetchActivity() {
   const isDone = count === 0 || (count !== 0 && (activities || []).length === count);
 
   // 页码加 1
-  const fetchNextPageActivities = useCallback(() => {
+  const loadMore = useCallback(() => {
     if (isDone || isLoading) {
       return;
     }
     setPage(prev => prev + 1);
   }, [isLoading, isDone]);
 
+  const [refreshing, setRefreshing] = useState(false);
+  // refresh
+  const refresh = useCallback(() => {
+    if (isLoading) {
+      return;
+    }
+    setRefreshing(true);
+    console.log('pageRef.current', pageRef.current);
+    if (pageRef.current === 1) {
+      setRefreshCount(prev => prev + 1);
+      return;
+    }
+    setPage(1);
+  }, [isLoading]);
+
+  console.log('refreshing', refreshing);  
+
   return {
     isDone,
     activities,
     loading: isLoading,
-    fetchNextPageActivities,
+    loadMore,
     count,
+    refresh,
+    refreshing,
   };
 }

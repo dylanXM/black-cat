@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   },
   spinner: {
     marginRight: 8,
+    color: '#f0f0f0',
   },
   text: {
     color: '#67616D',

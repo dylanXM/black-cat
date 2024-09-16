@@ -9,11 +9,13 @@ import { RootState } from '@/store';
 import ActivityCard from '@/components/activity-card';
 import Empty from '@/components/empty';
 import Footer from './components/footer';
+import { useMemo, useRef } from 'react';
 
 export default function List({ navigation }: any) {
   const { user } = useSelector((state: RootState) => state.user);
-  const { activities, isDone, loading, fetchNextPageActivities, count } = useFetchActivity();
+  const { activities, isDone, loading, loadMore, count, refresh, refreshing } = useFetchActivity();
   const { tipVisible } = useShowTip();
+  const flatListRef = useRef<FlatList<any>>(null);
 
   const openDrawer = () => {
     navigation.openDrawer();
@@ -23,13 +25,22 @@ export default function List({ navigation }: any) {
     navigation.navigate('Profile');
   };
 
+  const scrollToTop = () => {
+    flatListRef.current?.scrollToOffset({
+      offset: 0,
+      animated: true,
+    });
+  };
+
   return (
     <SafeContainer topColor="#8560A9" bottomColor="transparent" restStyles={styles.back}>
       <View style={styles.header}>
         <TouchableOpacity onPress={openDrawer}>
           <SvgSearch style={styles.headerLeftBtn} />
         </TouchableOpacity>
-        <SvgLogoCat style={[styles.headerLogo, { fill: '#D5EF7F' }]} />
+        <TouchableOpacity onPress={scrollToTop}>
+          <SvgLogoCat style={[styles.headerLogo, { fill: '#D5EF7F' }]} />
+        </TouchableOpacity>
         <TouchableOpacity onPress={toProfile}>
           <Image
             style={styles.headerRightAvatar}
@@ -44,6 +55,7 @@ export default function List({ navigation }: any) {
         }
         <View style={styles.flatListContainer}>
           <FlatList
+            ref={flatListRef}
             data={activities}
             keyExtractor={(_, index) => String(index)}
             renderItem={({ item }) => (
@@ -51,13 +63,12 @@ export default function List({ navigation }: any) {
                 <ActivityCard activity={item} initState={{ like: true, going: true }} canEdit={true} />
               </View>
             )}
-            // refreshControl={
-            //   <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
-            // }
+            refreshing={refreshing}
+            onRefresh={refresh}
             nestedScrollEnabled={false}
             ItemSeparatorComponent={() => <View style={styles.divider} />}
             onEndReachedThreshold={0.3}
-            onEndReached={fetchNextPageActivities}
+            onEndReached={loadMore}
             ListFooterComponent={<Footer isDone={isDone} />}
             scrollEnabled={!loading}
           />

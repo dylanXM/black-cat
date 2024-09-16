@@ -3,6 +3,7 @@ import SvgCommentSingle from '@/components/svgs/CommentSingle';
 import { useOperation } from './hooks';
 import { operationMap } from './data';
 import Comment from './components/comment';
+import { color_complement, color_complement_dark_2, color_primary, color_primary_dark } from '@/constants/Colors';
 
 export default function FooterOperation() {
   const {
@@ -23,7 +24,7 @@ export default function FooterOperation() {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={handleToggleComment} style={[styles.commonButton, styles.comment]} activeOpacity={0.9}>
-        <SvgCommentSingle style={styles.icon} fill="#453257" />
+        <SvgCommentSingle style={styles.icon} fill={color_primary_dark} />
       </TouchableOpacity>
       <TouchableOpacity onPress={handleToggleLike} style={[styles.commonButton, styles.like]} activeOpacity={0.9}>
         {isLike ? operationMap['like'].ActiveIcon : operationMap['like'].icon}
@@ -51,22 +52,22 @@ const styles = StyleSheet.create({
   },
   comment: {
     width: '30%',
-    backgroundColor: '#8560A9',
+    backgroundColor: color_primary,
   },
   like: {
     width: '30%',
-    backgroundColor: '#8560A9',
+    backgroundColor: color_primary,
   },
   join: {
     width: '40%',
-    backgroundColor: '#D5EF7F',
+    backgroundColor: color_complement,
   },
   icon: {
     width: 24,
     height: 24,
   },
   text: {
-    color: '#788C36',
+    color: color_complement_dark_2,
     fontSize: 14,
     marginLeft: 12,
   }

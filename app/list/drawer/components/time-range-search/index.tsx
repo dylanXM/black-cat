@@ -8,6 +8,7 @@ import { useDatePicker } from './hooks';
 import { formatDateToDay } from '@/common/utils/format-time';
 import { Subject } from 'rxjs';
 import { TypeHandleTimeRangeChange } from '../..';
+import { color_complement, color_complement_light, color_primary, color_primary_dark } from '@/constants/Colors';
 
 export const timeRangeSearchSubject$ = new Subject();
 
@@ -108,7 +109,7 @@ export default function TimeRangeSearch({ handleTimeRangeChange }: TimeRangeSear
           <View style={styles.triangle} />
           <View style={styles.pickerRange}>
             <View style={styles.picker}>
-              <SvgDateFrom style={[styles.pickerIcon, { fill: '#D5EF7F' }]} />
+              <SvgDateFrom style={[styles.pickerIcon, { fill: color_complement }]} />
               <TouchableOpacity onPress={showStartDatePicker}>
                 <Text style={[styles.pickerRes, currentIndex === 'from' && styles.activePickerRes]}>
                   {formatDateToDay(startDate)}
@@ -117,7 +118,7 @@ export default function TimeRangeSearch({ handleTimeRangeChange }: TimeRangeSear
             </View>
             <Text style={styles.pickerDivider}>-</Text>
             <View style={styles.picker}>
-              <SvgDateTo style={[styles.pickerIcon, { fill: '#D5EF7F' }]} />
+              <SvgDateTo style={[styles.pickerIcon, { fill: color_complement }]} />
               <TouchableOpacity onPress={showEndDatePicker}>
                 <Text style={[styles.pickerRes, currentIndex === 'to' && styles.activePickerRes]}>
                 {formatDateToDay(endDate)}
@@ -145,10 +146,10 @@ const styles = StyleSheet.create({
     color: '#E8E8E8',
   },
   activeContainer: {
-    backgroundColor: '#E5F7A9',
+    backgroundColor: color_complement_light,
   },
   activeText: {
-    color: '#453257',
+    color: color_primary_dark,
   },
   datePickerContainer: {
     marginBottom: 8,
@@ -186,12 +187,12 @@ const styles = StyleSheet.create({
     marginRight: 6,
   },
   pickerDivider: {
-    color: '#8560A9',
+    color: color_primary,
   },
   pickerRes: {
-    color: '#8560A9',
+    color: color_primary,
   },
   activePickerRes: {
-    backgroundColor: '#D5EF7F',
+    backgroundColor: color_complement,
   },
 });

@@ -115,10 +115,10 @@ npx @svgr/cli --native -d ./components/svgs ./assets/svgs
 ```js
 import LogoCat from '@/components/svgs/LogoCat';
 
-<LogoCat style={[styles.logoCat, { fill: '#D5EF7F' }]} />
+<LogoCat style={[styles.logoCat, { fill: '#fff' }]} />
 
 // 或者
-<LogoCat style={styles.logoCat} fill="#D5EF7F" />
+<LogoCat style={styles.logoCat} fill="fff" />
 
 ```
 

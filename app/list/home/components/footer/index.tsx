@@ -1,3 +1,4 @@
+import { color_primary_neutral } from '@/constants/Colors';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 
 interface FooterProps {
@@ -42,6 +43,6 @@ const styles = StyleSheet.create({
     color: '#f0f0f0',
   },
   text: {
-    color: '#67616D',
+    color: color_primary_neutral,
   }
 });

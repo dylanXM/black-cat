@@ -2,6 +2,7 @@ import SvgDateFrom from '@/components/svgs/DateFrom';
 import SvgDateTo from '@/components/svgs/DateTo';
 import { View, Text, StyleSheet } from 'react-native';
 import { formatDateString, formatTimeString } from './util';
+import { color_complement, color_complement_dark_1, color_primary_neutral } from '@/constants/Colors';
 
 type TypeTime = 'start' | 'end';
 
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
   },
   dateText: {
     fontSize: 16,
-    color: '#67616D',
+    color: color_primary_neutral,
     marginLeft: 4,
   },
   timeContainer: {
@@ -34,19 +35,19 @@ const styles = StyleSheet.create({
   },
   time1Text: {
     fontSize: 32,
-    color: '#AECB4F',
+    color: color_complement_dark_1,
   },
   time2Text: {
     fontSize: 8,
-    color: '#AECB4F',
+    color: color_complement_dark_1,
     marginTop: 24,
     marginLeft: 4,
   }
 });
 
 const timeIconMap = {
-  start: <SvgDateFrom fill="#D5EF7F" style={styles.icon} />,
-  end: <SvgDateTo fill="#D5EF7F" style={styles.icon} />,
+  start: <SvgDateFrom fill={color_complement} style={styles.icon} />,
+  end: <SvgDateTo fill={color_complement} style={styles.icon} />,
 }
 
 export default function ActivityTime({ time, type }: ActivityTimeProps) {

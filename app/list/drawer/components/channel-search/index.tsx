@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Subject } from 'rxjs';
 import { TypeHandleChannelChange } from '../..';
+import { color_complement_light, color_primary_dark, color_primary_light } from '@/constants/Colors';
 
 export const channelSearchSubject$ = new Subject();
 
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
     marginRight: 8,
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#D3C1E5',
+    borderColor: color_primary_light,
     height: 24,
     justifyContent: 'center',
   },
@@ -70,9 +71,9 @@ const styles = StyleSheet.create({
     color: '#E8E8E8',
   },
   activeContainer: {
-    backgroundColor: '#E5F7A9',
+    backgroundColor: color_complement_light,
   },
   activeText: {
-    color: '#453257',
+    color: color_primary_dark,
   }
 });

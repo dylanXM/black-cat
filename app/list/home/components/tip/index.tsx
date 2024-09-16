@@ -8,6 +8,7 @@ import { channelSearchSubject$ } from '@/app/list/drawer/components/channel-sear
 import { timeRangeSearchSubject$ } from '@/app/list/drawer/components/time-range-search';
 import { RootState } from '@/store';
 import { drawerSearchSubject$ } from '@/app/list/drawer';
+import { color_primary, color_primary_neutral, color_background, color_complement } from '@/constants/Colors';
 
 interface TipProps {
   activitiesLength: number;
@@ -51,7 +52,7 @@ export default function Tip({ activitiesLength }: TipProps) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FAF9FC',
+    backgroundColor: color_background,
     height: 68,
     paddingLeft: 27,
     paddingRight: 15,
@@ -63,13 +64,13 @@ const styles = StyleSheet.create({
     height: 40,
   },
   headerTitle: {
-    color: '#8560A9',
+    color: color_primary,
     fontSize: 16,
     fontWeight: 'bold',
   },
   headerButton: {
-    color: '#67616D',
-    backgroundColor: '#D5EF7F',
+    color: color_primary_neutral,
+    backgroundColor: color_complement,
     borderRadius: 12,
     paddingLeft: 10,
     paddingRight: 10,
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
   searchTip: {
-    color: '#67616D',
+    color: color_primary_neutral,
     fontSize: 12,
   }
 });

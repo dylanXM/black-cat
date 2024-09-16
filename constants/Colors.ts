@@ -24,3 +24,15 @@ export const Colors = {
     tabIconSelected: tintColorDark,
   },
 };
+
+export const color_primary = '#8560A9';
+export const color_primary_neutral = '#67616D';
+export const color_primary_light = '#D3C1E5';
+export const color_primary_dark = '#453257';
+export const color_background = '#FAF9FC';
+export const color_complement = '#D5EF7F';
+export const color_complement_dark_1 = '#AECB4F';
+export const color_complement_dark_2 = '#788C36';
+export const color_complement_light = '#E5F7A9';
+export const color_disabled_text_light = '#BABABA';
+export const color_Disabled_text_dark = '#666666';

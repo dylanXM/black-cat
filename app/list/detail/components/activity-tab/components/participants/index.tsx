@@ -5,6 +5,7 @@ import DynamicImageRow from './components/dynamic-image-row';
 import SvgCheckOutline from '@/components/svgs/CheckOutline';
 import SvgLikeOutline from '@/components/svgs/LikeOutline';
 import { scrollHeightSubject$ } from '../../hooks';
+import { color_primary_neutral } from '@/constants/Colors';
 
 export default function Participants() {
   const { activity } = useSelector((state: RootState) => state.activity);
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   titleText: {
-    color: '#67616D',
+    color: color_primary_neutral,
     fontSize: 12,
     marginTop: -3,
   },

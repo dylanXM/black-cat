@@ -8,6 +8,7 @@ import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useSelector } from 'react-redux';
 import UserInfo from './components/user-info';
 import UserTabs from './components/user-tabs';
+import { color_complement, color_primary, color_primary_dark } from '@/constants/Colors';
 
 export default function Profile({ navigation }: IndexProps) {
   const { user } = useSelector((state: RootState) => state.user);
@@ -21,13 +22,13 @@ export default function Profile({ navigation }: IndexProps) {
   }
 
   return (
-    <SafeContainer topColor="#8560A9" bottomColor="transparent" restStyles={styles.back}>
+    <SafeContainer topColor={color_primary} bottomColor="transparent" restStyles={styles.back}>
       <View style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity onPress={backToHome}>
-            <SvgHome style={[styles.headerLeftBtn, { fill: '#453257' }]} />
+            <SvgHome style={[styles.headerLeftBtn, { fill: color_primary_dark }]} />
           </TouchableOpacity>
-          <SvgLogoCat style={[styles.headerLogo, { fill: '#D5EF7F' }]} />
+          <SvgLogoCat style={[styles.headerLogo, { fill: color_complement }]} />
           <Image
             style={styles.headerRightAvatar}
             source={{ uri: user.avatar }}
@@ -42,7 +43,7 @@ export default function Profile({ navigation }: IndexProps) {
 
 const styles = StyleSheet.create({
   back: {
-    backgroundColor: '#8560A9',
+    backgroundColor: color_primary,
   },
   container: {
     height: 'auto',
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     height: 40,
     paddingLeft: 12,
     paddingRight: 12,
-    backgroundColor: '#8560A9',
+    backgroundColor: color_primary,
   },
   headerLeftBtn: {
     width: 24,

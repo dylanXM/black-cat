@@ -1,3 +1,4 @@
+import { color_complement, color_primary_neutral } from '@/constants/Colors';
 import React, { useState, useRef, ReactNode } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
@@ -73,9 +74,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   expandText: {
-    color: '#67616D',
+    color: color_primary_neutral,
     fontSize: 10,
-    backgroundColor: '#D5EF7F',
+    backgroundColor: color_complement,
     paddingLeft: 13,
     paddingRight: 13,
     paddingTop: 5,

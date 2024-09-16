@@ -2,6 +2,7 @@ import { View, Image, Text, StyleSheet } from 'react-native';
 import { Twitter } from '@/common/apis/twitter';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
+import { color_disabled_text_light, color_primary, color_primary_dark, color_primary_neutral } from '@/constants/Colors';
 
 export default function ActivityHeader() {
   const { activity } = useSelector((state: RootState) => state.activity);
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 12,
-    color: '#453257',
+    color: color_primary_dark,
   },
   avatar: {
     width: 36,
@@ -51,11 +52,11 @@ const styles = StyleSheet.create({
   },
   username: {
     fontSize: 14,
-    color: '#67616D',
+    color: color_primary_neutral,
   },
   lastLogin: {
     fontSize: 12,
-    color: '#BABABA',
+    color: color_disabled_text_light,
   },
   channelContainer: {
     flexDirection: 'row',
@@ -68,9 +69,9 @@ const styles = StyleSheet.create({
     paddingBottom: 2,
     borderWidth: 1,
     borderRadius: 10,
-    borderColor: '#8560A9',
+    borderColor: color_primary,
     height: 20,
     fontSize: 12,
-    color: '#8560A9',
+    color: color_primary,
   },
 });

@@ -1,3 +1,4 @@
+import { color_primary } from '@/constants/Colors';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Text, StyleSheet, Animated, Easing } from 'react-native';
 import { Subject } from 'rxjs';
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     zIndex: 100,
   },
   toastText: {
-    color: '#8560A9',
+    color: color_primary,
     fontSize: 16,
   },
 });

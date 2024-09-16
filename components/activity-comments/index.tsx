@@ -1,6 +1,7 @@
 import { Comment } from '@/common/apis/twitter';
 import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
 import SvgReply from '@/components/svgs/Reply';
+import { color_complement, color_disabled_text_light, color_primary } from '@/constants/Colors';
 
 export default function ActivityComments({ comments }: { comments: Comment[] }) {
 
@@ -21,7 +22,7 @@ export default function ActivityComments({ comments }: { comments: Comment[] }) 
                   <Text style={styles.contentUsername}>{item.user?.username}</Text>
                   <Text style={styles.contentUserTime}>{item.time}</Text>
                 </View>
-                <SvgReply style={styles.replyIcon} fill="#D5EF7F" />
+                <SvgReply style={styles.replyIcon} fill={color_complement} />
               </View>
               <View style={styles.descContainer}>
                 <Text>{Array(10).fill(item.content).join('')}</Text>
@@ -46,7 +47,7 @@ export default function ActivityComments({ comments }: { comments: Comment[] }) 
                   <Text style={styles.contentUsername}>{item.user?.username}</Text>
                   <Text style={styles.contentUserTime}>{item.time}</Text>
                 </View>
-                <SvgReply style={styles.replyIcon} fill="#D5EF7F" />
+                <SvgReply style={styles.replyIcon} fill={color_complement} />
               </View>
               <View style={styles.descContainer}>
                 <Text>{Array(10).fill(item.content).join('')}</Text>
@@ -92,12 +93,12 @@ const styles = StyleSheet.create({
   },
   contentUsername: {
     fontSize: 12,
-    color: '#8560A9',
+    color: color_primary,
     marginRight: 12,
   },
   contentUserTime: {
     fontSize: 10,
-    color: '#BABABA',
+    color: color_disabled_text_light,
   },
   descContainer: {
     marginTop: 4,

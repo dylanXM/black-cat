@@ -2,6 +2,7 @@ import { RootState } from '@/store';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { useSelector } from 'react-redux';
 import SvgEmail from '@/components/svgs/Email';
+import { color_primary, color_primary_neutral } from '@/constants/Colors';
 
 export default function UserInfo() {
   const { user } = useSelector((state: RootState) => state.user);
@@ -11,7 +12,7 @@ export default function UserInfo() {
       <Image source={{ uri: user.avatar }} style={styles.avatar} />
       <Text style={styles.username}>{user.username}</Text>
       <View style={styles.email}>
-        <SvgEmail style={[styles.icon, { fill: '#8560A9' }]} />
+        <SvgEmail style={[styles.icon, { fill: color_primary }]} />
         <Text style={styles.emailText}>{user.email}</Text>
       </View>
     </View>
@@ -28,13 +29,13 @@ const styles = StyleSheet.create({
     width: 75,
     height: 75,
     borderRadius: 75,
-    borderColor: '#8560A9',
+    borderColor: color_primary,
     borderWidth: 2,
   },
   username: {
     marginTop: 24,
     fontSize: 24,
-    color: '#67616D',
+    color: color_primary_neutral,
   },
   email: {
     alignItems: 'center',
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   },
   emailText: {
     fontSize: 14,
-    color: '#8560A9',
+    color: color_primary,
   },
   icon: {
     width: 16,

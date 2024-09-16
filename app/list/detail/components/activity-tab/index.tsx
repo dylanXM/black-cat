@@ -6,6 +6,7 @@ import Comments from './components/comments';
 import { routes } from './data';
 import { TypeTabKeys, useScroll } from './hooks';
 import DetailToast from './components/toast';
+import { color_complement_dark_1 } from '@/constants/Colors';
 
 export default function ActivityTab() {
   const [activeKey, setActiveKey] = useState('details');
@@ -87,6 +88,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   activeText: {
-    color: '#AECB4F',
+    color: color_complement_dark_1,
   },
 });

@@ -7,6 +7,7 @@ import SearchButton from './components/search-button';
 import { useCallback, useEffect, useState } from 'react';
 import { initialState, SearchState, TimeRange, TypeChannel } from '@/store/actions/search';
 import { Subject } from 'rxjs';
+import { color_disabled_text_light, color_primary_dark } from '@/constants/Colors';
 
 export const drawerSearchSubject$ = new Subject();
 
@@ -38,7 +39,7 @@ export default function CustomDrawerContent({ navigation }: DrawerContentCompone
   }, []);
 
   return (
-    <SafeContainer topColor="#453257" bottomColor="#BABABA">
+    <SafeContainer topColor={color_primary_dark} bottomColor={color_disabled_text_light}>
       <View style={styles.container}>
         <View style={styles.selectContainer}>
           <Text style={styles.selectTitle}>DATE</Text>
@@ -63,7 +64,7 @@ export default function CustomDrawerContent({ navigation }: DrawerContentCompone
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#453257',
+    backgroundColor: color_primary_dark,
     paddingLeft: 16,
     paddingRight: 16,
   },

@@ -1,3 +1,4 @@
+import { color_primary_dark, color_primary_neutral } from '@/constants/Colors';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 
 interface LoginFooterProps {
@@ -30,10 +31,10 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   text: {
-    color: '#67616D',
+    color: color_primary_neutral,
   },
   signinText: {
-    color: '#453257',
+    color: color_primary_dark,
     fontSize: 16,
   }
 });

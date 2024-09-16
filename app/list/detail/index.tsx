@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import FooterOperation from './components/footer-operation';
 import { SET_ACTIVITY } from '@/store/actions/activity';
 import ActivityTab from './components/activity-tab';
+import { color_complement, color_primary, color_primary_dark } from '@/constants/Colors';
 
 export default function Detail({ route }: { route: any }) {
   const { user } = useSelector((state: RootState) => state.user);
@@ -37,12 +38,12 @@ export default function Detail({ route }: { route: any }) {
   };
 
   return (
-    <SafeContainer key={updateKey} topColor="#8560A9" bottomColor="transparent" restStyles={styles.back}>
+    <SafeContainer key={updateKey} topColor={color_primary} bottomColor="transparent" restStyles={styles.back}>
       <View style={styles.header}>
         <TouchableOpacity onPress={back}>
-          <SvgHome style={[styles.headerLeftBtn, { fill: '#453257' }]} />
+          <SvgHome style={[styles.headerLeftBtn, { fill: color_primary_dark }]} />
         </TouchableOpacity>
-        <SvgLogoCat style={[styles.headerLogo, { fill: '#D5EF7F' }]} />
+        <SvgLogoCat style={[styles.headerLogo, { fill: color_complement }]} />
         <TouchableOpacity onPress={toProfile}>
           <Image
             style={styles.headerRightAvatar}
@@ -66,7 +67,7 @@ export default function Detail({ route }: { route: any }) {
 
 const styles = StyleSheet.create({
   back: {
-    backgroundColor: '#8560A9',
+    backgroundColor: color_primary,
   },
   scrollContainer: {
     flex: 1,
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
     height: 40,
     paddingLeft: 12,
     paddingRight: 12,
-    backgroundColor: '#8560A9',
+    backgroundColor: color_primary,
   },
   headerLeftBtn: {
     width: 24,

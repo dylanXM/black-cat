@@ -10,6 +10,7 @@ import ActivityCard from '@/components/activity-card';
 import Empty from '@/components/empty';
 import Footer from './components/footer';
 import { useRef } from 'react';
+import { color_complement, color_primary } from '@/constants/Colors';
 
 export default function List({ navigation }: any) {
   const { user } = useSelector((state: RootState) => state.user);
@@ -33,13 +34,13 @@ export default function List({ navigation }: any) {
   };
 
   return (
-    <SafeContainer topColor="#8560A9" bottomColor="transparent" restStyles={styles.back}>
+    <SafeContainer topColor={color_primary} bottomColor="transparent" restStyles={styles.back}>
       <View style={styles.header}>
         <TouchableOpacity onPress={openDrawer}>
           <SvgSearch style={styles.headerLeftBtn} />
         </TouchableOpacity>
         <TouchableOpacity onPress={scrollToTop}>
-          <SvgLogoCat style={[styles.headerLogo, { fill: '#D5EF7F' }]} />
+          <SvgLogoCat style={[styles.headerLogo, { fill: color_complement }]} />
         </TouchableOpacity>
         <TouchableOpacity onPress={toProfile}>
           <Image
@@ -80,7 +81,7 @@ export default function List({ navigation }: any) {
 
 const styles = StyleSheet.create({
   back: {
-    backgroundColor: '#8560A9',
+    backgroundColor: color_primary,
   },
   container: {
 
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     height: 40,
     paddingLeft: 12,
     paddingRight: 12,
-    backgroundColor: '#8560A9',
+    backgroundColor: color_primary,
   },
   headerLeftBtn: {
     width: 24,

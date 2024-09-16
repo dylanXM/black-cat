@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { useState } from 'react';
 import { scrollHeightSubject$ } from '../../hooks';
+import { color_primary, color_primary_neutral } from '@/constants/Colors';
 
 const { width } = Dimensions.get('window');
 
@@ -109,12 +110,12 @@ const styles = StyleSheet.create({
   noteDivider: {
     width: 4,
     height: 18,
-    backgroundColor: '#8560A9',
+    backgroundColor: color_primary,
     borderRadius: 2,
   },
   noteText: {
     fontSize: 16,
-    color: '#8560A9',
+    color: color_primary,
     marginLeft: 4,
   },
   timeContainer: {
@@ -131,12 +132,12 @@ const styles = StyleSheet.create({
   },
   mainAddressText: {
     fontSize: 16,
-    color: '#67616D',
+    color: color_primary_neutral,
     marginBottom: 2,
   },
   subAddressText: {
     fontSize: 14,
-    color: '#67616D',
+    color: color_primary_neutral,
   },
   addressMap: {
     marginTop: 8,
@@ -151,7 +152,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   titleText: {
-    color: '#67616D',
+    color: color_primary_neutral,
     fontSize: 12,
     marginTop: -2,
   },

@@ -1,6 +1,7 @@
 import { fetchActivitiesSubject$ } from '@/app/list/home/hooks';
 import { useSearchTip } from '@/app/list/hooks/use-search-tip';
 import SvgSearch from '@/components/svgs/Search';
+import { color_complement, color_primary, color_primary_dark } from '@/constants/Colors';
 import { SearchState } from '@/store/actions/search';
 import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
 import { Text, StyleSheet, View } from 'react-native';
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
     paddingRight: 16,
   },
   activeContainer: {
-    backgroundColor: '#D5EF7F',
+    backgroundColor: color_complement,
   },
   searchContainer: {
     flexDirection: 'row',
@@ -65,10 +66,10 @@ const styles = StyleSheet.create({
     marginRight: 6,
   },
   searchText: {
-    color: '#453257',
+    color: color_primary_dark,
   },
   tip: {
     fontSize: 10,
-    color: '#8560A9',
+    color: color_primary,
   }
 });

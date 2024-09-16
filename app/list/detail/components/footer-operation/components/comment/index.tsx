@@ -3,6 +3,7 @@ import SvgSend from '@/components/svgs/Send';
 import SvgCross from '@/components/svgs/Cross';
 import { useState } from 'react';
 import { showToast } from '../../../activity-tab/components/toast';
+import { color_complement, color_primary } from '@/constants/Colors';
 
 interface CommentProps {
   handleToggleComment: () => void;
@@ -41,11 +42,11 @@ export default function Comment({ handleToggleComment }: CommentProps) {
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-        <SvgCross style={styles.crossIcon} fill="#D5EF7F" onPress={handleToggleComment} />
+        <SvgCross style={styles.crossIcon} fill={color_complement} onPress={handleToggleComment} />
         <TextInput value={comment} onChange={handleCommentChange} style={styles.input} placeholder="@Little Prince" />
       </View>
       <TouchableOpacity onPress={handleSubmit} style={styles.send} activeOpacity={0.8} disabled={!comment}>
-        <SvgSend style={styles.icon} fill="#8560A9" />
+        <SvgSend style={styles.icon} fill={color_primary} />
       </TouchableOpacity>
     </View>
   );
@@ -57,12 +58,12 @@ const styles = StyleSheet.create({
     height: 56,
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#8560A9',
+    backgroundColor: color_primary,
   },
   send: {
     width: 56,
     height: 56,
-    backgroundColor: '#D5EF7F',
+    backgroundColor: color_complement,
     alignItems: 'center',
     justifyContent: 'center',
   },

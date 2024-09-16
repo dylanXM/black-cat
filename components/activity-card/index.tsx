@@ -4,6 +4,7 @@ import SvgTime from '@/components/svgs/Time';
 import ActionButton from './components/action-button';
 import { formatDateToMinute } from '@/common/utils/format-time';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { color_primary, color_primary_dark, color_primary_light, color_primary_neutral } from '@/constants/Colors';
 
 export type TypeAction = 'like' | 'going';
 
@@ -39,7 +40,7 @@ export default function ActivityCard({ activity, canEdit, initState }: ActivityC
         </View>
         {/** 这是时间 */}
         <View style={styles.timeContainer}>
-          <SvgTime style={styles.timeIcon} fill="#8560A9" />
+          <SvgTime style={styles.timeIcon} fill={color_primary} />
           <Text style={styles.timeText}>
             {formatDateToMinute(new Date(startTime))} - {formatDateToMinute(new Date(endTime))}
           </Text>
@@ -84,17 +85,17 @@ const styles = StyleSheet.create({
   },
   username: {
     fontSize: 12,
-    color: '#67616D',
+    color: color_primary_neutral,
   },
   channel: {
     fontSize: 12,
-    color: '#8560A9',
+    color: color_primary,
     paddingLeft: 10,
     paddingTop: 2,
     paddingRight: 6,
     paddingBottom: 3,
     borderWidth: 1,
-    borderColor: '#D3C1E5',
+    borderColor: color_primary_light,
     borderRadius: 12,
   },
   titleContainer: {
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    color: '#453257',
+    color: color_primary_dark,
   },
   timeContainer: {
     flexDirection: 'row',
@@ -117,14 +118,14 @@ const styles = StyleSheet.create({
   },
   timeText: {
     fontSize: 12,
-    color: '#8560A9',
+    color: color_primary,
   },
   contentContainer: {
     marginBottom: 12,
   },
   contentText: {
     fontSize: 14,
-    color: '#67616D',
+    color: color_primary_neutral,
 
   },
 });

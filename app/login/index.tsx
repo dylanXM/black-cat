@@ -10,6 +10,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IndexProps } from '../index';
 import Toast from 'react-native-toast-message';
 import LoginFooter from './components/login-footer';
+import { color_complement, color_primary_dark, color_primary_light } from '@/constants/Colors';
 
 export default function Login({ navigation }: IndexProps) {
 	const { username, password, handleUsernameChange, handlePasswordChange } = useLogin();
@@ -51,20 +52,20 @@ export default function Login({ navigation }: IndexProps) {
 					<Text style={styles.title}>BLACK CAT</Text>
 					<View style={styles.logoContainer}>
 						<View style={styles.logoCircle}>
-							<LogoCat style={[styles.logo, { fill: '#D5EF7F' }]} />
+							<LogoCat style={[styles.logo, { fill: color_complement }]} />
 						</View>
 					</View>
 					<View>
 						<CustomInput
 							placeholder="username"
-							icon={<SvgUser styles={{ fill: '#D3C1E5' }} />}
+							icon={<SvgUser styles={{ fill: color_primary_light }} />}
 							value={username}
 							onChangeText={handleUsernameChange}
 							secureTextEntry={false}
 						/>
 						<CustomInput
 							placeholder="password"
-							icon={<SvgUser styles={{ fill: '#D3C1E5' }} />}
+							icon={<SvgUser styles={{ fill: color_primary_light }} />}
 							value={password}
 							onChangeText={handlePasswordChange}
 							secureTextEntry={true}
@@ -98,20 +99,20 @@ const styles = StyleSheet.create({
 		height: 64,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#D5EF7F',
+		backgroundColor: color_complement,
 		fontSize: 16,
-		color: '#453257',
+		color: color_primary_dark,
 		fontWeight: 'bold',
 	},
 	slogan: {
 		marginBottom: 16,
 		fontSize: 16,
-		color: '#D5EF7F',
+		color: color_complement,
 	},
 	title: {
 		marginBottom: 37,
 		fontSize: 24,
-		color: '#D5EF7F',
+		color: color_complement,
 	},
 	logoContainer: {
 		width: 64,
@@ -128,7 +129,7 @@ const styles = StyleSheet.create({
 		height: 60,
 		borderRadius: 30,
 		borderWidth: 1,		
-		borderColor: '#D5EF7F',
+		borderColor: color_complement,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},

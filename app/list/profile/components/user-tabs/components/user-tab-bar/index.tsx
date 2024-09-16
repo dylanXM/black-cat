@@ -3,6 +3,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { RootState } from '@/store';
 import { useSelector } from 'react-redux';
 import { routes } from './data';
+import { color_complement_dark_1 } from '@/constants/Colors';
 
 interface UserTabBarProps {
   jumpTo: (key: string) => void;
@@ -78,6 +79,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   activeText: {
-    color: '#AECB4F',
+    color: color_complement_dark_1,
   },
 });

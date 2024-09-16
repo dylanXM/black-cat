@@ -9,7 +9,7 @@ import { useLogin } from './hooks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IndexProps } from '../index';
 import Toast from 'react-native-toast-message';
-import { useEffect } from 'react';
+import LoginFooter from './components/login-footer';
 
 export default function Login({ navigation }: IndexProps) {
 	const { username, password, handleUsernameChange, handlePasswordChange } = useLogin();
@@ -36,24 +36,11 @@ export default function Login({ navigation }: IndexProps) {
 		if (!canLogin) {
 			return;
 		}
-		const params = {
+		mutate({
 			username: username.value,
 			password: password.value,
-		};
-		mutate(params);
-	};
-
-	useEffect(() => {
-		if (!isLoading) {
-			Toast.hide();
-			return;
-		}
-		Toast.show({
-			type: 'info',
-			text1: 'Logging in, please wait...',
-			autoHide: false,
 		});
-	}, [isLoading]);
+	};
 
 	return (
 		<View style={styles.container}>
@@ -86,7 +73,7 @@ export default function Login({ navigation }: IndexProps) {
 				</View>
 			</View>
 			<TouchableOpacity style={styles.operate} onPress={handleLogin} disabled={loginDisabled}>
-				<Text>SIGN IN</Text>
+				<LoginFooter loading={isLoading} />
 			</TouchableOpacity>
 		</View>
 	)

@@ -1,5 +1,5 @@
 import SafeContainer from '@/components/SafeContainer';
-import { StyleSheet, View, TouchableOpacity, Image, FlatList, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Image, FlatList } from 'react-native';
 import SvgSearch from '@/components/svgs/Search';
 import SvgLogoCat from '@/components/svgs/LogoCat';
 import Tip from './components/tip';
@@ -58,7 +58,7 @@ export default function List({ navigation }: any) {
             ItemSeparatorComponent={() => <View style={styles.divider} />}
             onEndReachedThreshold={0.2}
             onEndReached={fetchNextPageActivities}
-            ListFooterComponent={<Footer loading={loading} isDone={isDone} />}
+            ListFooterComponent={<Footer isDone={isDone} />}
           />
         </View>
       </View>

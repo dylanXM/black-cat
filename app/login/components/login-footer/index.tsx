@@ -1,25 +1,22 @@
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 
-interface FooterProps {
-  isDone: boolean;
+interface LoginFooterProps {
+  loading: boolean;
 }
 
-export default function Footer({ isDone }: FooterProps) {
-
-  if (isDone) {
+export default function LoginFooter({ loading }: LoginFooterProps) {
+  if (loading) {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>没有更多了～</Text>
+        <ActivityIndicator style={styles.spinner} />
+        <Text style={styles.text}>Loging in...</Text>
       </View>
     );
   }
-  
+
   return (
-    <View style={styles.container}>
-      <ActivityIndicator style={styles.spinner} />
-      <Text style={styles.text}>loading...</Text>
-    </View>
-  );
+    <Text style={styles.signinText}>SIGN IN</Text>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -34,5 +31,9 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#67616D',
+  },
+  signinText: {
+    color: '#453257',
+    fontSize: 16,
   }
 });

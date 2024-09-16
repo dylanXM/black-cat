@@ -6,8 +6,7 @@ import { NavigationProp } from '@react-navigation/native';
 import React from 'react';
 
 export interface IndexProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  navigation: NavigationProp<any>;
+  navigation: NavigationProp<object>;
 }
 
 export default function Index({ navigation }: IndexProps) {

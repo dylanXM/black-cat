@@ -15,7 +15,7 @@ export interface Comment {
   content: string;
   likes: number[];
   time: string;
-  user?: User;
+  user: User;
 }
 
 export interface Twitter {

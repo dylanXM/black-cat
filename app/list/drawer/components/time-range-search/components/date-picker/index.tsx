@@ -2,10 +2,11 @@ import React from 'react';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { TypeCurrentIndex } from '../../hooks';
 import { TimeRange } from '@/store/actions/search';
+import { TimeRangeSearchProps } from '../..';
 
-interface DatePickerProps {
+interface DatePickerProps extends TimeRangeSearchProps {
   visible: boolean;
-  closeDatePicker: () => void;
+  closeDatePicker: (cb?: () => void) => void;
   startDate: Date;
   endDate: Date;
   currentIndex: TypeCurrentIndex;
@@ -21,22 +22,32 @@ export default function DatePicker({
   currentIndex,
   onChangeStartDate,
   onChangeEndDate,
+  handleTimeRangeChange,
 }: DatePickerProps) {
   const today = new Date();
   const value = currentIndex === 'from' ? startDate : endDate;
   const minimumDate = currentIndex === 'from' ? today : startDate;
 
   const handleConfirm = (date: Date) => {
-    const timeRange: Partial<TimeRange> = {};
+    let timeRange: Partial<TimeRange> = {};
     if (currentIndex === 'from') {
-      onChangeStartDate(date);
+      closeDatePicker(() => onChangeStartDate(date));
       timeRange['start'] = String(date.getTime());
+      if (endDate.getTime() < date.getTime()) {}
+      timeRange = {
+        start: String(date.getTime()),
+        end: endDate.getTime() < date.getTime() ?  String(date.getTime()) : String(endDate.getTime()),
+      };
     } else {
-      onChangeEndDate(date);
+      timeRange = {
+        start: String(startDate.getTime()),
+        end: String(date.getTime()),
+      };
+      closeDatePicker(() => onChangeEndDate(date));
       timeRange['end'] = String(date.getTime());
     }
-    // 关闭时间选择器
-    closeDatePicker();
+    // 设置搜索条件
+    handleTimeRangeChange(timeRange as TimeRange);
   };
 
   return (

@@ -19,7 +19,8 @@ export function useFetchActivity() {
 
   const searchParams = useMemo((): GetTwittersParams & { refreshCount: number } => {
     return {
-      ...search,
+      startDate: Number(search.timeRange.start),
+      endDate: Number(search.timeRange.end),
       page,
       pageSize,
       channel: search.channel === 'All' ? '' : search.channel || '',
@@ -32,6 +33,7 @@ export function useFetchActivity() {
     queryFn: async () => {
       const res = await getTwitters({ ...searchParams });
       // 如果有搜索条件，需要展示搜索结果的Tip
+      console.log('searchParams', JSON.stringify(searchParams));
       if (searchParams.channel || (searchParams.startDate && searchParams.endDate)) {
         showTipSubject$.next(true);
       }

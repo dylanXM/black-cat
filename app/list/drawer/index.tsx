@@ -32,6 +32,7 @@ export default function CustomDrawerContent({ navigation }: DrawerContentCompone
   }, []);
 
   useEffect(() => {
+    // 重置搜索条件
     const subscription = drawerSearchSubject$.subscribe(() => {
       setSearchParams({ ...initialState });
     });

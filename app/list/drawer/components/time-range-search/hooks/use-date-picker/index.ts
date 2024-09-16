@@ -11,7 +11,9 @@ export function useDatePicker() {
   const onChangeStartDate = useCallback((selectedDate: Date) => {
     const currentDate = selectedDate || startDate;
     setStartDate(currentDate);
-    setEndDate(currentDate);
+    if (endDate.getTime() < currentDate.getTime()) {
+      setEndDate(currentDate);
+    }
   }, []);
 
   const onChangeEndDate = useCallback((selectedDate: Date) => {
@@ -29,8 +31,10 @@ export function useDatePicker() {
     setDatePickerVisible(true);
   }, []);
 
-  const closeDatepicker = useCallback(() => {
+  const closeDatePicker = useCallback((callback?: () => void) => {
+    console.log('closeDatepicker', callback);
     setDatePickerVisible(false);
+    callback?.();
   }, []);
 
   const clearCurrentIndex = useCallback(() => {
@@ -46,7 +50,7 @@ export function useDatePicker() {
     onChangeEndDate,
     showStartDatePicker,
     showEndDatePicker,
-    closeDatepicker,
+    closeDatePicker,
     clearCurrentIndex,
   }
 }

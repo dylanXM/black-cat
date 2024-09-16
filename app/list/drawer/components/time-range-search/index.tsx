@@ -14,7 +14,7 @@ export const timeRangeSearchSubject$ = new Subject();
 
 const timeRangeOptionsLength = timeRangeOptions.length;
 
-interface TimeRangeSearchProps {
+export interface TimeRangeSearchProps {
   handleTimeRangeChange: TypeHandleTimeRangeChange;
 }
 
@@ -26,7 +26,7 @@ export default function TimeRangeSearch({ handleTimeRangeChange }: TimeRangeSear
     showEndDatePicker,
     showStartDatePicker,
     clearCurrentIndex,
-    closeDatepicker,
+    closeDatePicker,
     datePickerVisible,
     startDate,
     endDate,
@@ -96,12 +96,13 @@ export default function TimeRangeSearch({ handleTimeRangeChange }: TimeRangeSear
       </TouchableOpacity>
       <DatePicker
         visible={datePickerVisible}
-        closeDatePicker={closeDatepicker}
+        closeDatePicker={closeDatePicker}
         startDate={startDate}
         endDate={endDate}
         currentIndex={currentIndex}
         onChangeStartDate={onChangeStartDate}
         onChangeEndDate={onChangeEndDate}
+        handleTimeRangeChange={handleTimeRangeChange}
       />
       {/* 条件渲染日期选择器 */}
       {activeKey === String(timeRangeOptions.length) && (

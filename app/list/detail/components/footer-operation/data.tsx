@@ -14,13 +14,13 @@ const styles = StyleSheet.create({
 
 export const operationMap = {
   like: {
-    icon: <SvgLikeOutline style={styles.icon} />,
+    icon: <SvgLikeOutline style={styles.icon} fill="#453257" />,
     text: 'Like',
     ActiveIcon: <SvgLike style={styles.icon} fill="#D5EF7F" />,
   },
   join: {
-    icon: <SvgCheckOutLine style={styles.icon} />,
+    icon: <SvgCheckOutLine style={styles.icon} fill="#453257" />,
     text: 'Join',
-    ActiveIcon: <SvgCheck style={styles.icon} fill="#AECB4F" />,
+    ActiveIcon: <SvgCheck style={styles.icon} fill="#8560A9" />,
   }
 }

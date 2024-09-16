@@ -7,10 +7,10 @@ import { RootState } from '@/store';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Twitter } from '@/common/apis/twitter';
 import ActivityHeader from './components/header';
-import ActivityTabs from './components/activity-tabs';
 import { useEffect } from 'react';
 import FooterOperation from './components/footer-operation';
 import { SET_ACTIVITY } from '@/store/actions/activity';
+import ActivityTab from './components/activity-tab';
 
 export default function Detail({ route }: { route: any }) {
   const { user } = useSelector((state: RootState) => state.user);
@@ -47,12 +47,12 @@ export default function Detail({ route }: { route: any }) {
           />
         </TouchableOpacity>
       </View>
-      <ScrollView style={styles.scrollContainer}>
+      <View style={styles.scrollContainer}>
         {/* 这是header */}
         <ActivityHeader />
         {/* 这是Tabs */}
-        <ActivityTabs />
-      </ScrollView>
+        <ActivityTab />
+      </View>
       {/* 这是底部操作栏 */}
       <View style={styles.footer}>
         <FooterOperation />
@@ -67,8 +67,6 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flex: 1,
-    // borderWidth: 1,
-    // marginBottom: 10,
   },
   header: {
     flexDirection: 'row',
@@ -93,8 +91,6 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   footer: {
-    // position: 'absolute',
-    // bottom: 0,
     width: '100%',
   }
 });

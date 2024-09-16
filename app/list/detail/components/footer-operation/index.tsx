@@ -23,7 +23,7 @@ export default function FooterOperation() {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={handleToggleComment} style={[styles.commonButton, styles.comment]} activeOpacity={0.9}>
-        <SvgCommentSingle style={styles.icon} />
+        <SvgCommentSingle style={styles.icon} fill="#453257" />
       </TouchableOpacity>
       <TouchableOpacity onPress={handleToggleLike} style={[styles.commonButton, styles.like]} activeOpacity={0.9}>
         {isLike ? operationMap['like'].ActiveIcon : operationMap['like'].icon}

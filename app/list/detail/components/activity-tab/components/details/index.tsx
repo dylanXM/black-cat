@@ -3,10 +3,6 @@ import ExpandableText from './components/expandable-text';
 import ActivityTime from './components/activity-time';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import SvgLikeOutline from '@/components/svgs/LikeOutline';
-import DynamicImageRow from '../participants/components/dynamic-image-row';
-import ActivityComments from '@/components/activity-comments';
-import SvgCheckOutline from '@/components/svgs/CheckOutline';
 
 const { width } = Dimensions.get('window');
 
@@ -36,7 +32,7 @@ export default function Details() {
       />
       <View style={styles.content}>
         <ExpandableText numberOfLines={5}>
-          {activity.content}
+          {Array(3).fill(activity.content).join('')}
         </ExpandableText>
       </View>
       <View style={styles.divider} />
@@ -64,27 +60,6 @@ export default function Details() {
         </View>
       </View>
       <View style={styles.divider} />
-      <View style={styles.participantsContainer}>
-        <View style={styles.titleContainer}>
-          <SvgCheckOutline style={styles.icon} fill="#AC8EC9" />
-          <Text style={styles.titleText}>{activity?.goingsUsers?.length} going</Text>
-        </View>
-        <View>
-          <DynamicImageRow images={activity?.goingsUsers?.map((user) => user.avatar) as string[] || []} />
-        </View>
-      </View>
-      <View style={styles.divider} />
-      <View style={styles.participantsContainer}>
-        <View style={styles.titleContainer}>
-          <SvgLikeOutline style={styles.icon} fill="#AC8EC9" />
-          <Text style={styles.titleText}>{activity?.likesUsers?.length} likes</Text>
-        </View>
-        <View>
-          <DynamicImageRow images={activity?.likesUsers?.map((user) => user.avatar) as string[] || []} />
-        </View>
-      </View>
-      <View style={styles.completeDivider} />
-      <ActivityComments comments={activity?.comments || []} />
     </View>
   );
 } 

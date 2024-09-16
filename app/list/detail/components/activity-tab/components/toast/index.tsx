@@ -72,7 +72,6 @@ export default function DetailToast() {
 };
 
 export function showToast({ type, title }: { type: ToastType; title: string }) {
-  console.log('showToast', type, title);
   toastSubject$.next({ type, title });
 }
 

@@ -7,14 +7,14 @@ import { Subject } from 'rxjs';
 import { useLatest } from '@/hooks/useLatest';
 
 export const fetchActivitiesSubject$ = new Subject();
-
 const pageSize = 5;
-let renderTimes = 1;
 
 export function useFetchActivity() {
   const [page, setPage] = useState(1);
   const search = useSelector((state: RootState) => state.search);
   const [refreshCount, setRefreshCount] = useState(0);
+  const [refreshing, setRefreshing] = useState(false);
+  const [activities, setActivities] = useState<Twitter[] | null>([]);
 
   const searchParams = useMemo((): GetTwittersParams & { refreshCount: number } => {
     return {
@@ -29,13 +29,10 @@ export function useFetchActivity() {
   const { data, isLoading } = useQuery({
     queryKey: [{ queryIdentifier: 'fetchTwitters', ...searchParams }],
     queryFn: async () => {
-      console.log('search params', JSON.stringify(searchParams));
       const res = await getTwitters({ ...searchParams });
       return res;
     },
   });
-
-  const [activities, setActivities] = useState<Twitter[] | null>([]);
 
   const { count } = data as GetTwittersResponse || {};
 
@@ -75,22 +72,18 @@ export function useFetchActivity() {
     setPage(prev => prev + 1);
   }, [isLoading, isDone]);
 
-  const [refreshing, setRefreshing] = useState(false);
   // refresh
   const refresh = useCallback(() => {
     if (isLoading) {
       return;
     }
     setRefreshing(true);
-    console.log('pageRef.current', pageRef.current);
     if (pageRef.current === 1) {
       setRefreshCount(prev => prev + 1);
       return;
     }
     setPage(1);
   }, [isLoading]);
-
-  console.log('refreshing', refreshing);  
 
   return {
     isDone,

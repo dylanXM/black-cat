@@ -20,20 +20,17 @@ export const routes = [
     title: 'Details',
     icon: <SvgInfoOutline style={styles.icon} fill="#8C8C8C" />,
     activeIcon: <SvgInfo style={styles.icon} fill='#AECB4F' />,
-    height: 0,
   },
   {
     key: 'participants',
     title: 'Participants',
     icon: <SvgPeopleOutline style={styles.icon} fill="#8C8C8C" />,
     activeIcon: <SvgPeople style={styles.icon} fill='#AECB4F' />,
-    height: 554,
   },
   {
     key: 'comments',
     title: 'Comments',
     icon: <SvgCommentOutline style={styles.icon} fill="#8C8C8C" />,
     activeIcon: <SvgComment style={styles.icon} fill='#AECB4F' />,
-    height: 664,
   },
 ];

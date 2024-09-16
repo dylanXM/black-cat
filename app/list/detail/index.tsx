@@ -7,7 +7,7 @@ import { RootState } from '@/store';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Twitter } from '@/common/apis/twitter';
 import ActivityHeader from './components/header';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import FooterOperation from './components/footer-operation';
 import { SET_ACTIVITY } from '@/store/actions/activity';
 import ActivityTab from './components/activity-tab';
@@ -17,6 +17,7 @@ export default function Detail({ route }: { route: any }) {
   const navigation = useNavigation<NavigationProp<any>>();
   const { activity } = route.params as { activity: Twitter };
   const dispatch = useDispatch();
+  const [updateKey, setUpdateKey] = useState(0);
 
   useEffect(() => {
     dispatch({ type: SET_ACTIVITY, payload: { activity } });
@@ -27,14 +28,16 @@ export default function Detail({ route }: { route: any }) {
 
   const back = () => {
     navigation.goBack();
+    setUpdateKey(updateKey + 1);
   };
 
   const toProfile = () => {
     navigation.navigate('Profile');
+    setUpdateKey(updateKey + 1);
   };
 
   return (
-    <SafeContainer topColor="#8560A9" bottomColor="transparent" restStyles={styles.back}>
+    <SafeContainer key={updateKey} topColor="#8560A9" bottomColor="transparent" restStyles={styles.back}>
       <View style={styles.header}>
         <TouchableOpacity onPress={back}>
           <SvgHome style={[styles.headerLeftBtn, { fill: '#453257' }]} />

@@ -31,6 +31,8 @@ export default function ActivityHeader() {
 const styles = StyleSheet.create({
   container: {
     padding: 16,
+    height: 183,
+    justifyContent: 'center',
   },
   userinfo: {
     flexDirection: 'row',

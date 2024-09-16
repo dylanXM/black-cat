@@ -4,18 +4,21 @@ import Details from './components/details';
 import Participants from './components/participants';
 import Comments from './components/comments';
 import { routes } from './data';
+import { TypeTabKeys, useScroll } from './hooks';
+import DetailToast from './components/toast';
 
 export default function ActivityTab() {
   const [activeKey, setActiveKey] = useState('details');
   const scrollViewRef = useRef<ScrollView>(null);
+  const { scrollHeight } = useScroll();
 
-  const scrollToAnchor = (key: string, y: number) => {
-    console.log('scrollToAnchor', scrollViewRef.current?.scrollTo, key, y);
+  const scrollToAnchor = (key: string) => {
     if (!scrollViewRef.current) {
       return;
     }
     setActiveKey(key);
-    scrollViewRef.current.scrollTo({ y: y, animated: true });
+    const height = scrollHeight[key as TypeTabKeys];
+    scrollViewRef.current.scrollTo({ y: height, animated: true });
   };
 
   return (
@@ -23,11 +26,11 @@ export default function ActivityTab() {
       <View style={styles.container}>
         {
           routes.map((route, index) => {
-            const { key, title, icon, activeIcon, height } = route;
+            const { key, title, icon, activeIcon } = route;
             const isActive = activeKey === key;
             return (
               <View key={key} style={[styles.tab, index !== 0 && { borderLeftWidth: 1 }]}>
-                <TouchableOpacity onPress={() => scrollToAnchor(key, height)}>
+                <TouchableOpacity onPress={() => scrollToAnchor(key)}>
                   <View style={styles.tabContent}>
                     { isActive ? activeIcon : icon }
                     <Text style={[styles.text, isActive && styles.activeText]}>
@@ -40,6 +43,7 @@ export default function ActivityTab() {
           })
         }
       </View>
+      <DetailToast />
       <ScrollView ref={scrollViewRef}>
         <Details />
         <Participants />
@@ -58,7 +62,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 12,
+    position: 'relative',
   },
   divider: {
     height: 12,

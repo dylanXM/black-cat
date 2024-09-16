@@ -1,20 +1,27 @@
-import { View, Text, StyleSheet, Image, FlatList, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Image, FlatList, Dimensions, LayoutChangeEvent } from 'react-native';
 import ExpandableText from './components/expandable-text';
 import ActivityTime from './components/activity-time';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
+import { useState } from 'react';
+import { scrollHeightSubject$ } from '../../hooks';
 
 const { width } = Dimensions.get('window');
 
 export default function Details() {
   const { activity } = useSelector((state: RootState) => state.activity);
 
+  const handleLayout = (event: LayoutChangeEvent) => {
+    const { layout } = event.nativeEvent;
+    scrollHeightSubject$.next({ key: 'participants', height: layout.height });
+  };
+
   if (!activity) {
     return null;
   }
   
   return (
-    <View style={styles.container}>
+    <View style={styles.container} onLayout={handleLayout}>
       <FlatList
         data={activity.pictures}
         renderItem={({ item, index }) => (

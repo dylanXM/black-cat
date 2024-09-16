@@ -1,20 +1,25 @@
 import { RootState } from '@/store';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, LayoutChangeEvent } from 'react-native';
 import { useSelector } from 'react-redux';
 import DynamicImageRow from './components/dynamic-image-row';
 import SvgCheckOutline from '@/components/svgs/CheckOutline';
 import SvgLikeOutline from '@/components/svgs/LikeOutline';
-import ActivityComments from '@/components/activity-comments';
+import { scrollHeightSubject$ } from '../../hooks';
 
 export default function Participants() {
   const { activity } = useSelector((state: RootState) => state.activity);
+
+  const handleLayout = (event: LayoutChangeEvent) => {
+    const { layout } = event.nativeEvent;
+    scrollHeightSubject$.next({ key: 'comments', height: layout.height });
+  };
 
   if (!activity) {
     return null;
   }
   
   return (
-    <View style={styles.container}>
+    <View style={styles.container} onLayout={handleLayout}>
       <View style={styles.imageContainer}>
         <View style={styles.titleContainer}>
           <SvgCheckOutline style={styles.icon} fill="#AC8EC9" />
@@ -35,7 +40,6 @@ export default function Participants() {
         </View>
       </View>
       <View style={styles.completeDivider} />
-      <ActivityComments comments={activity?.comments || []} />
     </View>
   );
 } 

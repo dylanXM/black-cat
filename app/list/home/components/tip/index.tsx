@@ -46,7 +46,7 @@ export default function Tip({ activitiesLength }: TipProps) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>{activitiesLength || '-'} Results</Text>
+        <Text style={styles.headerTitle}>{activitiesLength ?? '-'} Results</Text>
         <TouchableOpacity onPress={handleClearSearch}>
           <Text style={styles.headerButton}>Clear Search</Text>
         </TouchableOpacity>

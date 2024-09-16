@@ -42,8 +42,8 @@ export default function TimeRangeSearch({ handleTimeRangeChange }: TimeRangeSear
     // 最后一个选项需要特殊处理，弹出时间选择器
     if (key === String(timeRangeOptions.length)) {
       handleTimeRangeChange({
-        start: String(startDate.getTime()),
-        end: String(endDate.getTime()),
+        start: isSameKey ? '' : String(startDate.getTime()),
+        end: isSameKey ? '' : String(endDate.getTime()),
       });
     }
 

@@ -59,6 +59,7 @@ export default function List({ navigation }: any) {
             onEndReachedThreshold={0.2}
             onEndReached={fetchNextPageActivities}
             ListFooterComponent={<Footer isDone={isDone} />}
+            scrollEnabled={!loading}
           />
         </View>
       </View>

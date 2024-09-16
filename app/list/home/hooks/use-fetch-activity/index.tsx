@@ -70,7 +70,13 @@ export function useFetchActivity() {
       return;
     }
     setPage(prev => prev + 1);
-  }, [isLoading]);
+  }, [isLoading, isDone]);
 
-  return { isDone, activities, loading: isLoading, fetchNextPageActivities, count };
+  return {
+    isDone,
+    activities,
+    loading: isLoading,
+    fetchNextPageActivities,
+    count,
+  };
 }

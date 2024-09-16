@@ -14,8 +14,10 @@ import ActivityTab from './components/activity-tab';
 import { color_complement, color_primary, color_primary_dark } from '@/constants/Colors';
 import React from 'react';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function Detail({ route }: { route: any }) {
   const { user } = useSelector((state: RootState) => state.user);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const navigation = useNavigation<NavigationProp<any>>();
   const { activity } = route.params as { activity: Twitter };
   const dispatch = useDispatch();

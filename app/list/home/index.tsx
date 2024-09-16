@@ -13,11 +13,12 @@ import { useRef } from 'react';
 import { color_complement, color_primary } from '@/constants/Colors';
 import React from 'react';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function List({ navigation }: any) {
   const { user } = useSelector((state: RootState) => state.user);
   const { activities, isDone, loading, loadMore, count, refresh, refreshing } = useFetchActivity();
   const { tipVisible } = useShowTip();
-  const flatListRef = useRef<FlatList<any>>(null);
+  const flatListRef = useRef<FlatList>(null);
 
   const openDrawer = () => {
     navigation.openDrawer();

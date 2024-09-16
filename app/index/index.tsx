@@ -6,6 +6,7 @@ import { NavigationProp } from '@react-navigation/native';
 import React from 'react';
 
 export interface IndexProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   navigation: NavigationProp<any>;
 }
 
@@ -20,6 +21,6 @@ export default function Index({ navigation }: IndexProps) {
 	
 	return (
 		// eslint-disable-next-line react/react-in-jsx-scope
-		<List navigation={navigation} />
+		<List />
 	);
 }

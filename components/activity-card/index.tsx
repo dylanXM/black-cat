@@ -22,6 +22,7 @@ interface ActivityCardProps {
 
 export default function ActivityCard({ activity, canEdit, initState }: ActivityCardProps) {
   const { title, user, channel, startTime, endTime, likes, goings, content } = activity;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const navigation = useNavigation<NavigationProp<any>>();
 
   const toDetail = () => {

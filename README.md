@@ -1,16 +1,53 @@
-# Welcome to black-cat app 👋
+<h1 align="center">Welcome to black-cat app 👋</h1>
 
-这是一个使用 [Expo](https://expo.dev) 创建的项目 [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+该项目为React Native 的学习项目，前端是使用 [Expo](https://expo.dev) 创建的项目 [`create-expo-app`](https://www.npmjs.com/package/create-expo-app)。而后端（在 `service` 目录下）使用了 [Nest](https://nestjs.com/) 框架构建。
 
-## Get started
+项目仓库：https://github.com/dylanXM/black-cat
 
-1. 安装依赖
+## 技术栈
+
+前端：`React Native` + `Redux` + `Typescript` + `RxJS`
+- `React 18.2` + `React Native`: 使用 React 语法和组件来创建跨平台的 iOS 和 Android 应用程序
+- `Redux`：状态管理，该项目中主要存储了登录状态 + 登录用户信息 + 搜索条件 + 活动详情页信息
+- `Typescript`：类型定义 + 类型检查
+- `rxjs`：用于处理复杂的异步逻辑 + 发布/订阅模式
+
+后端：`Nest` + `Typescript`
+- `Nest`：构建高效、可扩展的Node.js 服务器端应用程序，基于 `Express` 框架
+- `Typescript`：类型定义 + 类型检查
+
+## Feature
+- 用户登录，在 `service/sr/data/user.ts` 目录中存储了该项目用户的虚拟数据
+- 使用 `Jwt` 生成登录 `token` 并存储到了 `Redis` 中，用户登录后的每次接口访问都需验证 `token`
+- 查看活动列表/详情，用到的数据在 `servie/src/data/twitter/ts` 文件中
+- 活动列表搜索/查看，活动详情查看
+- 活动列表滚动加载更多 + 点击图标返回最顶层 + 下拉刷新列表
+- 活动操作：Like + Going + Comment
+- 用户个人信息查看
+
+## 演示
+
+### ios
+
+
+### android
+
+
+## 开始
+
+1. 拉取项目
+
+```bash
+git clone git@github.com:dylanXM/black-cat.git
+```
+
+2. 安装依赖
 
 ```bash
 yarn install
 ```
 
-2. 启动项目
+3. 启动项目
 
 ```bash
 // 开启安卓
@@ -20,15 +57,15 @@ yarn android
 yarn ios
 ```
 
-3. 服务端项目在 service 目录下
+4. 服务端项目在 service 目录下
 
-3.1 暗转依赖
+4.1 暗转依赖
 
 ```bash
 yarn install
 ```
 
-3.2 开启项目
+4.2 开启项目
 
 ```bash
 yarn dev

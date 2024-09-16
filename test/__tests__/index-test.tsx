@@ -4,8 +4,6 @@ import renderer from 'react-test-renderer';
 import { Comment } from '@/common/apis/twitter';
 import ActivityComments from '@/components/activity-comments';
 
-
-
 const mockComments: Comment[] = [
   {
     id: 1,

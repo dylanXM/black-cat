@@ -81,7 +81,6 @@ export default function Details() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderWidth: 1,
   },
   imageContainer: {
     marginTop: 12,

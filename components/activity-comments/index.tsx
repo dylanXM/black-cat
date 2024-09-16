@@ -6,7 +6,7 @@ export default function ActivityComments({ comments }: { comments: Comment[] }) 
 
   return (
     <View style={styles.container}>
-      <FlatList
+      {/* <FlatList
         data={comments}
         renderItem={({ item, index }) => (
           <View style={styles.commnetContainer}>
@@ -29,10 +29,32 @@ export default function ActivityComments({ comments }: { comments: Comment[] }) 
             </View>
           </View>
         )}
-        nestedScrollEnabled={false}
+        // nestedScrollEnabled={false}
         keyExtractor={(_, index) => String(index)}
         showsHorizontalScrollIndicator={false} // 隐藏滚动条
-      />
+      /> */}
+      {
+        comments.map((item, index) => (
+          <View style={styles.commnetContainer} key={index}>
+            <Image
+              style={styles.image}
+              source={{ uri: item?.user?.avatar }}
+            />
+            <View style={styles.contentContainer}>
+              <View style={styles.contentUser}>
+                <View style={styles.contentHeader}>
+                  <Text style={styles.contentUsername}>{item.user?.username}</Text>
+                  <Text style={styles.contentUserTime}>{item.time}</Text>
+                </View>
+                <SvgReply style={styles.replyIcon} fill="#D5EF7F" />
+              </View>
+              <View style={styles.descContainer}>
+                <Text>{Array(10).fill(item.content).join('')}</Text>
+              </View>
+            </View>
+          </View>
+        ))
+      }
     </View>
   );
 }

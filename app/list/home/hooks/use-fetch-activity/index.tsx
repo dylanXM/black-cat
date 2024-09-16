@@ -3,8 +3,8 @@ import { RootState } from '@/store';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { from, Subject } from 'rxjs';
-import { client } from '@/common/utils/query-client';
+import { Subject } from 'rxjs';
+import { useLatest } from '@/hooks/useLatest';
 
 export const fetchActivitiesSubject$ = new Subject();
 
@@ -27,16 +27,30 @@ export function useFetchActivity() {
   const { data, isLoading } = useQuery({
     queryKey: [{ queryIdentifier: 'fetchTwitters', ...searchParams }],
     queryFn: async () => {
+      console.log('search params', JSON.stringify(searchParams));
       const res = await getTwitters({ ...searchParams });
       return res;
     },
   });
 
-  const { count, data: activities } = data as GetTwittersResponse || {};
+  const [activities, setActivities] = useState<Twitter[] | null>([]);
+
+  const { count } = data as GetTwittersResponse || {};
+
+  const pageRef = useLatest(page);
+  useEffect(() => {
+    const list = (data as GetTwittersResponse)?.data || [];
+    setActivities(prev => {
+      if (pageRef.current === 1) {
+        return list;
+      }
+      return [...(prev || []), ...list];
+    });
+  }, [(data as GetTwittersResponse)?.data]);
   
   useEffect(() => {
     console.log('activities返回数量', activities?.length, 'count', count);
-  }, [data]);
+  }, [activities, count]);
 
   // 点击清除按钮 或者 search 条件改变后需要点击搜索按钮触发
   useEffect(() => {
@@ -52,7 +66,8 @@ export function useFetchActivity() {
 
   // 页码加 1
   const fetchNextPageActivities = useCallback(() => {
-    setPage(1);
+    console.log('fetchNextPageActivities', page);
+    setPage(prev => prev + 1);
   }, []);
 
   return { isDone, activities, loading: isLoading, fetchNextPageActivities, count };

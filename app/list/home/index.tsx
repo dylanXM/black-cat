@@ -39,7 +39,7 @@ export default function List({ navigation }: any) {
       {tipVisible && <Tip activitiesLength={count} />}
       <View style={styles.activityContainer}>
         {
-          count === 0 && isDone && <Empty text={loading ? 'Fetching data...' : 'No activity found'} />
+          count === 0 && isDone && <Empty text={'No activity found'} />
         }
         <View style={styles.flatListContainer}>
           <FlatList
@@ -55,7 +55,7 @@ export default function List({ navigation }: any) {
             // }
             nestedScrollEnabled={false}
             ItemSeparatorComponent={() => <View style={styles.divider} />}
-            onEndReachedThreshold={0.1}
+            onEndReachedThreshold={0.2}
             onEndReached={fetchNextPageActivities}
             ListFooterComponent={loading ? <ActivityIndicator style={styles.spinner} /> : null}
           />

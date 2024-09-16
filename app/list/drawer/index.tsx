@@ -8,6 +8,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { initialState, SearchState, TimeRange, TypeChannel } from '@/store/actions/search';
 import { Subject } from 'rxjs';
 import { color_disabled_text_light, color_primary_dark } from '@/constants/Colors';
+import React from 'react';
 
 export const drawerSearchSubject$ = new Subject();
 

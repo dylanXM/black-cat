@@ -2,7 +2,13 @@ import { View, Image, Text, StyleSheet } from 'react-native';
 import { Twitter } from '@/common/apis/twitter';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { color_disabled_text_light, color_primary, color_primary_dark, color_primary_neutral } from '@/constants/Colors';
+import React from 'react';
+import {
+  color_disabled_text_light,
+  color_primary,
+  color_primary_dark,
+  color_primary_neutral,
+} from '@/constants/Colors';
 
 export default function ActivityHeader() {
   const { activity } = useSelector((state: RootState) => state.activity);

@@ -24,7 +24,6 @@ export function formatTimeString(dateString: string): string {
   const minutes: number = date.getMinutes();
 
   // 格式化小时和分钟，确保双位数
-  const formattedHours: string = String(hours).padStart(2, '0');
   const formattedMinutes: string = String(minutes).padStart(2, '0');
 
   // 确定 am/pm

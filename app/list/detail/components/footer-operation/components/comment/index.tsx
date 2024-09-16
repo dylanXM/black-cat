@@ -4,6 +4,7 @@ import SvgCross from '@/components/svgs/Cross';
 import { useState } from 'react';
 import { showToast } from '../../../activity-tab/components/toast';
 import { color_complement, color_primary } from '@/constants/Colors';
+import React from 'react';
 
 interface CommentProps {
   handleToggleComment: () => void;

@@ -1,5 +1,6 @@
 import { color_primary_neutral } from '@/constants/Colors';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import React from 'react';
 
 interface FooterProps {
   isDone: boolean;

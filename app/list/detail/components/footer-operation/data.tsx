@@ -5,6 +5,7 @@ import SvgCheckOutLine from '@/components/svgs/CheckOutline';
 import SvgCheck from '@/components/svgs/Check';
 import { StyleSheet } from 'react-native';
 import { color_complement, color_primary, color_primary_dark } from '@/constants/Colors';
+import React from 'react';
 
 const styles = StyleSheet.create({
   icon: {

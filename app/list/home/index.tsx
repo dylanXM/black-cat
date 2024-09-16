@@ -11,6 +11,7 @@ import Empty from '@/components/empty';
 import Footer from './components/footer';
 import { useRef } from 'react';
 import { color_complement, color_primary } from '@/constants/Colors';
+import React from 'react';
 
 export default function List({ navigation }: any) {
   const { user } = useSelector((state: RootState) => state.user);

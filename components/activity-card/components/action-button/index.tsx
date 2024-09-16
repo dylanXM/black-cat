@@ -3,6 +3,7 @@ import { configs } from './data';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { TypeAction } from '../..';
 import { useState } from 'react';
+import React from 'react';
 
 interface ActionButtonProps {
   initCount: Record<TypeAction, number>;

@@ -8,7 +8,13 @@ import { channelSearchSubject$ } from '@/app/list/drawer/components/channel-sear
 import { timeRangeSearchSubject$ } from '@/app/list/drawer/components/time-range-search';
 import { RootState } from '@/store';
 import { drawerSearchSubject$ } from '@/app/list/drawer';
-import { color_primary, color_primary_neutral, color_background, color_complement } from '@/constants/Colors';
+import React from 'react';
+import {
+  color_primary,
+  color_primary_neutral,
+  color_background,
+  color_complement,
+} from '@/constants/Colors';
 
 interface TipProps {
   activitiesLength: number;

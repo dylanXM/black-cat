@@ -3,6 +3,7 @@ import Empty from '@/components/empty';
 import { RootState } from '@/store';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { useSelector } from 'react-redux';
+import React from 'react';
 
 export default function Goings() {
   const { user } = useSelector((state: RootState) => state.user);

@@ -1,7 +1,8 @@
 import ActivityComments from '@/components/activity-comments';
 import { RootState } from '@/store';
-import { View, StyleSheet, LayoutChangeEvent } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
+import React from 'react';
 
 export default function Comments() {
   const { activity } = useSelector((state: RootState) => state.activity);

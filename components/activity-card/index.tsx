@@ -4,7 +4,13 @@ import SvgTime from '@/components/svgs/Time';
 import ActionButton from './components/action-button';
 import { formatDateToMinute } from '@/common/utils/format-time';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { color_primary, color_primary_dark, color_primary_light, color_primary_neutral } from '@/constants/Colors';
+import React from 'react';
+import {
+  color_primary,
+  color_primary_dark,
+  color_primary_light,
+  color_primary_neutral,
+} from '@/constants/Colors';
 
 export type TypeAction = 'like' | 'going';
 

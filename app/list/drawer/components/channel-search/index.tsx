@@ -3,7 +3,12 @@ import { useEffect, useState } from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Subject } from 'rxjs';
 import { TypeHandleChannelChange } from '../..';
-import { color_complement_light, color_primary_dark, color_primary_light } from '@/constants/Colors';
+import React from 'react';
+import {
+  color_complement_light,
+  color_primary_dark,
+  color_primary_light,
+} from '@/constants/Colors';
 
 export const channelSearchSubject$ = new Subject();
 

@@ -1,7 +1,7 @@
 import SafeContainer from '@/components/SafeContainer';
 import SvgHome from '@/components/svgs/Home';
 import SvgLogoCat from '@/components/svgs/LogoCat';
-import { View, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
@@ -12,6 +12,7 @@ import FooterOperation from './components/footer-operation';
 import { SET_ACTIVITY } from '@/store/actions/activity';
 import ActivityTab from './components/activity-tab';
 import { color_complement, color_primary, color_primary_dark } from '@/constants/Colors';
+import React from 'react';
 
 export default function Detail({ route }: { route: any }) {
   const { user } = useSelector((state: RootState) => state.user);

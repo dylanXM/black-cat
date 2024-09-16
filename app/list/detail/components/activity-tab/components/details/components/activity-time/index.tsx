@@ -1,3 +1,4 @@
+import React from 'react';
 import SvgDateFrom from '@/components/svgs/DateFrom';
 import SvgDateTo from '@/components/svgs/DateTo';
 import { View, Text, StyleSheet } from 'react-native';

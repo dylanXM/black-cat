@@ -3,7 +3,7 @@ import ExpandableText from './components/expandable-text';
 import ActivityTime from './components/activity-time';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { useState } from 'react';
+import React from 'react';
 import { scrollHeightSubject$ } from '../../hooks';
 import { color_primary, color_primary_neutral } from '@/constants/Colors';
 

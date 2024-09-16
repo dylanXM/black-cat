@@ -6,6 +6,7 @@ import SvgPeople from '@/components/svgs/People';
 import SvgCommentOutline from '@/components/svgs/CommentOutline';
 import SvgComment from '@/components/svgs/Comment';
 import { color_complement_dark_1 } from '@/constants/Colors';
+import React from 'react';
 
 export const styles = StyleSheet.create({
   icon: {

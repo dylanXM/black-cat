@@ -1,5 +1,6 @@
 import { View, StyleSheet, Text } from 'react-native';
 import SvgNoActivity from '@/components/svgs/NoActivity';
+import React from 'react';
 import { color_disabled_text_light, color_primary_light } from '@/constants/Colors';
 
 interface PastsProps {

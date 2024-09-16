@@ -6,6 +6,7 @@ import SvgCheckOutline from '@/components/svgs/CheckOutline';
 import SvgLikeOutline from '@/components/svgs/LikeOutline';
 import { scrollHeightSubject$ } from '../../hooks';
 import { color_primary_neutral } from '@/constants/Colors';
+import React from 'react';
 
 export default function Participants() {
   const { activity } = useSelector((state: RootState) => state.activity);

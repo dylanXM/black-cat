@@ -1,7 +1,7 @@
 import { useWindowDimensions } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import UserTabBar from './components/user-tab-bar';
-import { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { routes } from './components/user-tab-bar/data';
 import Likes from './components/likes';
 import Goings from './components/goings';

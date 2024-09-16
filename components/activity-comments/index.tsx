@@ -1,5 +1,6 @@
 import { Comment } from '@/common/apis/twitter';
-import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
+import React from 'react';
 import SvgReply from '@/components/svgs/Reply';
 import { color_complement, color_disabled_text_light, color_primary } from '@/constants/Colors';
 

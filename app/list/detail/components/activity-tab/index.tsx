@@ -7,6 +7,7 @@ import { routes } from './data';
 import { TypeTabKeys, useScroll } from './hooks';
 import DetailToast from './components/toast';
 import { color_complement_dark_1 } from '@/constants/Colors';
+import React from 'react';
 
 export default function ActivityTab() {
   const [activeKey, setActiveKey] = useState('details');

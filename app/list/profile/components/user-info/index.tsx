@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import { useSelector } from 'react-redux';
 import SvgEmail from '@/components/svgs/Email';
 import { color_primary, color_primary_neutral } from '@/constants/Colors';
+import React from 'react';
 
 export default function UserInfo() {
   const { user } = useSelector((state: RootState) => state.user);

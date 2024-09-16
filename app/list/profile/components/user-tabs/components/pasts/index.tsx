@@ -3,6 +3,7 @@ import Empty from '@/components/empty';
 import { RootState } from '@/store';
 import { FlatList, View, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
+import React from 'react';
 
 export default function Pasts() {
   const { user } = useSelector((state: RootState) => state.user);

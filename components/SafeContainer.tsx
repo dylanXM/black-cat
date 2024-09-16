@@ -1,5 +1,6 @@
 import { View, Dimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import React from 'react';
 const { height } = Dimensions.get('window');
 
 import { ReactNode } from 'react';

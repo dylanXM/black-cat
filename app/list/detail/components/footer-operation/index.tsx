@@ -3,7 +3,13 @@ import SvgCommentSingle from '@/components/svgs/CommentSingle';
 import { useOperation } from './hooks';
 import { operationMap } from './data';
 import Comment from './components/comment';
-import { color_complement, color_complement_dark_2, color_primary, color_primary_dark } from '@/constants/Colors';
+import React from 'react';
+import {
+  color_complement,
+  color_complement_dark_2,
+  color_primary,
+  color_primary_dark,
+} from '@/constants/Colors';
 
 export default function FooterOperation() {
   const {

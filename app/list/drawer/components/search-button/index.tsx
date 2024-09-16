@@ -8,6 +8,7 @@ import { Text, StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch } from 'react-redux';
 import { from, switchMap, timer } from 'rxjs';
+import React from 'react';
 
 interface SearchButtonProps {
   navigation: DrawerNavigationHelpers;

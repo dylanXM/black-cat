@@ -4,6 +4,7 @@ import { RootState } from '@/store';
 import { useSelector } from 'react-redux';
 import { routes } from './data';
 import { color_complement_dark_1 } from '@/constants/Colors';
+import React from 'react';
 
 interface UserTabBarProps {
   jumpTo: (key: string) => void;

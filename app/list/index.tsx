@@ -1,4 +1,3 @@
-import { IndexProps } from '../index/index';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import CustomDrawerContent from './drawer';
@@ -6,10 +5,11 @@ import Home from './home';
 import Profile from './profile';
 import { useFetchUser } from './hooks';
 import Detail from './detail';
+import React from 'react';
 
 const Drawer = createDrawerNavigator();
 
-export default function List({ navigation }: IndexProps) {
+export default function List() {
   // 获取用户信息
   useFetchUser();
 

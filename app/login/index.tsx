@@ -10,7 +10,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IndexProps } from '../index';
 import Toast from 'react-native-toast-message';
 import LoginFooter from './components/login-footer';
-import { color_complement, color_primary_dark, color_primary_light } from '@/constants/Colors';
+import React from 'react';
+import {
+	color_complement,
+	color_primary_dark,
+	color_primary_light,
+} from '@/constants/Colors';
 
 export default function Login({ navigation }: IndexProps) {
 	const { username, password, handleUsernameChange, handlePasswordChange } = useLogin();
@@ -22,7 +27,7 @@ export default function Login({ navigation }: IndexProps) {
 			// 跳转到首页
 			navigation.navigate('list');
     },
-    onError: (error) => {
+    onError: () => {
 			Toast.show({
 				type: 'error',
 				text1: 'A error has occurred, please try again later'

@@ -61,9 +61,9 @@ yarn android
 yarn ios
 ```
 
-4. 服务端项目在 service 目录下
+4. 服务端（在 service 目录下）
 
-4.1 暗转依赖
+4.1 安装依赖
 
 ```bash
 yarn install
@@ -130,7 +130,7 @@ import LogoCat from '@/components/svgs/LogoCat';
 <LogoCat style={[styles.logoCat, { fill: '#fff' }]} />
 
 // 或者
-<LogoCat style={styles.logoCat} fill="fff" />
+<LogoCat style={styles.logoCat} fill="#fff" />
 
 ```
 

@@ -25,6 +25,9 @@
 - 活动列表滚动加载更多 + 点击图标返回最顶层 + 下拉刷新列表
 - 活动操作：Like + Going + Comment
 - 用户个人信息查看
+- 支持组件测试脚本：在 `./test` 目录下
+- 支持 `Husky` hooks：在 `.husky` 目录下，目前支持 `pre-commit` hook
+- 支持 `GitHub CI`：在 `.github/workflows` 目录下，目前支持合入 `main` 分支的 `lint` 校验
 
 ## 演示
 

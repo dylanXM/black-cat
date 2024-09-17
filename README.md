@@ -25,6 +25,9 @@
 - 活动列表滚动加载更多 + 点击图标返回最顶层 + 下拉刷新列表
 - 活动操作：Like + Going + Comment
 - 用户个人信息查看
+- 支持组件测试脚本：在 `./test` 目录下
+- 支持 `Husky` hooks：在 `.husky` 目录下，目前支持 `pre-commit` hook
+- 支持 `GitHub CI`：在 `.github/workflows` 目录下，目前支持合入 `main` 分支的 `lint` 校验
 
 ## 演示
 
@@ -74,8 +77,8 @@ yarn dev
 
 ## 更新日志
 
-- 🚀 09.17 新增自定义 `Toast` + 更新演示视频
-- 🚀 09.16 向下滑动加载更多 + 下拉刷新 + `eslint` + `pre-commit`
+- 🚀 09.17 新增自定义 `Toast` + 更新演示视频 + `GitHub CI`
+- 🚀 09.16 向下滑动加载更多 + 下拉刷新 + `eslint` + `pre-commit` + 编写 `react-test-renderer` 组件测试脚本
 - 🚀 09.15 用户详情页面实现 + `activity` 列表和详情页面实现 + 构造 `activity` 数据
 - 🚀 09.14 drawer + 搜索功能实现 + 构造登录用户数据
 - 🚀 09.13 初始化项目 + 增加项目路由 + 登录页面实现

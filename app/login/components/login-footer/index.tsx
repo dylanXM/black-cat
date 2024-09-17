@@ -10,7 +10,7 @@ export default function LoginFooter({ loading }: LoginFooterProps) {
   if (loading) {
     return (
       <View style={styles.container}>
-        <ActivityIndicator style={styles.spinner} />
+        <ActivityIndicator style={styles.spinner} color="#999999" />
         <Text style={styles.text}>Loging in...</Text>
       </View>
     );

@@ -16,8 +16,8 @@ import Login from './login';
 import NotFound from './+not-found';
 import { ModalPortal } from 'react-native-modals';
 import { client } from '@/common/utils/query-client';
-import Toast from 'react-native-toast-message';
 import React from 'react';
+import Toast from '@/components/toast';
 
 const Stack = createNativeStackNavigator();
 

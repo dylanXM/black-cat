@@ -8,7 +8,6 @@ import { doLogin } from '@/common/apis';
 import { useLogin } from './hooks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IndexProps } from '../index';
-import Toast from 'react-native-toast-message';
 import LoginFooter from './components/login-footer';
 import React from 'react';
 import {
@@ -16,6 +15,7 @@ import {
 	color_primary_dark,
 	color_primary_light,
 } from '@/constants/Colors';
+import { showToast } from '@/components/toast';
 
 export default function Login({ navigation }: IndexProps) {
 	const { username, password, handleUsernameChange, handlePasswordChange } = useLogin();
@@ -28,9 +28,9 @@ export default function Login({ navigation }: IndexProps) {
 			navigation.navigate('list');
     },
     onError: () => {
-			Toast.show({
+			showToast({
 				type: 'error',
-				text1: 'A error has occurred, please try again later'
+				message: 'A error has occurred, please try again later',
 			});
     }
   });

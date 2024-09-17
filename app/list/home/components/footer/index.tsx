@@ -26,7 +26,7 @@ export default function Footer({ isDone, count }: FooterProps) {
   // 数据加载中
   return (
     <View style={styles.container}>
-      <ActivityIndicator style={styles.spinner} />
+      <ActivityIndicator style={styles.spinner} color="#999999" />
       <Text style={styles.text}>loading...</Text>
     </View>
   );
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   spinner: {
     marginRight: 8,
-    color: '#f0f0f0',
+    color: 'blue',
   },
   text: {
     color: color_primary_neutral,

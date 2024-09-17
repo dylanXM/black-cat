@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to black-cat app 👋</h1>
 
-该项目为React Native 的学习项目，前端是使用 [Expo](https://expo.dev) 创建的项目 [`create-expo-app`](https://www.npmjs.com/package/create-expo-app)。而后端（在 `service` 目录下）使用了 [Nest](https://nestjs.com/) 框架构建。
+该项目为React Native 的学习项目，前端是使用 [Expo](https://expo.dev) 创建的项目 [`create-expo-app`](https://www.npmjs.com/package/create-expo-app)。而服务端（在 `service` 目录下）使用了 [Nest](https://nestjs.com/) 框架构建。
 
 项目仓库：https://github.com/dylanXM/black-cat
 
@@ -13,7 +13,7 @@
 - `rxjs`：用于处理复杂的异步逻辑 + 发布/订阅模式
 - `react-query`: 配合 `axios`，用于管理和缓存异步数据
 
-后端：`Nest` + `Typescript`
+服务端：`Nest` + `Typescript`
 - `Nest`：构建高效、可扩展的Node.js 服务器端应用程序，基于 `Express` 框架
 - `Typescript`：类型定义 + 类型检查
 

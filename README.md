@@ -6,11 +6,12 @@
 
 ## 技术栈
 
-前端：`React Native` + `Redux` + `Typescript` + `RxJS`
+前端：`React Native` + `Redux` + `Typescript` + `RxJS` + `react-query`
 - `React 18.2` + `React Native`: 使用 React 语法和组件来创建跨平台的 iOS 和 Android 应用程序
 - `Redux`：状态管理，该项目中主要存储了登录状态 + 登录用户信息 + 搜索条件 + 活动详情页信息
 - `Typescript`：类型定义 + 类型检查
 - `rxjs`：用于处理复杂的异步逻辑 + 发布/订阅模式
+- `react-query`: 配合 `axios`，用于管理和缓存异步数据
 
 后端：`Nest` + `Typescript`
 - `Nest`：构建高效、可扩展的Node.js 服务器端应用程序，基于 `Express` 框架
@@ -28,10 +29,10 @@
 ## 演示
 
 ### ios
-<img url="https://sfile.chatglm.cn/chatglm4/8bf599dd-1e01-44be-8cf3-f03f37808bd4.gif" width="275" height="500" align="center" />
+[IOS演示视频](https://sfile.chatglm.cn/chatglm4/8bf599dd-1e01-44be-8cf3-f03f37808bd4.gif)
 
 ### android
-<img url="https://sfile.chatglm.cn/chatglm4/6abbaf77-108c-4fcf-9645-2a27d0733679.gif" width="275" height="500" align="center" />
+[安卓演示视频](https://sfile.chatglm.cn/chatglm4/6abbaf77-108c-4fcf-9645-2a27d0733679.gif)
 
 ## 开始
 

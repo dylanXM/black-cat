@@ -28,10 +28,10 @@
 ## 演示
 
 ### ios
-
+<img url="https://sfile.chatglm.cn/chatglm4/8bf599dd-1e01-44be-8cf3-f03f37808bd4.gif" width="275" height="500" align="center" />
 
 ### android
-
+<img url="https://sfile.chatglm.cn/chatglm4/6abbaf77-108c-4fcf-9645-2a27d0733679.gif" width="275" height="500" align="center" />
 
 ## 开始
 

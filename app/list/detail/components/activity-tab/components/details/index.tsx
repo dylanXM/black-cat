@@ -64,7 +64,7 @@ export default function Details() {
         <View style={styles.addressContainer}>
           <Text style={styles.mainAddressText}>{activity.address}</Text>
           <Text style={styles.subAddressText}>{activity.address}</Text>
-          <Image style={styles.addressMap} source={{ uri: '@/assets/images/gmap.png' }} />
+          <Image style={styles.addressMap} source={require('@/assets/images/gmap.png')} />
         </View>
       </View>
       <View style={styles.divider} />

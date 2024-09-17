@@ -15,7 +15,8 @@ export default [
       'no-console': 'warn',
       semi: ['error', 'always'],
       quotes: ['error', 'single'],
-      'react/prop-types': 'off'
+      'react/prop-types': 'off',
+      '@typescript-eslint/no-require-imports': 'off',
     }
   },
   // 排除文件

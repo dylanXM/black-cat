@@ -2,7 +2,7 @@
 
 该项目为React Native 的学习项目，前端是使用 [Expo](https://expo.dev) 创建的项目 [`create-expo-app`](https://www.npmjs.com/package/create-expo-app)。而服务端（在 `service` 目录下）使用了 [Nest](https://nestjs.com/) 框架构建。
 
-项目仓库：https://github.com/dylanXM/black-cat
+[技术方案](./技术方案.md)
 
 ## 技术栈
 
